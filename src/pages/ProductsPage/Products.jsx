@@ -1,15 +1,12 @@
 import React from "react";
 import { useAxios } from "../../Api/API";
 import { useFilter } from "../../Context/Filter_context";
-import { getDiscountedProducts } from "../../Utility/rating";
+import { getRatingProducts } from "../../Utility/rating";
 import { getSorting } from "../../Utility/sorting";
 import "./Products.css";
 
 const Products = () => {
-  const { data } = useAxios();
-  const { state, dispatch } = useFilter();
-  const { sorting } = state;
-
+  
   return (
     <div>
       <div class="main-container">
@@ -61,15 +58,17 @@ const Products = () => {
               <p class="bar-heading">Ratings</p>
               <div>
                 <input type="radio" name="p-ratings" id="best-ratings" 
-                onChange={()=> dispatch({type:"RATINGS"})}/> 4 &
+               /> 4 &
                 above
               </div>
               <div>
-                <input type="radio" name="p-ratings" id="better-ratings" /> 3 &
+                <input type="radio" name="p-ratings" id="better-ratings"
+                 /> 3 &
                 above
               </div>
               <div>
-                <input type="radio" name="p-ratings" id="good-ratings" /> 2 &
+                <input type="radio" name="p-ratings" id="good-ratings"
+                 /> 2 &
                 above
               </div>
             </div>
@@ -81,13 +80,13 @@ const Products = () => {
                   type="radio"
                   name="sort"
                   id="low-high"
-                  onChange={() => dispatch({ type: "LOW_TO_HIGH" })}
+                  
                 />
                 Price- low to high
               </div>
               <div>
                 <input type="radio" name="sort" id="high-low" 
-                onChange={() => dispatch({ type: "HIGH_TO_LOW" })}
+                
                 />
                 Price- high to low
               </div>
@@ -95,28 +94,9 @@ const Products = () => {
           </aside>
         </div>
 
-        <div class="products-container">
+        <div className="products-container">
          <h1> Popular Books </h1>
-         <div>
-         {getSorting(sorting).map(({ name, price }) => {
-          return (
-            <div>
-              <p>{name}</p>
-              <h2>{price}</h2>
-            </div>
-          );
-        })}
-
-        {getDiscountedProducts(discount).map(({ name, price }) => {
-          return (
-            <div>
-              <p>{name}</p>
-              <h2>{price}</h2>
-              <p>{discount}</p>
-            </div>
-          );
-        })}
-         </div> 
+         
          
         </div>
       </div>

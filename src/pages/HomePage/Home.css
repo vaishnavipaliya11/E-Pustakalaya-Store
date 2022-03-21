@@ -25,11 +25,13 @@ body {
         "category category category category category"
         "slider slider slider slider slider"
         "arrivals arrivals arrivals arrivals arrivals";
+        overflow-y: scroll;
 }
 
 .app-container {
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
 }
 
 /*topnav*/
