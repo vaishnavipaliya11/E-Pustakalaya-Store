@@ -6,44 +6,116 @@ import { v4 as uuid } from "uuid";
  * */
 
 export const products = [
-  {
-    id: 1,
-    name: "elon musk",
-    price: 100,
-    rating:3,
-    description: "this is elon musk book"
-  },
-  {
-    id: 2,
-    name: "newton",
-    price: 500,
-    rating:1,
-    description: "this is newton book"
-  },
-  {
-    id: 3,
-    name: "new editions",
-    price: 50,
-    rating:2,
-    description: "this is new edition book"
-  },
-  {
-    id: 4,
-    name: "subtle art",
-    price: 350,
-    rating:3,
-    description: "this is subtle art book"
-  },
-  {
-    id: 5,
-    name: "subtle art",
-    price: 150,
-    rating:4,
-    description: "Chankya neeti"
-  }, {
-    id: 6,
-    name: "subtle art",
-    price: 350,
-    rating:3,
-    description: "Sindhu Tai Sapkad"
-  }];
+  
+    {
+      _id: uuid(),
+      img:"https://images-eu.ssl-images-amazon.com/images/I/41eLGn5nEyL._SY264_BO1,204,203,200_QL40_FMwebp_.jpg",
+      title: "My Life and Work",
+      author: "henry ford",
+      price: "340",
+      rating:3,
+      discount:30,
+      categoryName: "biography",
+    },
+    {
+      _id: uuid(),
+      img:"https://images-na.ssl-images-amazon.com/images/I/510Fne1a3wL._SX322_BO1,204,203,200_.jpg",
+      title: "Dream With Your Eyes Open",
+      author: " Ronnie Screwvala",
+      price: "284",
+      rating:5,
+      discount:20,
+      categoryName: "horror",
+    },
+    {
+      _id: uuid(),
+      img:"https://images-eu.ssl-images-amazon.com/images/I/51oHUvYzbsL._SY264_BO1,204,203,200_QL40_FMwebp_.jpg",
+      title: "The Theory of Everything",
+      author: "Stephen Hawking",
+      price: "1000",
+      rating:4,
+      discount:50,
+      categoryName: "fiction",
+    },
+    {
+      _id: uuid(),
+      img:"https://images-na.ssl-images-amazon.com/images/I/51Lquak8gwL._SX322_BO1,204,203,200_.jpg",
+      title: "Youth and Truth",
+      author: "sadhguru",
+      price: "199",
+      rating:5,
+      discount:20,
+      categoryName: "spiritual",
+    },
+    {
+      _id: uuid(),
+      img:"https://images-eu.ssl-images-amazon.com/images/I/51b2J5RJZHS._SY264_BO1,204,203,200_QL40_FMwebp_.jpg",
+      title: "Three Thousand Stitches",
+      author: " Sudha Murty",
+      price: "300",
+      rating:2,
+      discount:40,
+      categoryName: "self-help",
+    },
+    {
+      _id: uuid(),
+      img:"https://images-na.ssl-images-amazon.com/images/I/51wbVQTpTgL._SX339_BO1,204,203,200_.jpg",
+      title: "Wings of Fire",
+      author: "Abdul kalam",
+      price: "340",
+      rating:3,
+      discount:30,
+      categoryName: "autobiography",
+    },
+    {
+      _id: uuid(),
+      img:"https://images-na.ssl-images-amazon.com/images/I/41zswOGxk9S._SX460_BO1,204,203,200_.jpg",
+      title: "The Diary of a Young Girl",
+      author: "Anne Frank",
+      price: "125",
+      rating:3,
+      discount:60,
+      categoryName: "autobigraphy",
+    },
+    {
+      _id: uuid(),
+      img:"https://images-na.ssl-images-amazon.com/images/I/416hcUO5d1L._SX460_BO1,204,203,200_.jpg",
+      title: "Autobiography of a Yogi",
+      author: "Paramahansa Yogananda",
+      price: "193",
+      rating:5,
+      discount:20,
+      categoryName: "autobigraphy",
+    },
+    {
+      _id: uuid(),
+      img:"https://m.media-amazon.com/images/I/41Ss6sV3IrL._SY346_.jpg",
+      title: "Man's Search For Meaning",
+      author: "Viktor E Frankl",
+      price: "168",
+      rating:4,
+      discount:50,
+      categoryName: "self-help",
+    },
+    {
+      _id: uuid(),
+      img:"https://images-eu.ssl-images-amazon.com/images/I/41kCPF5KiDL._SY264_BO1,204,203,200_QL40_FMwebp_.jpg",
+      title: "The World As I See It",
+      author: "Albert Einstein",
+      price: "195",
+      rating:4,
+      discount:50,
+      categoryName: "autobigraphy",
+    },
+    {
+      _id: uuid(),
+      img:"https://images-eu.ssl-images-amazon.com/images/I/518H5gja7WL._SY264_BO1,204,203,200_QL40_FMwebp_.jpg",
+      title: "My Inventions",
+      author: "nikola tesla",
+      price: "120",
+      rating:5,
+      discount:40,
+      categoryName: "autobiography",
+    },
+  
+  ];
