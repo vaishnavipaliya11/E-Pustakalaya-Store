@@ -1,5 +1,4 @@
 import React from 'react';
-// import "../../components/Cards"
 import "./Home.css";
 
 export const Home = () => {
