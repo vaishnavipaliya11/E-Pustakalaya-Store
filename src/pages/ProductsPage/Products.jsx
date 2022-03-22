@@ -6,6 +6,16 @@ import { getSorting } from "../../Utility/sorting";
 import "./Products.css";
 
 const Products = () => {
+
+  const { state, dispatch } = useFilter();
+  const { sorting, rating } = state;
+  const { data } = useAxios();
+
+  const finalRatingProducts= getRatingProducts(data,rating)
+  const finalSortingProducts= getSorting(finalRatingProducts,sorting)
+
+  console.log("final sorting products", finalSortingProducts);
+  console.log("final Rating",finalRatingProducts)
   
   return (
     <div>
@@ -38,7 +48,7 @@ const Products = () => {
               <p class="bar-heading">Category</p>
               <div>
                 <input type="checkbox" name="religious" id="religious" />
-                Religious
+                Spiritual
               </div>
               <div>
                 <input type="checkbox" name="fiction" id="fiction" />
@@ -46,11 +56,11 @@ const Products = () => {
               </div>
               <div>
                 <input type="checkbox" name="science" id="science" />
-                Science
+                Biography
               </div>
               <div>
                 <input type="checkbox" name="thriller" id="thriller" />
-                Thriller
+                Horror
               </div>
             </div>
 
@@ -58,17 +68,17 @@ const Products = () => {
               <p class="bar-heading">Ratings</p>
               <div>
                 <input type="radio" name="p-ratings" id="best-ratings" 
-               /> 4 &
+                onChange={()=> dispatch({type:"RATINGS", payload:4})}/> 4 &
                 above
               </div>
               <div>
                 <input type="radio" name="p-ratings" id="better-ratings"
-                 /> 3 &
+                onChange={()=> dispatch({type:"RATINGS", payload:3})}  /> 3 &
                 above
               </div>
               <div>
                 <input type="radio" name="p-ratings" id="good-ratings"
-                 /> 2 &
+                onChange={()=> dispatch({type:"RATINGS", payload:2})} /> 2 &
                 above
               </div>
             </div>
@@ -80,13 +90,13 @@ const Products = () => {
                   type="radio"
                   name="sort"
                   id="low-high"
-                  
+                  onChange={() => dispatch({ type: "LOW_TO_HIGH" })}
                 />
                 Price- low to high
               </div>
               <div>
                 <input type="radio" name="sort" id="high-low" 
-                
+                onChange={() => dispatch({ type: "HIGH_TO_LOW" })}
                 />
                 Price- high to low
               </div>
@@ -96,7 +106,16 @@ const Products = () => {
 
         <div className="products-container">
          <h1> Popular Books </h1>
-         
+         {finalSortingProducts.map(({ title, price, rating, categoryName}) => {
+          return (
+            <div>
+              <h2>{title}</h2>
+              <h3>{price}</h3>
+              <p>{rating}</p>
+              <p>{categoryName}</p>
+            </div>
+          );
+        })}
          
         </div>
       </div>
