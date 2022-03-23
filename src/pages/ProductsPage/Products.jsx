@@ -1,6 +1,7 @@
 import React from "react";
 import { useAxios } from "../../Api/API";
 import { useFilter } from "../../Context/Filter_context";
+import { getCategoryProducts } from "../../Utility/category";
 import { getRatingProducts } from "../../Utility/rating";
 import { getSorting } from "../../Utility/sorting";
 import "./Products.css";
@@ -8,15 +9,15 @@ import "./Products.css";
 const Products = () => {
 
   const { state, dispatch } = useFilter();
-  const { sorting, rating } = state;
+  const { sorting, rating , categories } = state;
   const { data } = useAxios();
 
+ 
   const finalRatingProducts= getRatingProducts(data,rating)
-  const finalSortingProducts= getSorting(finalRatingProducts,sorting)
-
-  console.log("final sorting products", finalSortingProducts);
-  console.log("final Rating",finalRatingProducts)
+  const finalCategoryProducts = getCategoryProducts(finalRatingProducts,categories)
+  const finalSortingProducts= getSorting(finalCategoryProducts,sorting)
   
+
   return (
     <div>
       <div class="main-container">
@@ -47,21 +48,28 @@ const Products = () => {
             <div class="side-bar-category">
               <p class="bar-heading">Category</p>
               <div>
-                <input type="checkbox" name="religious" id="religious" />
+                <input type="checkbox" name="religious"
+                onChange={()=> dispatch({type:"spiritual"})}/>
                 Spiritual
               </div>
               <div>
-                <input type="checkbox" name="fiction" id="fiction" />
+                <input type="checkbox" name="fiction"
+                onChange={()=> dispatch({type:"fiction"})}/>
                 Fiction
               </div>
+
               <div>
-                <input type="checkbox" name="science" id="science" />
+                <input type="checkbox" name="fiction"
+                onChange={()=> dispatch({type:"biography"})}/>
                 Biography
               </div>
+
               <div>
-                <input type="checkbox" name="thriller" id="thriller" />
+                <input type="checkbox" name="fiction"
+                onChange={()=> dispatch({type:"horror"})}/>
                 Horror
               </div>
+              
             </div>
 
             <div class="ratings">

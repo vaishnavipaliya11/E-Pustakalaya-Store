@@ -15,7 +15,7 @@ export const products = [
       price: "340",
       rating:3,
       discount:30,
-      categoryName: "biography",
+      categoryName: "Biography",
     },
     {
       _id: uuid(),
