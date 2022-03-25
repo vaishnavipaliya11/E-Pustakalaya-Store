@@ -1,9 +1,12 @@
-import React from 'react'
+const getPriceSortedProducts = (data, price) =>{
 
-const range = () => {
-  return (
-    <div>range</div>
-  )
+  if(price)
+   return [...data].filter((item) => item.price <= price)
+   
+  return data 
+  
 }
 
-export default range
+
+
+export {getPriceSortedProducts}

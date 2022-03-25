@@ -1,4 +1,4 @@
-const filterReducerFunc = (state, action) => {
+const filterReducerFunc = (state, action,e) => {
   switch (action.type) {
     case "LOW_TO_HIGH":
       return { ...state, sorting: "LOW_TO_HIGH" };
@@ -14,6 +14,15 @@ const filterReducerFunc = (state, action) => {
         return{...state,categories:{...state.categories,biography:!state.categories.biography}}; 
     case "horror":
           return{...state,categories:{...state.categories,horror:!state.categories.horror}}; 
+    case "PRICE-RANGE":
+      return {...state, price:action.price_range}   
+    case "CLEAR":
+        return{
+          sorting:null,
+          rating:null, categories:{fiction: false,
+            spiritual: false, biography:false, horror: false},
+            price:500
+        }
     default:
       return state;
   }

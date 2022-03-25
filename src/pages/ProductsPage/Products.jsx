@@ -2,20 +2,24 @@ import React from "react";
 import { useAxios } from "../../Api/API";
 import { useFilter } from "../../Context/Filter_context";
 import { getCategoryProducts } from "../../Utility/category";
+import { getPriceSortedProducts } from "../../Utility/range";
 import { getRatingProducts } from "../../Utility/rating";
 import { getSorting } from "../../Utility/sorting";
 import "./Products.css";
+import "../../components/Cards/Card.css"
+import { Link } from "react-router-dom";
 
 const Products = () => {
 
   const { state, dispatch } = useFilter();
-  const { sorting, rating , categories } = state;
+  const { sorting, rating , categories, price } = state;
   const { data } = useAxios();
 
  
   const finalRatingProducts= getRatingProducts(data,rating)
   const finalCategoryProducts = getCategoryProducts(finalRatingProducts,categories)
-  const finalSortingProducts= getSorting(finalCategoryProducts,sorting)
+  const finalRangeProducts = getPriceSortedProducts(finalCategoryProducts,price)
+  const finalSortingProducts= getSorting(finalRangeProducts,sorting)
   
 
   return (
@@ -25,25 +29,19 @@ const Products = () => {
           <aside class="product-side-bar">
             <div class="filter-btn">
               <p class="bar-heading">Filters</p>
-              <p class="bar-heading">Clear</p>
+              <button class="bar-heading clear-btn"
+              onClick={() => dispatch({type:"CLEAR"})}
+              >Clear</button>
             </div>
 
             <div class="price-range-bar">
-              <div class="rangeslider">
-                <p class="bar-heading">Price</p>
-                <input
-                  type="range"
-                  min="100"
-                  max="1000"
-                  value="10"
-                  class="myslider"
-                  id="sliderRange"
-                />
-                <p>
-                  Value: <span id="demo">12</span>
-                </p>
-              </div>
+            <input type="range" min= "100" max="500" 
+            onChange={(e) =>dispatch({type:"PRICE-RANGE", price_range:e.target.value})}/>
+           
+            <div>
+             <p>{price}</p>
             </div>
+           </div>
 
             <div class="side-bar-category">
               <p class="bar-heading">Category</p>
@@ -113,21 +111,45 @@ const Products = () => {
         </div>
 
         <div className="products-container">
-         <h1> Popular Books </h1>
-         {finalSortingProducts.map(({ title, price, rating, categoryName}) => {
+         <h1 id="title" class="align-center"> Popular Books </h1>
+         <div className="mapped-products">
+         {finalSortingProducts.map(({ title, price, rating, categoryName,img}) => {
+         
           return (
             <div>
-              <h2>{title}</h2>
-              <h3>{price}</h3>
-              <p>{rating}</p>
-              <p>{categoryName}</p>
+            <div class="products-card-container">
+            <div class="product-card">
+                <div class="badge">{rating}</div>
+                <div class="product-tumb">
+                    <img src={img}
+                        alt=""/>
+                </div>
+                <div class="product-details">
+                    <span class="product-catagory"> <b>catagory-</b>{categoryName}</span>
+                    <h4><a href="">{title}</a></h4>
+                    <p>Learn how to sleep peacefully</p>
+                    <div class="product-bottom-details">
+                        <div class="product-price"><small>₹96.00</small>{price}₹</div>
+                        <div class="product-links">
+                            <Link to="wishlist"><i class="bi bi-suit-heart"></i></Link>
+                            <Link to="cart"><i class="bi bi-cart-check"></i></Link>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+              
             </div>
           );
         })}
+         </div>
+         
          
         </div>
       </div>
+      
     </div>
+    
   );
 };
 
