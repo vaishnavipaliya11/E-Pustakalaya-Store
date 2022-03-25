@@ -1,9 +1,13 @@
-import React from 'react'
+const getSorting = (data, sorting) => {
+  if (sorting === "LOW_TO_HIGH") {
+    return [...data].sort((a, b) => a.price - b.price);
+  }
 
-const sorting = () => {
-  return (
-    <div>sorting file</div>
-  )
-}
+  if (sorting === "HIGH_TO_LOW") {
+    return [...data].sort((a, b) => b.price - a.price);
+  }
 
-export default sorting
+  return data;
+};
+
+export { getSorting };

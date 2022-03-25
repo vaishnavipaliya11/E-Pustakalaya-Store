@@ -1,9 +1,15 @@
-import React from 'react'
+import { useState, useEffect } from "react";
+import axios from "axios";
 
-const API = () => {
-  return (
-    <div>API file</div>
-  )
-}
+const useAxios = () => {
+  const [data, setData] = useState([]);
 
-export default API
+  useEffect(() => {
+    axios("./api/products")
+    .then((res) => setData(res.data.products));
+  }, []);
+
+  return { data };
+};
+
+export { useAxios };

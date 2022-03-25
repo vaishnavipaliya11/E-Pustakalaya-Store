@@ -15,7 +15,7 @@ export const products = [
       price: "340",
       rating:3,
       discount:30,
-      categoryName: "biography",
+      categoryName: "Biography",
     },
     {
       _id: uuid(),
@@ -55,7 +55,7 @@ export const products = [
       price: "300",
       rating:2,
       discount:40,
-      categoryName: "self-help",
+      categoryName: "spritiual",
     },
     {
       _id: uuid(),
@@ -65,7 +65,7 @@ export const products = [
       price: "340",
       rating:3,
       discount:30,
-      categoryName: "autobiography",
+      categoryName: "Biography",
     },
     {
       _id: uuid(),
@@ -75,7 +75,7 @@ export const products = [
       price: "125",
       rating:3,
       discount:60,
-      categoryName: "autobigraphy",
+      categoryName: "Biography",
     },
     {
       _id: uuid(),
@@ -85,7 +85,7 @@ export const products = [
       price: "193",
       rating:5,
       discount:20,
-      categoryName: "autobigraphy",
+      categoryName: "Biography",
     },
     {
       _id: uuid(),
@@ -95,7 +95,7 @@ export const products = [
       price: "168",
       rating:4,
       discount:50,
-      categoryName: "self-help",
+      categoryName: "Spiritual",
     },
     {
       _id: uuid(),
@@ -105,7 +105,7 @@ export const products = [
       price: "195",
       rating:4,
       discount:50,
-      categoryName: "autobigraphy",
+      categoryName: "Fiction",
     },
     {
       _id: uuid(),
@@ -115,7 +115,7 @@ export const products = [
       price: "120",
       rating:5,
       discount:40,
-      categoryName: "autobiography",
+      categoryName: "fiction",
     },
   
   ];

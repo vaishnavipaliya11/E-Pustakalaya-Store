@@ -1,9 +1,17 @@
-import React from 'react'
+const getRatingProducts = (data, rating) => {
 
-const rating = () => {
-  return (
-    <div>this is rating file</div>
-  )
+  if(rating === 4 ){
+      return [...data].filter((item) => item.rating >= rating )
+  }
+
+  if(rating === 3){
+      return [...data].filter((item) => item.rating >= rating )
+  }
+  if(rating === 2){
+      return [...data].filter((item) => item.rating >= rating )
+  }
+
+  return data
 }
 
-export default rating
+export {getRatingProducts}
