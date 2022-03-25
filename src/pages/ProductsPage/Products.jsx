@@ -122,7 +122,7 @@ const Products = () => {
                 <div class="badge">{rating}</div>
                 <div class="product-tumb">
                     <img src={img}
-                        alt=""/>
+                        />
                 </div>
                 <div class="product-details">
                     <span class="product-catagory"> <b>catagory-</b>{categoryName}</span>
@@ -131,8 +131,14 @@ const Products = () => {
                     <div class="product-bottom-details">
                         <div class="product-price"><small>₹96.00</small>{price}₹</div>
                         <div class="product-links">
-                            <Link to="wishlist"><i class="bi bi-suit-heart"></i></Link>
-                            <Link to="cart"><i class="bi bi-cart-check"></i></Link>
+                          <button className="clear-btn">
+                          <Link to="wishlist"><i class="bi bi-suit-heart"></i></Link>
+                          </button> 
+                          
+                          <button className="clear-btn">
+                          <Link to="cart"><i class="bi bi-cart-check"></i></Link>
+                          </button>
+                           
                         </div>
                     </div>
                 </div>
