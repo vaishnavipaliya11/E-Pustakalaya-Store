@@ -5,6 +5,7 @@ import { getCategoryProducts } from "../../Utility/category";
 import { getPriceSortedProducts } from "../../Utility/range";
 import { getRatingProducts } from "../../Utility/rating";
 import { getSorting } from "../../Utility/sorting";
+import { getAddToCart } from "../../Utility/addToCart";
 import "./Products.css";
 import "../../components/Cards/Card.css"
 import { Link } from "react-router-dom";
@@ -12,8 +13,11 @@ import { Link } from "react-router-dom";
 const Products = () => {
 
   const { state, dispatch } = useFilter();
-  const { sorting, rating , categories, price } = state;
+  const { sorting, rating , categories, price, addToCart } = state;
   const { data } = useAxios();
+
+  // getAddToCart(data,addToCart)
+  console.log("add to cart", addToCart)
 
  
   const finalRatingProducts= getRatingProducts(data,rating)
@@ -35,7 +39,7 @@ const Products = () => {
             </div>
 
             <div class="price-range-bar">
-            <input type="range" min= "100" max="500" 
+            <input type="range" min= "120" max="500" 
             onChange={(e) =>dispatch({type:"PRICE-RANGE", price_range:e.target.value})}/>
            
             <div>
@@ -134,6 +138,11 @@ const Products = () => {
                           <button className="clear-btn">
                           <Link to="wishlist"><i class="bi bi-suit-heart"></i></Link>
                           </button> 
+
+                          <button onClick={() => dispatch({type:"ADD-TO-CART", 
+                          payload:{price, rating, categoryName, title,img}})}>
+                          add
+                          </button>
                           
                           <button className="clear-btn">
                           <Link to="cart"><i class="bi bi-cart-check"></i></Link>
@@ -144,12 +153,12 @@ const Products = () => {
                 </div>
             </div>
         </div>
+        
               
             </div>
           );
         })}
          </div>
-         
          
         </div>
       </div>

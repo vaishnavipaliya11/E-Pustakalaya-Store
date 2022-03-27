@@ -23,6 +23,8 @@ const filterReducerFunc = (state, action,e) => {
             spiritual: false, biography:false, horror: false},
             price:500
         }
+    case "ADD-TO-CART":
+      return{...state, addToCart:[...state.addToCart,{...action.payload}]}    
     default:
       return state;
   }

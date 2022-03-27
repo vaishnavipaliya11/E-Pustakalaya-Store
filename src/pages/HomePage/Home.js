@@ -1,21 +1,22 @@
 import React from 'react';
 import "./Home.css";
+import "../../components/Cards/Card.css"
+import { Link } from 'react-router-dom';
 
 export const Home = () => {
   return (
     
     <div>
-    
-    <article className="app-container">
-
-<div className="category-container display-column">
+   <article className="app-container">
+  <div className="category-container display-column">
   <h1 className="align-center" id="title">Recommendations to start your reading journey</h1>
   <div className="category-cards">
     <a className="link-no-style" href="/products.html">
       <div className="category-card">
         <div className="category-tumb">
-          <img src="https://images-na.ssl-images-amazon.com/images/G/31/img21/Books/072021/bookshprefresh/434-X-530-Halo-Indian._SY530_QL85_.jpg" alt=""/>
-        </div>
+          <img src="https://images-eu.ssl-images-amazon.com/images/I/518ZLpY6m7L._SX198_BO1,204,203,200_QL40_FMwebp_.jpg" alt=""/>
+        
+          </div>
       </div>
     </a>
     <a className="link-no-style" href="/products.html">
@@ -60,6 +61,7 @@ export const Home = () => {
       alt=""/>
   
   </div>
+  
   <div className="new-arrivals display-column">
     <h1 id="title">new arrivals</h1>
     <div className="new-arrivals-container display-row">
@@ -76,8 +78,13 @@ export const Home = () => {
           <div className="arrival-product-bottom-details">
             <div className="product-price"><small>₹96.00</small>₹319</div>
             <div className="product-links">
-              <a href=""><i className="bi bi-suit-heart"></i></a>
-              <a href=""><i className="bi bi-cart-check"></i></a>
+            <button>
+            <Link to="/products"><i className="bi bi-suit-heart"></i></Link>
+            </button> 
+            <button>
+            <Link to="/products"><i className="bi bi-cart-check"></i></Link>
+            </button>
+             
             </div>
           </div>
         </div>

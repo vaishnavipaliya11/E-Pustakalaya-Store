@@ -10,7 +10,7 @@ const FilterProvider = ({children}) => {
     const [state,dispatch] = useReducer(filterReducerFunc,{
         sorting: null,rating:null, categories:{fiction: false,
             spiritual: false, biography:false, horror: false},
-            price:500
+            price:500, addToCart: []
         });
 
         return(
