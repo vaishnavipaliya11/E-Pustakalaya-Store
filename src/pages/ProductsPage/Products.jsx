@@ -132,7 +132,7 @@ const Products = () => {
                         <div class="product-price"><small>₹96.00</small>{price}₹</div>
                         <div class="product-links">
                           <button className="clear-btn">
-                          <Link to="wishlist"><i class="bi bi-suit-heart"></i></Link>
+                          <i class="bi bi-suit-heart"></i>
                           </button> 
 
                           <button onClick={() => dispatch({type:"ADD-TO-CART", 
@@ -140,8 +140,10 @@ const Products = () => {
                           add
                           </button>
                           
-                          <button className="clear-btn">
-                          <Link to="cart"><i class="bi bi-cart-check"></i></Link>
+                          <button className="clear-btn"
+                          onClick={() => dispatch({type:"ADD-TO-CART", 
+                          payload:{price, rating, categoryName, title,img}})}>
+                          <i class="bi bi-cart-check"></i>
                           </button>
                            
                         </div>
