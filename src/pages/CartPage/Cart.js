@@ -4,10 +4,11 @@ import "./Cart.css"
 
 const Cart = () => {
   const {state} = useFilter()
-  const {addToCart}= state
+  const {addToCart,cartItemsCount,deliveryCharge,ItemsCost,totalCost}= state
+ 
   return (
   <div>
-    <h1>this is cart page</h1>
+    
     
   <article class="main-cart-container">
         <div class="cart-items">
@@ -50,21 +51,21 @@ const Cart = () => {
                 <h2 class="align-center">Price Details</h2>
                 <div>
                     <div class="space-between">
-                        <h4>price(2 Items)</h4>
-                        <h3>₹499</h3>
+                        <h4>Items in cart</h4>
+                        <h3>{cartItemsCount}</h3>
                     </div>
                     <div class="space-between">
-                        <h4>Discount</h4>
-                        <h3>₹499</h3>
+                        <h4>Items total price</h4>
+                        <h3>{ItemsCost}</h3>
                     </div>
                     <div class="space-between">
-                        <h4>delivery charges</h4>
-                        <h3>₹100</h3>
+                        <h4>Delivery charges</h4>
+                        <h3>{deliveryCharge}</h3>
                     </div>
                     <hr/>
                     <div class="space-between">
-                        <h3>delivery charges</h3>
-                        <h3>₹100</h3>
+                        <h3>Total Pay Amount</h3>
+                        <h3>{totalCost}</h3>
                     </div>
                     <hr/>
                 </div>

@@ -15,10 +15,6 @@ const Products = () => {
   const { state, dispatch } = useFilter();
   const { sorting, rating , categories, price, addToCart } = state;
   const { data } = useAxios();
-
-  // getAddToCart(data,addToCart)
-  console.log("add to cart", addToCart)
-
  
   const finalRatingProducts= getRatingProducts(data,rating)
   const finalCategoryProducts = getCategoryProducts(finalRatingProducts,categories)

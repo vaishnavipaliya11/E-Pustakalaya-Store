@@ -24,7 +24,11 @@ const filterReducerFunc = (state, action,e) => {
             price:500
         }
     case "ADD-TO-CART":
-      return{...state, addToCart:[...state.addToCart,{...action.payload}]}    
+      return{...state, addToCart:[...state.addToCart,{...action.payload}]
+    , cartItemsCount:state.cartItemsCount+1,
+    totalCost: Number(state.deliveryCharge) + Number(state.totalCost) + Number(action.payload.price),
+    ItemsCost:Number(state.ItemsCost) + Number(action.payload.price)}    
+
     default:
       return state;
   }
