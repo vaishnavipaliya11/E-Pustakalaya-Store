@@ -139,12 +139,7 @@ const Products = () => {
                           payload:{price, rating, categoryName, title,img}})}>
                           add
                           </button>
-                          
-                          <button className="clear-btn"
-                          onClick={() => dispatch({type:"ADD-TO-CART", 
-                          payload:{price, rating, categoryName, title,img}})}>
-                          <i class="bi bi-cart-check"></i>
-                          </button>
+                
                            
                         </div>
                     </div>
