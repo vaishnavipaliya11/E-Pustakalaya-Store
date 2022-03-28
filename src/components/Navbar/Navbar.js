@@ -2,8 +2,12 @@ import React from "react";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
 import "../../pages/index";
+import { useFilter } from "../../Context/Filter_context";
 
 const Navbar = () => {
+  const { state } = useFilter();
+  const { cartItemsCount } = state;
+
   return (
     <div>
       <nav class="topnav">
@@ -33,19 +37,24 @@ const Navbar = () => {
 
           <div class="icon-container">
             <Link class="topnav-link" to="/login">
-              <span>
+              <h3>
                 <i class="bi bi-person-fill"></i>
-              </span>
+                <span></span>
+              </h3>
             </Link>
+
             <Link class="topnav-link" to="/wishlist">
-              <span>
+              <h3>
                 <i class="bi bi-suit-heart-fill"></i>
-              </span>
+                <span class="cart-badge">9</span>
+              </h3>
             </Link>
+
             <Link class="topnav-link" to="/cart">
-              <span>
+              <h3>
                 <i class="bi bi-cart-check-fill"></i>
-              </span>
+                <span class="cart-badge">{cartItemsCount}</span>
+              </h3>
             </Link>
           </div>
         </header>

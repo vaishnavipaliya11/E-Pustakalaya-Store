@@ -67,8 +67,11 @@
     font-family: 'Quicksand', sans-serif;
 }
 /*icons*/
-.icon-container a {
+.icon-container  {
     text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    
 }
 
 .bi {
@@ -84,3 +87,23 @@
 .topnav-link {
     margin: 6px;
 }
+
+.cart-badge {
+    display: inline-block;
+    text-align: center;
+    padding: 0.2rem 0.4rem;
+    vertical-align: baseline;
+    font-size: 0.75rem;
+    margin: auto 0.4em;
+    border-radius: 0.75rem;
+    color: white;
+    background-color: red;
+    border: 1px solid white;
+     position: relative;
+    bottom: 1.5rem;
+    right: 0.8rem;
+    border-radius: 50%;
+    margin: 0;
+    background-color: red;
+    border-color: white;
+  }
