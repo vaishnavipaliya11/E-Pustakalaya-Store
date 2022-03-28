@@ -2,6 +2,11 @@
 @import "../styles.css";
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+:root{
+    --gray-line:#6b7280;
+}
+
 body{
     margin: 0;
     padding: 0;
@@ -22,37 +27,22 @@ body{
 }
 
 #price-container{
-    height: calc(100vh - 5rem);
+    height:80vh;
     display: flex;
     margin-top: 0%;
-}
-
-.rangeslider {
-    width: 75%;
-}
-
-.myslider {
-    -webkit-appearance: none;
-    background: var(--orange);
-    width: 75%;
-    height: 20px;
-    opacity: 2;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
 
-.myslider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    cursor: pointer;
-    background: var(--main-light-color);
-    width: 7%;
-    height: 20px;
-}
 
 
-.myslider:hover {
-    opacity: 1;
-    cursor: pointer;
+.line {
+    background-color: var(--gray-line);
+    height: 0.5px;
+    width: 80%;
+    margin-top: 15px;
 }
+
 
 .products-container{
     height: calc(100vh - 5rem);
@@ -64,6 +54,7 @@ body{
     list-style-type: none;
     margin: -15%;
    font-size:medium;
+   cursor: pointer;
 }
 
 #title-price{
@@ -76,7 +67,8 @@ body{
     flex-wrap: wrap;
 }
 .lists ul li:hover{
-    color: var(--orange);
+    color: var(--primary-color
+);
 }
 .slidecontainer{
     display: flex;
@@ -103,7 +95,7 @@ body{
     display: flex;
     flex-direction: column;
     grid-area: sideBar;
-    box-shadow: 2px 2px 2px 2px #ccc;
+padding: 1rem;
 }
 
 .clear-btn{
@@ -128,19 +120,29 @@ body{
     display: flex;
     flex-direction: column;
     margin-left: 1.5rem;
+    align-items: flex-start;
+}
+
+input[type=radio]{
+    cursor: pointer;
+}
+
+input[type =  checkbox]{
+    cursor: pointer;
 }
 
 .ratings {
     display: flex;
     flex-direction: column;
     margin-left: 1.5rem;
+    align-items: flex-start;
 }
 
 .sort-by {
     display: flex;
     flex-direction: column;
     margin-left: 1.5rem;
-
+    align-items: flex-start;
 }
 
 .bar-heading {

@@ -25,7 +25,7 @@ const Products = () => {
   return (
     <div>
       <div class="main-container">
-        <div class="display-column price-container">
+        <div class="price-container">
           <aside class="product-side-bar">
             <div class="filter-btn">
               <p class="bar-heading">Filters</p>
@@ -35,14 +35,16 @@ const Products = () => {
             </div>
 
             <div class="price-range-bar">
-            <input type="range" min= "100" max="500" 
+            <input type="range" min= "120" max="500" 
             onChange={(e) =>dispatch({type:"PRICE-RANGE", price_range:e.target.value})}/>
            
             <div>
              <p>{price}</p>
             </div>
+            
            </div>
-
+           <div className="line">
+           </div>
             <div class="side-bar-category">
               <p class="bar-heading">Category</p>
               <div>
@@ -67,8 +69,11 @@ const Products = () => {
                 onChange={()=> dispatch({type:"horror"})}/>
                 Horror
               </div>
-              
+               
             </div>
+            <div className="line">
+            </div>
+            
 
             <div class="ratings">
               <p class="bar-heading">Ratings</p>
@@ -87,6 +92,10 @@ const Products = () => {
                 onChange={()=> dispatch({type:"RATINGS", payload:2})} /> 2 &
                 above
               </div>
+              
+              
+            </div>
+            <div className="line">
             </div>
 
             <div class="sort-by">
@@ -119,7 +128,7 @@ const Products = () => {
             <div>
             <div class="products-card-container">
             <div class="product-card">
-                <div class="badge">{rating}</div>
+                <div class="badge"><i class="bi-suit-heart"></i></div>
                 <div class="product-tumb">
                     <img src={img}
                         />
@@ -127,17 +136,13 @@ const Products = () => {
                 <div class="product-details">
                     <span class="product-catagory"> <b>catagory-</b>{categoryName}</span>
                     <h4><a href="">{title}</a></h4>
-                    <p>Learn how to sleep peacefully</p>
+                    <p>{rating}⭐</p>
                     <div class="product-bottom-details">
                         <div class="product-price"><small>₹96.00</small>{price}₹</div>
                         <div class="product-links">
-                          <button className="clear-btn">
-                          <Link to="wishlist"><i class="bi bi-suit-heart"></i></Link>
-                          </button> 
+                           
+                          <button className="add-to-cart">Add to Cart</button>
                           
-                          <button className="clear-btn">
-                          <Link to="cart"><i class="bi bi-cart-check"></i></Link>
-                          </button>
                            
                         </div>
                     </div>
