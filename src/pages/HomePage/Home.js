@@ -9,6 +9,7 @@ export const Home = () => {
   const navigate = useNavigate();
   const { categories } = categoryApi();
   const { dispatch } = useFilter();
+  
   return (
     <div>
       <article className="app-container">
