@@ -27,7 +27,21 @@ const filterReducerFunc = (state, action,e) => {
       return{...state, addToCart:[...state.addToCart,{...action.payload}]
     , cartItemsCount:state.cartItemsCount+1,
     totalCost: Number(state.deliveryCharge) + Number(state.totalCost) + Number(action.payload.price),
-    ItemsCost:Number(state.ItemsCost) + Number(action.payload.price)}    
+    ItemsCost:Number(state.ItemsCost) + Number(action.payload.price)}   
+    
+    case "DECREASE-ITEM":
+      return{...state, decreaseItem:[...state.decreaseItem,{...action.payload}],
+      cartItemsCount:state.cartItemsCount-1,
+      totalCost: Number(state.totalCost) - Number(action.payload.price)- Number(state.deliveryCharge) ,
+      ItemsCost:Number(state.ItemsCost) - Number(action.payload.price)
+    }
+
+    case "INCREASE-ITEM":
+      return{...state, increaseItem:[...state.increaseItem,{...action.payload}],
+    cartItemsCount:state.cartItemsCount + 1,
+    totalCost: Number(state.totalCost) + Number(action.payload.price) ,
+    ItemsCost:Number(state.ItemsCost) + Number(action.payload.price)
+    }
 
     default:
       return state;

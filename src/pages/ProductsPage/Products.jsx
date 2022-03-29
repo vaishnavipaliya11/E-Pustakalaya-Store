@@ -5,15 +5,14 @@ import { getCategoryProducts } from "../../Utility/category";
 import { getPriceSortedProducts } from "../../Utility/range";
 import { getRatingProducts } from "../../Utility/rating";
 import { getSorting } from "../../Utility/sorting";
-import { getAddToCart } from "../../Utility/addToCart";
 import "./Products.css";
 import "../../components/Cards/Card.css"
-import { Link } from "react-router-dom";
+
 
 const Products = () => {
 
   const { state, dispatch } = useFilter();
-  const { sorting, rating , categories, price, addToCart } = state;
+  const { sorting, rating , categories, price } = state;
   const { data } = useAxios();
  
   const finalRatingProducts= getRatingProducts(data,rating)
