@@ -64,7 +64,9 @@ const Cart = () => {
                         </div>
                         <div class="cart-product-bottom-details"></div>
                         <div class="product-links">
-                          <button class="butoon-wishlist">
+                          <button class="butoon-wishlist" 
+                          onClick={() => dispatch({type:"MOVE-TO-WISHLIST", 
+                          payload:{price, rating, categoryName, title,img}})}>
                             Move to wishlist
                           </button>
                         </div>

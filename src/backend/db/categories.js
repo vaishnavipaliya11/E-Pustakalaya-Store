@@ -7,21 +7,27 @@ import { v4 as uuid } from "uuid";
 
 export const categories = [
   {
-    _id: uuid(),
+    _id: "ct1",
     categoryName: "fiction",
-    description:
-      "literature in the form of prose, especially novels, that describes imaginary events and people",
+    img:
+      "https://images-eu.ssl-images-amazon.com/images/I/41kCPF5KiDL._SY264_BO1,204,203,200_QL40_FMwebp_.jpg",
   },
   {
-    _id: uuid(),
-    categoryName: "non-fiction",
-    description:
-      "Non-fiction is writing that gives information or describes real events, rather than telling a story.",
+    _id: "ct2",
+    categoryName: "spritual",
+    img:
+      "https://images-eu.ssl-images-amazon.com/images/I/518ZLpY6m7L._SX198_BO1,204,203,200_QL40_FMwebp_.jpg",
   },
   {
-    _id: uuid(),
+    _id: "ct3",
+    categoryName: "biography",
+    img:
+      "https://images-eu.ssl-images-amazon.com/images/I/41eLGn5nEyL._SY264_BO1,204,203,200_QL40_FMwebp_.jpg",
+  },
+  {
+    _id: "ct4",
     categoryName: "horror",
-    description:
-      "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
+    img:
+      "https://images-na.ssl-images-amazon.com/images/I/510Fne1a3wL._SX322_BO1,204,203,200_.jpg",
   },
 ];

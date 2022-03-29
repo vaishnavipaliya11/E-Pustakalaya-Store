@@ -1,4 +1,5 @@
 const filterReducerFunc = (state, action,e) => {
+  console.log("switch",action)
   switch (action.type) {
     case "LOW_TO_HIGH":
       return { ...state, sorting: "LOW_TO_HIGH" };
@@ -16,7 +17,8 @@ const filterReducerFunc = (state, action,e) => {
           return{...state,categories:{...state.categories,horror:!state.categories.horror}}; 
     case "PRICE-RANGE":
       return {...state, price:action.price_range}   
-    case "CLEAR":
+    
+      case "CLEAR":
         return{
           sorting:null,
           rating:null, categories:{fiction: false,
@@ -43,6 +45,8 @@ const filterReducerFunc = (state, action,e) => {
     ItemsCost:Number(state.ItemsCost) + Number(action.payload.price)
     }
 
+    case "MOVE-TO-WISHLIST":
+      return{...state, moveToWishlist:[...state.moveToWishlist,{...action.payload}]}
     default:
       return state;
   }
