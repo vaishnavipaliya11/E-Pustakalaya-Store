@@ -14,7 +14,7 @@ export const categories = [
   },
   {
     _id: "ct2",
-    categoryName: "spritual",
+    categoryName: "spiritual",
     img:
       "https://images-eu.ssl-images-amazon.com/images/I/518ZLpY6m7L._SX198_BO1,204,203,200_QL40_FMwebp_.jpg",
   },
