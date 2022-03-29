@@ -4,7 +4,7 @@ import { Products, Home, Wishlist, Cart, Login, SignUp } from "./pages";
 import { Routes, Route } from "react-router-dom";
 import { useParams} from 'react-router-dom'
 import Mockman from "mockman-js";
-import SelectedCategory from "./pages/SelectedCategory";
+
 
 function App() {
   const {_id} = useParams()

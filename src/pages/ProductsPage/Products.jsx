@@ -26,9 +26,6 @@ const Products = () => {
   );
   const finalSortingProducts = getSorting(finalRangeProducts, sorting);
 
-  
-
- 
 
   return (
     <div>

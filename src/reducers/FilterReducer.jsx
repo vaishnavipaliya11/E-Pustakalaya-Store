@@ -1,5 +1,4 @@
 const filterReducerFunc = (state, action,e) => {
-  console.log("switch",action)
   switch (action.type) {
     case "LOW_TO_HIGH":
       return { ...state, sorting: "LOW_TO_HIGH" };
