@@ -12,7 +12,7 @@ const Cart = () => {
       <article class="main-cart-container">
         <div className="product-scroll">
           <div class="cart-items">
-            {addToCart.map(({ title, price, categoryName, rating, img }) => {
+            {addToCart.map(({ title, price, categoryName, rating, img, _id }) => {
               return (
                 <div>
                   <div class="products-card-container">
@@ -64,6 +64,11 @@ const Cart = () => {
                         </div>
                         <div class="cart-product-bottom-details"></div>
                         <div class="product-links">
+                        <button class="butoon-wishlist" 
+                          onClick={() => dispatch({type:"REMOVE-FROM-CART", 
+                          payload:{price, rating, categoryName, title,img,_id}})}>
+                            Remove from cart
+                          </button>
                           <button class="butoon-wishlist" 
                           onClick={() => dispatch({type:"MOVE-TO-WISHLIST", 
                           payload:{price, rating, categoryName, title,img}})}>

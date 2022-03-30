@@ -1,4 +1,5 @@
 const filterReducerFunc = (state, action,e) => {
+  console.log(action)
   switch (action.type) {
     case "LOW_TO_HIGH":
       return { ...state, sorting: "LOW_TO_HIGH" };
@@ -29,7 +30,15 @@ const filterReducerFunc = (state, action,e) => {
     , cartItemsCount:state.cartItemsCount+1,
     totalCost: Number(state.deliveryCharge) + Number(state.totalCost) + Number(action.payload.price),
     ItemsCost:Number(state.ItemsCost) + Number(action.payload.price)}   
-    
+
+    case "REMOVE-FROM-CART":
+      return{...state,addToCart: [...state.addToCart.filter(item => {
+      return action._id !== item._id})],
+      totalCost: Number(state.totalCost) - Number(action.payload.price)- Number(state.deliveryCharge) ,
+      ItemsCost:Number(state.ItemsCost) - Number(action.payload.price),
+      cartItemsCount:state.cartItemsCount-1
+    }
+ 
     case "DECREASE-ITEM":
       return{...state, decreaseItem:[...state.decreaseItem,{...action.payload}],
       cartItemsCount:state.cartItemsCount-1,
@@ -42,6 +51,11 @@ const filterReducerFunc = (state, action,e) => {
     cartItemsCount:state.cartItemsCount + 1,
     totalCost: Number(state.totalCost) + Number(action.payload.price) ,
     ItemsCost:Number(state.ItemsCost) + Number(action.payload.price)
+    }
+
+    case "REMOVE-FROM-WISHLIST":
+      return{...state,moveToWishlist: [...state.moveToWishlist.filter(item => {
+      return action._id !== item._id})],
     }
 
     case "MOVE-TO-WISHLIST":

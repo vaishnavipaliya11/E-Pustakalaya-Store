@@ -13,7 +13,8 @@ const FilterProvider = ({children}) => {
             price:500, addToCart: [],  cartItemsCount:0,
             ItemsCost:0,
             totalCost:0,
-            deliveryCharge:40,decreaseItem:[],increaseItem:[],moveToWishlist:[]
+            deliveryCharge:40,decreaseItem:[],increaseItem:[]
+            ,moveToWishlist:[],removeFromWishlist:[], removeFromCart:[]
         });
 
         return(
