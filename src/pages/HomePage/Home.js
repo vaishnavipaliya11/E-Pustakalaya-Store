@@ -23,9 +23,10 @@ export const Home = () => {
                 <div
                   className="category-card"
                   onClick={() => {
+                    navigate("/products");
                     dispatch({ type: "CLEAR" });
                     dispatch({ type: categoryName });
-                    navigate("/products");
+                   
                   }}
                 >
                   <div className="category-tumb">

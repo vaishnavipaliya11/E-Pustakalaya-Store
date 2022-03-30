@@ -10,7 +10,6 @@ import "../../components/Cards/Card.css";
 
 
 const Products = () => {
-
   const { state, dispatch } = useFilter();
   const { sorting, rating, categories, price } = state;
   const { data } = useAxios();
