@@ -6,96 +6,123 @@ import { getPriceSortedProducts } from "../../Utility/range";
 import { getRatingProducts } from "../../Utility/rating";
 import { getSorting } from "../../Utility/sorting";
 import "./Products.css";
-import "../../components/Cards/Card.css"
-import { Link } from "react-router-dom";
+import "../../components/Cards/Card.css";
+
 
 const Products = () => {
-
   const { state, dispatch } = useFilter();
-  const { sorting, rating , categories, price } = state;
+  const { sorting, rating, categories, price } = state;
   const { data } = useAxios();
 
- 
-  const finalRatingProducts= getRatingProducts(data,rating)
-  const finalCategoryProducts = getCategoryProducts(finalRatingProducts,categories)
-  const finalRangeProducts = getPriceSortedProducts(finalCategoryProducts,price)
-  const finalSortingProducts= getSorting(finalRangeProducts,sorting)
-  
+  const finalRatingProducts = getRatingProducts(data, rating);
+  const finalCategoryProducts = getCategoryProducts(
+    finalRatingProducts,
+    categories
+  );
+  const finalRangeProducts = getPriceSortedProducts(
+    finalCategoryProducts,
+    price
+  );
+  const finalSortingProducts = getSorting(finalRangeProducts, sorting);
+
 
   return (
     <div>
       <div class="main-container">
-        <div class="price-container">
+        <div class="display-column price-container">
           <aside class="product-side-bar">
             <div class="filter-btn">
               <p class="bar-heading">Filters</p>
-              <button class="bar-heading clear-btn"
-              onClick={() => dispatch({type:"CLEAR"})}
-              >Clear</button>
+              <button
+                class="bar-heading clear-btn"
+                onClick={() => dispatch({ type: "CLEAR" })}
+              >
+                Clear
+              </button>
             </div>
 
             <div class="price-range-bar">
-            <input type="range" min= "120" max="500" 
-            onChange={(e) =>dispatch({type:"PRICE-RANGE", price_range:e.target.value})}/>
-           
-            <div>
-             <p>{price}</p>
+              <input
+                type="range"
+                min="120"
+                max="500"
+                onChange={(e) =>
+                  dispatch({ type: "PRICE-RANGE", price_range: e.target.value })
+                }
+              />
+
+              <div>
+                <p>{price}</p>
+              </div>
             </div>
-            
-           </div>
-           <div className="line">
-           </div>
+
             <div class="side-bar-category">
               <p class="bar-heading">Category</p>
               <div>
-                <input type="checkbox" name="religious"
-                onChange={()=> dispatch({type:"spiritual"})}/>
+                <input
+                  type="checkbox"
+                  name="religious"
+                  onChange={() => dispatch({ type: "spiritual" })}
+                />
                 Spiritual
               </div>
               <div>
-                <input type="checkbox" name="fiction"
-                onChange={()=> dispatch({type:"fiction"})}/>
+                <input
+                  type="checkbox"
+                  name="fiction"
+                  onChange={() => dispatch({ type: "fiction" })}
+                />
                 Fiction
               </div>
 
               <div>
-                <input type="checkbox" name="fiction"
-                onChange={()=> dispatch({type:"biography"})}/>
+                <input
+                  type="checkbox"
+                  name="fiction"
+                  onChange={() => dispatch({ type: "biography" })}
+                />
                 Biography
               </div>
 
               <div>
-                <input type="checkbox" name="fiction"
-                onChange={()=> dispatch({type:"horror"})}/>
+                <input
+                  type="checkbox"
+                  name="fiction"
+                  onChange={() => dispatch({ type: "horror" })}
+                />
                 Horror
               </div>
-               
             </div>
-            <div className="line">
-            </div>
-            
 
             <div class="ratings">
               <p class="bar-heading">Ratings</p>
               <div>
-                <input type="radio" name="p-ratings" id="best-ratings" 
-                onChange={()=> dispatch({type:"RATINGS", payload:4})}/> 4 &
-                above
+                <input
+                  type="radio"
+                  name="p-ratings"
+                  id="best-ratings"
+                  onChange={() => dispatch({ type: "RATINGS", payload: 4 })}
+                />{" "}
+                4 & above
               </div>
               <div>
-                <input type="radio" name="p-ratings" id="better-ratings"
-                onChange={()=> dispatch({type:"RATINGS", payload:3})}  /> 3 &
-                above
+                <input
+                  type="radio"
+                  name="p-ratings"
+                  id="better-ratings"
+                  onChange={() => dispatch({ type: "RATINGS", payload: 3 })}
+                />{" "}
+                3 & above
               </div>
               <div>
-                <input type="radio" name="p-ratings" id="good-ratings"
-                onChange={()=> dispatch({type:"RATINGS", payload:2})} /> 2 &
-                above
+                <input
+                  type="radio"
+                  name="p-ratings"
+                  id="good-ratings"
+                  onChange={() => dispatch({ type: "RATINGS", payload: 2 })}
+                />{" "}
+                2 & above
               </div>
-              
-              
-            </div>
-            <div className="line">
             </div>
 
             <div class="sort-by">
@@ -110,8 +137,11 @@ const Products = () => {
                 Price- low to high
               </div>
               <div>
-                <input type="radio" name="sort" id="high-low" 
-                onChange={() => dispatch({ type: "HIGH_TO_LOW" })}
+                <input
+                  type="radio"
+                  name="sort"
+                  id="high-low"
+                  onChange={() => dispatch({ type: "HIGH_TO_LOW" })}
                 />
                 Price- high to low
               </div>
@@ -120,47 +150,71 @@ const Products = () => {
         </div>
 
         <div className="products-container">
-         <h1 id="title" class="align-center"> Popular Books </h1>
-         <div className="mapped-products">
-         {finalSortingProducts.map(({ title, price, rating, categoryName,img}) => {
-         
-          return (
-            <div>
-            <div class="products-card-container">
-            <div class="product-card">
-                <div class="badge"><i class="bi-suit-heart"></i></div>
-                <div class="product-tumb">
-                    <img src={img}
-                        />
-                </div>
-                <div class="product-details">
-                    <span class="product-catagory"> <b>catagory-</b>{categoryName}</span>
-                    <h4><a href="">{title}</a></h4>
-                    <p>{rating}⭐</p>
-                    <div class="product-bottom-details">
-                        <div class="product-price"><small>₹96.00</small>{price}₹</div>
-                        <div class="product-links">
-                           
-                          <button className="add-to-cart">Add to Cart</button>
-                          
-                           
+          <h1 id="title" class="align-center">
+            {" "}
+            Popular Books{" "}
+          </h1>
+          <div className="mapped-products">
+            {finalSortingProducts.map(
+              ({ title, price, rating, categoryName, img,_id }) => {
+                return (
+                  <div>
+                    <div class="products-card-container">
+                      <div class="product-card">
+                        <div class="badge">{rating}</div>
+                        <div class="product-tumb">
+                          <img src={img} />
                         </div>
+                        <div class="product-details">
+                          <span class="product-catagory">
+                            {" "}
+                            <b>catagory-</b>
+                            {categoryName}
+                          </span>
+                          <h4>
+                            <a href="">{title}</a>
+                          </h4>
+                          <p>Learn how to sleep peacefully</p>
+                          <div class="product-bottom-details">
+                            <div class="product-price">
+                              <small>₹96.00</small>
+                              {price}₹
+                            </div>
+                            <div class="product-links">
+                              <button className="clear-btn">
+                                <i class="bi bi-suit-heart"></i>
+                              </button>
+
+                              <button
+                                onClick={() =>
+                                  dispatch({
+                                    type: "ADD-TO-CART",
+                                    payload: {
+                                      price,
+                                      rating,
+                                      categoryName,
+                                      title,
+                                      img,
+                                      _id
+                                    },
+                                  })
+                                }
+                              >
+                                add
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                </div>
-            </div>
-        </div>
-              
-            </div>
-          );
-        })}
-         </div>
-         
-         
+                  </div>
+                );
+              }
+            )}
+          </div>
         </div>
       </div>
-      
     </div>
-    
   );
 };
 

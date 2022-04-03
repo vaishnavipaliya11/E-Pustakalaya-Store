@@ -28,3 +28,17 @@ body{
     justify-content: space-around;
     flex-wrap: wrap;
 }
+
+.wishlist-cards{
+    display: flex;
+    flex-direction: column;
+}
+
+.butoon-wishlist{
+ 
+}
+
+.wishlist-btn{
+    font-size: 15px;
+    margin: 0.5rem;
+}

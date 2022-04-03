@@ -8,7 +8,7 @@ import { v4 as uuid } from "uuid";
 export const products = [
   
     {
-      _id: uuid(),
+      _id: uuid,
       img:"https://images-eu.ssl-images-amazon.com/images/I/41eLGn5nEyL._SY264_BO1,204,203,200_QL40_FMwebp_.jpg",
       title: "My Life and Work",
       author: "henry ford",

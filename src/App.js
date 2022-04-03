@@ -2,10 +2,14 @@ import "./App.css";
 import { Navbar } from "./components/Navbar/Navbar";
 import { Products, Home, Wishlist, Cart, Login, SignUp } from "./pages";
 import { Routes, Route } from "react-router-dom";
-
+import { useParams} from 'react-router-dom'
 import Mockman from "mockman-js";
 
+
 function App() {
+  const {_id} = useParams()
+       
+
   return (
     <div className="App">
       <Navbar />
