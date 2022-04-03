@@ -6,7 +6,7 @@ import { useFilter } from "../../Context/Filter_context";
 
 const Navbar = () => {
   const { state } = useFilter();
-  const { cartItemsCount } = state;
+  const { cartItemsCount,wishCount } = state;
 
   return (
     <div>
@@ -46,7 +46,7 @@ const Navbar = () => {
             <Link class="topnav-link" to="/wishlist">
               <h3>
                 <i class="bi bi-suit-heart-fill"></i>
-                <span class="cart-badge">9</span>
+                <span class="cart-badge">{wishCount}</span>
               </h3>
             </Link>
 

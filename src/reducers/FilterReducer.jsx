@@ -59,11 +59,14 @@ const filterReducerFunc = (state, action,e) => {
 
     case "REMOVE-FROM-WISHLIST":
       return{...state,moveToWishlist: [...state.moveToWishlist.filter(item => {
-      return action._id !== item._id})],
+      return action.payload._id !== item._id})],
+      wishCount:state.wishCount-1
     }
 
     case "MOVE-TO-WISHLIST":
-      return{...state, moveToWishlist:[...state.moveToWishlist,{...action.payload}]}
+      return{...state, moveToWishlist:[...state.moveToWishlist,{...action.payload}],
+      wishCount:state.wishCount+1}
+
     default:
       return state;
   }
