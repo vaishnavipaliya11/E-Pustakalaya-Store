@@ -66,7 +66,7 @@ const Cart = () => {
                         <div class="product-links">
                         <button class="butoon-wishlist" 
                           onClick={() => dispatch({type:"REMOVE-FROM-CART", 
-                          payload:{price, rating, categoryName, title,img,_id}})}>
+                          payload:{_id}})}>
                             Remove from cart
                           </button>
                           <button class="butoon-wishlist" 

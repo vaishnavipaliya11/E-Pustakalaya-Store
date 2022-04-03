@@ -35,8 +35,9 @@ const filterReducerFunc = (state, action,e) => {
     ItemsCost:Number(state.ItemsCost) + Number(action.payload.price)}   
 
     case "REMOVE-FROM-CART":
+      console.log(action.payload)
       return{...state,addToCart: [...state.addToCart.filter(item => {
-      return action._id !== item._id})],
+      return action.payload._id !== item._id})],
       totalCost: Number(state.totalCost) - Number(action.payload.price)- Number(state.deliveryCharge) ,
       ItemsCost:Number(state.ItemsCost) - Number(action.payload.price),
       cartItemsCount:state.cartItemsCount-1
