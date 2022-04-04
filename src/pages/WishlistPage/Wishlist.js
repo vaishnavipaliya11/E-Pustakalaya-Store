@@ -3,13 +3,22 @@ import "./Wishlist.css"
 import { useFilter } from "../../Context/Filter_context";
 function Wishlist () {
   const {state,dispatch}= useFilter();
-  const {moveToWishlist} = state;
+  const {moveToWishlist,addToCart} = state;
+
+  function calMoveToCart(price, rating, categoryName, title,img,_id){
+    addToCart.find((product) => product._id === _id) ?  dispatch({type:"INCREASE-ITEM", 
+    payload:{price, rating, categoryName, title,img,_id}}) : dispatch({type:"ADD-TO-CART", 
+    payload:{price, rating, categoryName, title,img,_id}})
+  
+  }
+
   return (
     <div>
   
     <div className="product-scroll">
           <div class="cart-items">
             {moveToWishlist.map(({ title, price, categoryName, rating, img,_id }) => {
+              console.log(addToCart.find((product) => product._id === _id) )
               return (
                 <div>
                   <div class="products-card-container">
@@ -34,10 +43,11 @@ function Wishlist () {
                         <div class="cart-product-bottom-details"></div>
                         <div class="product-links wishlist-cards">
                           <button class="wishlist-btn" 
-                          onClick={() => dispatch({type:"INCREASE-ITEM", 
-                          payload:{price, rating, categoryName, title,img}})}>
+                          
+                          onClick={()=> calMoveToCart(price, rating, categoryName, title,img,_id)}>
                             Move to Cart
                           </button>
+
                           <button class="wishlist-btn" 
                           onClick={() => dispatch({type:"REMOVE-FROM-WISHLIST", 
                           payload:{price, rating, categoryName, title,img,_id}})}>
