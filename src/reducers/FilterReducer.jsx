@@ -1,4 +1,4 @@
-const filterReducerFunc = (state, action, e) => {
+const filterReducerFunc = (state, action) => {
   switch (action.type) {
     case "LOW_TO_HIGH":
       return { ...state, sorting: "LOW_TO_HIGH" };
