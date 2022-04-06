@@ -34,11 +34,25 @@ body{
     flex-direction: column;
 }
 
-.butoon-wishlist{
- 
+.wish-badge{
+    width: 2rem;
+    background-color: none;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
 }
 
+.wish-badge:hover{
+    background-color: var(--primary-color);
+    color: white;
+}
 .wishlist-btn{
-    font-size: 15px;
+    font-size: 1.2rem;
     margin: 0.5rem;
+    border: 1px solid var(--primary-color);
+color: var(--primary-color);
+border-radius: 10px;
+}
+.wishlist-btn:hover{
+    background-color: var(--primary-color);
+    color: white;
 }
