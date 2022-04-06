@@ -181,7 +181,9 @@ const Products = () => {
                               {price}₹
                             </div>
                             <div class="product-links">
-                              <button className="clear-btn">
+                              <button className="clear-btn" onClick={()=>
+                                dispatch({type:"MOVE-TO-WISHLIST", 
+                              payload:{title, price, rating, categoryName, img,_id},})}>
                                 <i class="bi bi-suit-heart"></i>
                               </button>
 
