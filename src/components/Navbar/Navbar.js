@@ -13,7 +13,7 @@ const Navbar = () => {
       <nav class="topnav">
         <header class="nav">
           <nav class="nav-left">
-            <h2 className="nav-title main-heading">Infinity-BookStore</h2>
+            <h2 className="nav-title main-heading">Infinity-Art</h2>
             <Link class="gray-title" to="/">
               <h4 id="nav-title">Home</h4>
             </Link>

@@ -153,7 +153,7 @@ const Products = () => {
         <div className="products-container">
           <h1 id="title" class="align-center">
             {" "}
-            Popular Books{" "}
+            Popular Arts{" "}
           </h1>
           <div className="mapped-products">
             {finalSortingProducts.map(
