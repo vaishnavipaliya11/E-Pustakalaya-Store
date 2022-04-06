@@ -17,7 +17,8 @@ const Cart = () => {
                 <div>
                   <div class="products-card-container">
                     <div class="cart-arrival-card">
-                      <div class="badge">{rating}</div>
+                      <div class="badge"  onClick={() => dispatch({type:"REMOVE-FROM-CART", 
+                      payload:{_id}})}>X</div>
                       <div class="cart-product-tumb">
                         <img src={img} alt="" />
                       </div>
@@ -64,11 +65,7 @@ const Cart = () => {
                         </div>
                         <div class="cart-product-bottom-details"></div>
                         <div class="product-links">
-                        <button class="butoon-wishlist" 
-                          onClick={() => dispatch({type:"REMOVE-FROM-CART", 
-                          payload:{_id}})}>
-                            Remove from cart
-                          </button>
+                        
                           <button class="butoon-wishlist" 
                           onClick={() => dispatch({type:"MOVE-TO-WISHLIST", 
                           payload:{price, rating, categoryName, title,img}})}>
