@@ -62,35 +62,35 @@ const Products = () => {
                 <input
                   type="checkbox"
                   name="religious"
-                  onChange={() => dispatch({ type: "spiritual" })}
+                  onChange={() => dispatch({ type: "wall" })}
                 />
-                Spiritual
+                Wall-Art
               </div>
               <div>
                 <input
                   type="checkbox"
-                  name="fiction"
-                  onChange={() => dispatch({ type: "fiction" })}
+                  name="serve"
+                  onChange={() => dispatch({ type: "serve" })}
                 />
-                Fiction
-              </div>
-
-              <div>
-                <input
-                  type="checkbox"
-                  name="fiction"
-                  onChange={() => dispatch({ type: "biography" })}
-                />
-                Biography
+                Serving-Art
               </div>
 
               <div>
                 <input
                   type="checkbox"
-                  name="fiction"
-                  onChange={() => dispatch({ type: "horror" })}
+                  name="weaving"
+                  onChange={() => dispatch({ type: "weaving" })}
                 />
-                Horror
+                Weaving-Art
+              </div>
+
+              <div>
+                <input
+                  type="checkbox"
+                  name="decor"
+                  onChange={() => dispatch({ type: "decor" })}
+                />
+                Decor-Art
               </div>
             </div>
 

@@ -6,31 +6,31 @@ const filterReducerFunc = (state, action) => {
       return { ...state, sorting: "HIGH_TO_LOW" };
     case "RATINGS":
       return { ...state, rating: action.payload };
-    case "fiction":
+    case "serve":
       return {
         ...state,
-        categories: { ...state.categories, fiction: !state.categories.fiction },
+        categories: { ...state.categories, serve: !state.categories.serve },
       };
-    case "spiritual":
+    case "wall":
       return {
         ...state,
         categories: {
           ...state.categories,
-          spiritual: !state.categories.spiritual,
+          wall: !state.categories.wall,
         },
       };
-    case "biography":
+    case "weaving":
       return {
         ...state,
         categories: {
           ...state.categories,
-          biography: !state.categories.biography,
+          weaving: !state.categories.weaving,
         },
       };
-    case "horror":
+    case "decor":
       return {
         ...state,
-        categories: { ...state.categories, horror: !state.categories.horror },
+        categories: { ...state.categories, decor: !state.categories.decor },
       };
     case "PRICE-RANGE":
       return { ...state, price: action.price_range };

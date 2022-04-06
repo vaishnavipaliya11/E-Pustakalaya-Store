@@ -2,36 +2,36 @@ const getCategoryProducts = (data, categories) => {
   let categoryFilterArr = [];
 
   if (
-    categories.fiction === false && categories.spiritual === false &&
-    categories.biography === false && categories.horror === false
+    categories.serve === false && categories.wall === false &&
+    categories.weaving === false && categories.decor === false
   ) {
     return data;
   }
 
-  if (categories.fiction) {
+  if (categories.serve) {
     let catFilterData = [...data].filter(
-      (item) => item.categoryName.toLowerCase() === "fiction"
+      (item) => item.categoryName.toLowerCase() === "serve"
     );
     categoryFilterArr.push(...catFilterData);
   }
 
-  if (categories.spiritual) {
+  if (categories.wall) {
     let catFilterData = [...data].filter(
-      (item) => item.categoryName.toLowerCase() === "spiritual"
+      (item) => item.categoryName.toLowerCase() === "wall"
     );
     categoryFilterArr.push(...catFilterData);
   }
 
-  if (categories.biography) {
+  if (categories.weaving) {
     let catFilterData = [...data].filter(
-      (item) => item.categoryName.toLowerCase() === "biography"
+      (item) => item.categoryName.toLowerCase() === "weaving"
     );
     categoryFilterArr.push(...catFilterData);
   }
 
-  if (categories.horror) {
+  if (categories.decor) {
     let catFilterData = [...data].filter(
-      (item) => item.categoryName.toLowerCase() === "horror"
+      (item) => item.categoryName.toLowerCase() === "decor"
     );
     categoryFilterArr.push(...catFilterData);
   }

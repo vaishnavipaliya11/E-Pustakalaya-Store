@@ -8,8 +8,8 @@ const useFilter = () => useContext(FilterContext)
 const FilterProvider = ({children}) => {
 
     const [state,dispatch] = useReducer(filterReducerFunc,{
-        sorting: null,rating:null, categories:{fiction: false,
-            spiritual: false, biography:false, horror: false},
+        sorting: null,rating:null, categories:{serve: false,
+            wall: false, weaving:false, decor: false},
             price:500, addToCart: [],  cartItemsCount:0,
             ItemsCost:0,
             totalCost:0,
