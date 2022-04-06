@@ -23,7 +23,7 @@
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   }
   
-  .badge {
+  /* .badge {
     position: absolute;
     left: 0;
     top: 2rem;
@@ -33,7 +33,7 @@
     background: rgb(7, 236, 19);
     color: rgb(226, 13, 13);
     padding: 3px 10px;
-  }
+  } */
 
   .cart-qty-plus,
   .cart-qty-minus{
@@ -82,9 +82,8 @@
   .product-catagory {
     display: block;
     font-size: 1.2rem;
-    font-weight: 700;
     text-transform: uppercase;
-    margin-bottom: 1.8rem;
+    margin: 1rem;
   }
   
   .cart-product-details h2 a {

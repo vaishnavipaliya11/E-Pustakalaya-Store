@@ -13,6 +13,7 @@ const Products = () => {
   const { state, dispatch } = useFilter();
   const { sorting, rating, categories, price } = state;
   const { data } = useAxios();
+ 
 
   const finalRatingProducts = getRatingProducts(data, rating);
   const finalCategoryProducts = getCategoryProducts(
@@ -161,33 +162,34 @@ const Products = () => {
                   <div>
                     <div class="products-card-container">
                       <div class="product-card">
-                        <div class="badge">{rating}</div>
+                        <div class="badge">
+                        <button className="clear-btn" onClick={()=>
+                          dispatch({type:"MOVE-TO-WISHLIST", 
+                        payload:{title, price, rating, categoryName, img,_id},})}>
+                          <i class="bi bi-suit-heart"></i>
+                        </button>
+                        </div>
                         <div class="product-tumb">
                           <img src={img} />
                         </div>
                         <div class="product-details">
                           <span class="product-catagory">
                             {" "}
-                            <b>catagory-</b>
-                            {categoryName}
+                            <p>catagory-{categoryName}</p>
+                            
                           </span>
-                          <h4>
-                            <a href="">{title}</a>
-                          </h4>
-                          <p>Learn how to sleep peacefully</p>
+                          <p>
+                            {title}
+                          </p>
+                          <p>{rating}⭐</p>
                           <div class="product-bottom-details">
                             <div class="product-price">
                               <small>₹96.00</small>
                               {price}₹
                             </div>
                             <div class="product-links">
-                              <button className="clear-btn" onClick={()=>
-                                dispatch({type:"MOVE-TO-WISHLIST", 
-                              payload:{title, price, rating, categoryName, img,_id},})}>
-                                <i class="bi bi-suit-heart"></i>
-                              </button>
-
-                              <button
+                              
+                              <button className="add-to-cart"
                                 onClick={() =>
                                   dispatch({
                                     type: "ADD-TO-CART",
@@ -202,7 +204,7 @@ const Products = () => {
                                   })
                                 }
                               >
-                                add
+                                Add to Cart
                               </button>
                             </div>
                           </div>
