@@ -22,8 +22,9 @@
 .slidecontainer{
     align-self: center;
 }
-#title{
-    color: var(--primary-color
-);
+
+.quote{
+    color: var(--primary-color);
     align-self: center;
+    margin: 0.5rem;
 }

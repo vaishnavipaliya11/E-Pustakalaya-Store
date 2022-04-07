@@ -1,5 +1,6 @@
 :root{
   --badge-bg:#dedfe0;
+  --btn-text:#FFFFFF;
 }
 .product-card {
     margin: 0.5rem;
@@ -42,7 +43,7 @@
   .add-to-cart:hover{
     background-color: var(--primary-color);
     transition: 0.3s;
-    color: white;
+    color: var(--btn-text);
   }
  
 
@@ -51,7 +52,7 @@
     align-items: center;
     justify-content: center;
     height: 250px;
-    background: #f0f0f0;
+    background: var(--btn-text);
   }
   
   .product-tumb img {
@@ -240,24 +241,9 @@
     color: rgb(0, 0, 0);
   }
   
-  .arrival-product-bottom-details {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    align-items: flex-start;
-    overflow: hidden;
-    border-top: 1px solid rgb(185, 185, 185);
-    padding-top: 5px;
-  }
   
-  .arrival-product-bottom-details div {
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    align-items: center;
-    float: left;
-    width: 50%;
-  }
+  
+  
   
   .product-price {
     font-size: 18px;
@@ -299,7 +285,7 @@
   }
   .butoon-cart {
     align-self: center;
-    color: white;
+    color: var(--btn-text);
     font-weight: bold;
     padding: 1px 5px;
     outline: none;
@@ -310,7 +296,7 @@
   
   .butoon-wish {
     align-self: center;
-    color: white;
+    color:var(--btn-text);
     font-weight: bold;
     padding: 1px 5px;
     outline: none;

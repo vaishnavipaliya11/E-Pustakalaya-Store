@@ -28,7 +28,21 @@ function Wishlist() {
                 <div>
                   <div class="products-card-container">
                     <div class="cart-arrival-card">
-                      <div class="badge">{rating}</div>
+                      <button class="badge wish-badge"
+                      onClick={() =>
+                        dispatch({
+                          type: "REMOVE-FROM-WISHLIST",
+                          payload: {
+                            price,
+                            rating,
+                            categoryName,
+                            title,
+                            img,
+                            _id,
+                          },
+                        })
+                      }
+                      >X</button>
                       <div class="cart-product-tumb">
                         <img src={img} alt="" />
                       </div>
@@ -61,24 +75,7 @@ function Wishlist() {
                             Move to Cart
                           </button>
 
-                          <button
-                            class="wishlist-btn"
-                            onClick={() =>
-                              dispatch({
-                                type: "REMOVE-FROM-WISHLIST",
-                                payload: {
-                                  price,
-                                  rating,
-                                  categoryName,
-                                  title,
-                                  img,
-                                  _id,
-                                },
-                              })
-                            }
-                          >
-                            Remove from wish
-                          </button>
+                          
                         </div>
                       </div>
                     </div>
