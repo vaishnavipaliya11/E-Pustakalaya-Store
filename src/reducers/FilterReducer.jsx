@@ -56,6 +56,7 @@ const filterReducerFunc = (state, action) => {
         moveToWishlist: [],
         removeFromWishlist: [],
         removeFromCart: [],
+        wishCount:0
       };
 
     case "ADD-TO-CART":
