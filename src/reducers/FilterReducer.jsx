@@ -88,6 +88,7 @@ const filterReducerFunc = (state, action) => {
       };
 
     case "DECREASE-ITEM":
+      console.log(state.ItemsCost , state.totalCost , state.cartItemsCount)
       if (state.cartItemsCount && state.totalCost && state.ItemsCost > 0) {
         return {
           ...state,
