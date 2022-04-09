@@ -56,7 +56,8 @@ const filterReducerFunc = (state, action) => {
         moveToWishlist: [],
         removeFromWishlist: [],
         removeFromCart: [],
-        wishCount:0
+        wishCount: 0,
+        qty: 1,
       };
 
     case "ADD-TO-CART":
@@ -64,60 +65,23 @@ const filterReducerFunc = (state, action) => {
         ...state,
         addToCart: [...state.addToCart, { ...action.payload }],
         cartItemsCount: state.cartItemsCount + 1,
-        totalCost:
-          Number(state.deliveryCharge) +
-          Number(state.totalCost) +
-          Number(action.payload.price),
+        totalCost: Number(state.totalCost) + Number(action.payload.price),
         ItemsCost: Number(state.ItemsCost) + Number(action.payload.price),
       };
 
     case "REMOVE-FROM-CART":
-      return {
-        ...state,
-        addToCart: [
-          ...state.addToCart.filter((item) => {
-            return action.payload._id !== item._id;
-          }),
-        ],
-        totalCost:
-          Number(state.totalCost) -
-          Number(action.payload.price) -
-          Number(state.deliveryCharge),
-        ItemsCost: Number(state.ItemsCost) - Number(action.payload.price),
-        cartItemsCount: state.cartItemsCount - 1,
-      };
-
-    case "DECREASE-ITEM":
-      console.log(state.ItemsCost , state.totalCost , state.cartItemsCount)
-      if (state.cartItemsCount && state.totalCost && state.ItemsCost > 0) {
+      if (state.ItemsCost) {
         return {
           ...state,
-          decreaseItem: [...state.decreaseItem, { ...action.payload }],
-          cartItemsCount: state.cartItemsCount - 1,
-          totalCost:
-            Number(state.totalCost) -
-            Number(action.payload.price) -
-            Number(state.deliveryCharge),
+          addToCart: [
+            ...state.addToCart.filter((item) => {
+              return action.payload._id !== item._id;
+            }),
+          ],
           ItemsCost: Number(state.ItemsCost) - Number(action.payload.price),
-        };
-      } else {
-        return {
-          ...state,
-          decreaseItem: [...state.decreaseItem, { ...action.payload }],
-          cartItemsCount: state.cartItemsCount,
-          totalCost: state.totalCost,
-          ItemsCost: state.ItemsCost,
+          cartItemsCount: state.cartItemsCount - 1,
         };
       }
-
-    case "INCREASE-ITEM":
-      return {
-        ...state,
-        increaseItem: [...state.increaseItem, { ...action.payload }],
-        cartItemsCount: state.cartItemsCount + 1,
-        totalCost: Number(state.totalCost) + Number(action.payload.price),
-        ItemsCost: Number(state.ItemsCost) + Number(action.payload.price),
-      };
 
     case "REMOVE-FROM-WISHLIST":
       return {
@@ -136,6 +100,26 @@ const filterReducerFunc = (state, action) => {
         moveToWishlist: [...state.moveToWishlist, { ...action.payload }],
         wishCount: state.wishCount + 1,
       };
+
+    case "INCREASE-ITEM":
+      return {
+        ...state,
+        increaseItem: [...state.increaseItem, { ...action.payload }],
+        qty: Number(state.qty) + 1,
+        totalCost: Number(state.totalCost) + Number(state.ItemsCost),
+        ItemsCost: Number(state.ItemsCost) + Number(action.payload.price),
+      };
+
+    case "DECREASE-ITEM":
+      if (state.ItemsCost) {
+        return {
+          ...state,
+          increaseItem: [...state.increaseItem, { ...action.payload }],
+          qty: state.qty - 1,
+          totalCost: Number(state.totalCost) - Number(action.payload.price),
+          ItemsCost: Number(state.ItemsCost) - Number(action.payload.price),
+        };
+      }
 
     default:
       return state;

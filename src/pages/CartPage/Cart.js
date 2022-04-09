@@ -4,8 +4,9 @@ import "./Cart.css";
 
 const Cart = () => {
   const { state, dispatch } = useFilter();
-  const { addToCart, cartItemsCount, deliveryCharge, ItemsCost, totalCost } =
+  const { addToCart, cartItemsCount, ItemsCost, totalCost,qty } =
     state;
+   
 
   return (
     <div>
@@ -18,7 +19,7 @@ const Cart = () => {
                   <div class="products-card-container">
                     <div class="cart-arrival-card">
                       <div class="badge"  onClick={() => dispatch({type:"REMOVE-FROM-CART", 
-                      payload:{_id}})}>X</div>
+                      payload:{title, price, categoryName, rating, img, _id}})}>X</div>
                       <div class="cart-product-tumb">
                         <img src={img} alt="" />
                       </div>
@@ -68,7 +69,7 @@ const Cart = () => {
                         
                           <button class="butoon-wishlist" 
                           onClick={() => dispatch({type:"MOVE-TO-WISHLIST", 
-                          payload:{price, rating, categoryName, title,img}})}>
+                          payload:{price, rating, categoryName, title,img,_id}})}>
                             Move to wishlist
                           </button>
                         </div>
@@ -94,14 +95,15 @@ const Cart = () => {
                 <h4>Items total price</h4>
                 <h3>{ItemsCost}</h3>
               </div>
+
               <div class="space-between">
-                <h4>Delivery charges</h4>
-                <h3>{deliveryCharge}</h3>
+                <h4>Items quantity</h4>
+                <h3>{qty}</h3>
               </div>
               <hr />
               <div class="space-between">
                 <h3>Total Pay Amount</h3>
-                <h3>{totalCost}</h3>
+                <h3>{ItemsCost}</h3>
               </div>
               <hr />
             </div>

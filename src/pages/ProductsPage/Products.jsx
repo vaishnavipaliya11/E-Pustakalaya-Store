@@ -7,13 +7,15 @@ import { getRatingProducts } from "../../Utility/rating";
 import { getSorting } from "../../Utility/sorting";
 import "./Products.css";
 import "../../components/Cards/Card.css";
+import { useState } from "react";
 
 
 const Products = () => {
   const { state, dispatch } = useFilter();
-  const { sorting, rating, categories, price } = state;
+  const { sorting, rating, categories, price, btnAdd } = state;
   const { data } = useAxios();
- 
+  
+
 
   const finalRatingProducts = getRatingProducts(data, rating);
   const finalCategoryProducts = getCategoryProducts(
@@ -157,15 +159,16 @@ const Products = () => {
           </h1>
           <div className="mapped-products">
             {finalSortingProducts.map(
-              ({ title, price, rating, categoryName, img,_id }) => {
+              ({ title, price, rating, categoryName, img, _id }) => {
                 return (
                   <div>
                     <div class="products-card-container">
                       <div class="product-card">
                         <div class="badge">
+                        
                         <button className="clear-btn" onClick={()=>
                           dispatch({type:"MOVE-TO-WISHLIST", 
-                        payload:{title, price, rating, categoryName, img,_id},})}>
+                        payload:{title, price, rating, categoryName, img, _id},})}>
                           <i class="bi bi-suit-heart"></i>
                         </button>
                         </div>
@@ -194,17 +197,18 @@ const Products = () => {
                                   dispatch({
                                     type: "ADD-TO-CART",
                                     payload: {
+                                      _id,
                                       price,
                                       rating,
                                       categoryName,
                                       title,
                                       img,
-                                      _id
+                                      
                                     },
                                   })
                                 }
                               >
-                                Add to Cart
+                                Add to cart
                               </button>
                             </div>
                           </div>

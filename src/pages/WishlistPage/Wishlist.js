@@ -5,17 +5,22 @@ function Wishlist() {
   const { state, dispatch } = useFilter();
   const { moveToWishlist, addToCart } = state;
 
+
+
   function calMoveToCart(price, rating, categoryName, title, img, _id) {
     addToCart.find((product) => product._id === _id)
       ? dispatch({
           type: "INCREASE-ITEM",
           payload: { price, rating, categoryName, title, img, _id },
         })
+        
       : dispatch({
           type: "ADD-TO-CART",
           payload: { price, rating, categoryName, title, img, _id },
         });
   }
+  
+  console.log("wishlist called")
 
   return (
     <div>
@@ -23,7 +28,8 @@ function Wishlist() {
         <div class="cart-items">
           {moveToWishlist.map(
             ({ title, price, categoryName, rating, img, _id }) => {
-              console.log(addToCart.find((product) => product._id === _id));
+              console.log(moveToWishlist,"move to wishlist");
+
               return (
                 <div>
                   <div class="products-card-container">
@@ -62,6 +68,8 @@ function Wishlist() {
                           <button
                             class="wishlist-btn"
                             onClick={() =>
+                              // dispatch({type:"ADD-TO-CART", 
+                              // payload:{title, price, categoryName, rating, img, _id }})
                               calMoveToCart(
                                 price,
                                 rating,
