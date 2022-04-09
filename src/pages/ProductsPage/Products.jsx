@@ -12,7 +12,7 @@ import { useState } from "react";
 
 const Products = () => {
   const { state, dispatch } = useFilter();
-  const { sorting, rating, categories, price, btnAdd } = state;
+  const { sorting, rating, categories, price } = state;
   const { data } = useAxios();
   
 
