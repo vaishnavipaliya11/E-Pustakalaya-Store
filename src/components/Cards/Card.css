@@ -99,6 +99,7 @@
     overflow: hidden;
     border-top: 1px solid rgb(185, 185, 185);
     padding-top: 5px;
+    justify-content: space-between;
   }
   
   .product-bottom-details div {
@@ -106,7 +107,7 @@
     flex-direction: row;
     align-content: center;
     align-items: center;
-    float: left;
+    /* float: left; */
     width: 50%;
   }
   
@@ -240,10 +241,6 @@
     margin-top: -7px;
     color: rgb(0, 0, 0);
   }
-  
-  
-  
-  
   
   .product-price {
     font-size: 18px;

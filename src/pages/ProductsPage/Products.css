@@ -124,6 +124,7 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 
+
 .ratings {
   display: flex;
   flex-direction: column;
@@ -141,4 +142,8 @@ input[type="checkbox"] {
 .bar-heading {
   font-size: 1rem;
   font-weight: 600;
+}
+
+.product-links{
+  width: 5rem !important;
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import "./Login.css"
 
-function Login() {
+const Login=()=> {
   return (
     <div>
     <div className="login-container">
@@ -14,7 +14,7 @@ function Login() {
         <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
         <label className="label" for="label"> remember me </label>
         <input type="submit" name="login" className="login login-submit" value="login"/>
-        <p>not a member yet?</p><Link className="signup" to="/sign-up">sign-up now</Link>
+        <p>not a member yet?</p><Link className="signup" to="/sign">sign-up now</Link>
       </form>
     </div>
   </div>

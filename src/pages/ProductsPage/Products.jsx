@@ -33,7 +33,7 @@ const Products = () => {
     <div>
       <div class="main-container">
         <div class="display-column price-container">
-          <aside class="product-side-bar">
+          <div class="product-side-bar">
             <div class="filter-btn">
               <p class="bar-heading">Filters</p>
               <button
@@ -46,6 +46,7 @@ const Products = () => {
 
             <div class="price-range-bar">
               <input
+        
                 type="range"
                 min="120"
                 max="500"
@@ -63,6 +64,7 @@ const Products = () => {
               <p class="bar-heading">Category</p>
               <div>
                 <input
+            
                   type="checkbox"
                   name="religious"
                   onChange={() => dispatch({ type: "wall" })}
@@ -71,6 +73,7 @@ const Products = () => {
               </div>
               <div>
                 <input
+                
                   type="checkbox"
                   name="serve"
                   onChange={() => dispatch({ type: "serve" })}
@@ -80,6 +83,7 @@ const Products = () => {
 
               <div>
                 <input
+              
                   type="checkbox"
                   name="weaving"
                   onChange={() => dispatch({ type: "weaving" })}
@@ -89,6 +93,7 @@ const Products = () => {
 
               <div>
                 <input
+               
                   type="checkbox"
                   name="decor"
                   onChange={() => dispatch({ type: "decor" })}
@@ -101,6 +106,8 @@ const Products = () => {
               <p class="bar-heading">Ratings</p>
               <div>
                 <input
+              
+                
                   type="radio"
                   name="p-ratings"
                   id="best-ratings"
@@ -110,6 +117,8 @@ const Products = () => {
               </div>
               <div>
                 <input
+            
+                
                   type="radio"
                   name="p-ratings"
                   id="better-ratings"
@@ -119,6 +128,8 @@ const Products = () => {
               </div>
               <div>
                 <input
+          
+            
                   type="radio"
                   name="p-ratings"
                   id="good-ratings"
@@ -132,6 +143,8 @@ const Products = () => {
               <p class="bar-heading">Sort By</p>
               <div>
                 <input
+          
+             
                   type="radio"
                   name="sort"
                   id="low-high"
@@ -141,6 +154,8 @@ const Products = () => {
               </div>
               <div>
                 <input
+              
+                
                   type="radio"
                   name="sort"
                   id="high-low"
@@ -149,7 +164,7 @@ const Products = () => {
                 Price- high to low
               </div>
             </div>
-          </aside>
+          </div>
         </div>
 
         <div className="products-container">

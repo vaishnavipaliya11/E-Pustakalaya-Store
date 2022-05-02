@@ -1,25 +1,33 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import "./Sign.css"
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "./Sign.css";
 
-function SignUp () {
+const SignUp = () => {
+  const navigate= useNavigate()
   return (
-    <div>
-    <div className="login-container">
-        <div className="login-card">
-            <h1>Sign-up</h1>
-            <form>
-                <input type="text" name="user" placeholder="Username"/>
-                <input type="password" name="pass" placeholder="Password"/>
-                <input type="password" name="pass" placeholder="Confirm Password"/>
-                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
-                <label for="agreement"> I agree to the <Link class="terms" href="">Tearms and Conditions</Link></label>
-                <input type="submit" name="login" className="login login-submit" value="Signup"/>
-            </form>
-        </div>
-    </div>
-    </div>
-  )
-}
+    <div class="form-container">
+   <div class="validation">
+    <form action="">
+    
+     <input type="text" class="form-input" placeholder="Enter your first name" /> 
 
-export {SignUp}
+     <input type="text" class="form-input" placeholder="Enter your last name" /> 
+     
+     <input type="text" class="form-input" placeholder="Enter your email"/> 
+    
+     <input type="text" class="form-input" placeholder="Enter your password"/>
+
+     <div>
+     <h3>Already have an account?</h3> 
+     <button onClick={() => navigate("/login")}>Login </button>
+     </div>
+     <div id="error">
+        <p> incorrect password!!</p>
+     </div>
+     </form>
+    </div>
+ </div>
+  )
+};
+
+export { SignUp };
