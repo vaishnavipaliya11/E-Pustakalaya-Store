@@ -4,11 +4,15 @@ import { Link } from "react-router-dom";
 import "../../pages/index";
 import { useFilter } from "../../Context/Filter_context";
 import { useAuth } from "../../Context/authContext";
+import {useCart} from "../../Context/cartContext"
 
 const Navbar = () => {
   const { state } = useFilter();
   const { cartItemsCount, wishCount } = state;
   const { auth,setAuth } = useAuth();
+
+  const { cartState} = useCart();
+  const { addToCart } = cartState;
 
   const logOutHandler = () => {
     setAuth(localStorage.removeItem("token"));
@@ -67,7 +71,7 @@ const Navbar = () => {
             <Link class="topnav-link" to="/cart">
               <h3>
                 <i class="bi bi-cart-check-fill"></i>
-                <span class="cart-badge">{cartItemsCount}</span>
+                <span class="cart-badge">{addToCart.length}</span>
               </h3>
             </Link>
           </div>

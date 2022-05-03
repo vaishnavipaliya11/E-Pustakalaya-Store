@@ -18,14 +18,13 @@ const Login = () => {
   const loginHandler = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`/api/auth/login`, {
+      const response = await axios.post("/api/auth/login", {
         email: userDetails.email,
         password: userDetails.password,
       });
       localStorage.setItem("token", response.data.encodedToken);
       setAuth(true);
       navigate("/");
-      console.log(response);
     } catch (error) {
       console.log(error);
     }
@@ -36,13 +35,13 @@ const Login = () => {
     try {
       const { data } = await axios.post("api/auth/login", {
         email: "adarshbalika@gmail.com",
-        password: "adarshBalika123",
+        password: "adarshbalika",
       });
       localStorage.setItem("token", data.encodedToken);
       setAuth(true);
       navigate("/");
     } catch (error) {
-      alert(error);
+      console.log(error);
     }
   };
   return (
