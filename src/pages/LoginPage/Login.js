@@ -32,6 +32,21 @@ const Login = () => {
       console.log(error);
     }
   };
+
+  const GuestloginHandler = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.post("api/auth/login", {
+        email: "adarshbalika@gmail.com",
+        password: "adarshBalika123",
+      });
+      localStorage.setItem("token", data.encodedToken);
+      setAuth(true);
+      navigate("/");
+    } catch (error) {
+      alert(error);
+    }
+  };
   return (
     <div>
       <div className="login-container">
@@ -54,6 +69,7 @@ const Login = () => {
             />
 
             <button onClick={(e) => loginHandler(e)}>Login</button>
+            <button onClick={(e) => GuestloginHandler(e)}>GuestLogin</button>
             <p>not a member yet?</p>
             <Link className="signup" to="/sign">
               sign-up now
