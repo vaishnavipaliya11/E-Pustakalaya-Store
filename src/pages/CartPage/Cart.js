@@ -1,25 +1,34 @@
 import React from "react";
+import { useCart } from "../../Context/cartContext";
 import { useFilter } from "../../Context/Filter_context";
+import { removeFromCart } from "../../Utility/removeFromCart";
 import "./Cart.css";
 
 const Cart = () => {
   const { state, dispatch } = useFilter();
-  const { addToCart, cartItemsCount, ItemsCost, totalCost,qty } =
-    state;
-   
+  const { cartItemsCount, ItemsCost, totalCost, qty } = state;
 
+  const { cartState,cartDispatch } = useCart();
+  const { addToCart } = cartState;
   return (
     <div>
       <article class="main-cart-container">
         <div className="product-scroll">
           <div class="cart-items">
-            {addToCart.map(({ title, price, categoryName, rating, img, _id }) => {
+            {addToCart.map((cartData) => {
+              const { title, price, categoryName, rating, img, _id } = cartData;
               return (
                 <div>
                   <div class="products-card-container">
                     <div class="cart-arrival-card">
-                      <div class="badge"  onClick={() => dispatch({type:"REMOVE-FROM-CART", 
-                      payload:{title, price, categoryName, rating, img, _id}})}>X</div>
+                      <div
+                        class="badge"
+                        onClick={() =>
+                          removeFromCart(cartData,cartDispatch)
+                        }
+                      >
+                        X
+                      </div>
                       <div class="cart-product-tumb">
                         <img src={img} alt="" />
                       </div>
@@ -66,10 +75,22 @@ const Cart = () => {
                         </div>
                         <div class="cart-product-bottom-details"></div>
                         <div class="product-links">
-                        
-                          <button class="butoon-wishlist" 
-                          onClick={() => dispatch({type:"MOVE-TO-WISHLIST", 
-                          payload:{price, rating, categoryName, title,img,_id}})}>
+                          <button
+                            class="butoon-wishlist"
+                            onClick={() =>
+                              dispatch({
+                                type: "MOVE-TO-WISHLIST",
+                                payload: {
+                                  price,
+                                  rating,
+                                  categoryName,
+                                  title,
+                                  img,
+                                  _id,
+                                },
+                              })
+                            }
+                          >
                             Move to wishlist
                           </button>
                         </div>
