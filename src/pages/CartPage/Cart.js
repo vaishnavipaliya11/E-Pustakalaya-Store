@@ -2,14 +2,24 @@ import React from "react";
 import { useCart } from "../../Context/cartContext";
 import { useFilter } from "../../Context/Filter_context";
 import { removeFromCart } from "../../Utility/removeFromCart";
+import { qtyHandler } from "../../Utility/qtyHandler";
 import "./Cart.css";
 
 const Cart = () => {
   const { state, dispatch } = useFilter();
-  const { cartItemsCount, ItemsCost, totalCost, qty } = state;
 
-  const { cartState,cartDispatch } = useCart();
+  const { cartState, cartDispatch } = useCart();
   const { addToCart } = cartState;
+
+  let original_price = 0;
+  let discount_price = 0;
+  let delivery_charges = 0;
+  addToCart.forEach((cartData) => {
+    original_price += cartData.price * cartData.qty;
+    discount_price += cartData.price * cartData.qty * (10 / 100);
+    delivery_charges = cartData.price * (15 / 100);
+  });
+
   return (
     <div>
       <article class="main-cart-container">
@@ -23,9 +33,7 @@ const Cart = () => {
                     <div class="cart-arrival-card">
                       <div
                         class="badge"
-                        onClick={() =>
-                          removeFromCart(cartData,cartDispatch)
-                        }
+                        onClick={() => removeFromCart(cartData, cartDispatch)}
                       >
                         X
                       </div>
@@ -46,10 +54,7 @@ const Cart = () => {
                             type="button"
                             value="+"
                             onClick={() =>
-                              dispatch({
-                                type: "INCREASE-ITEM",
-                                payload: { price },
-                              })
+                              qtyHandler(cartData, "increment", cartDispatch)
                             }
                           >
                             +
@@ -60,10 +65,7 @@ const Cart = () => {
                             type="button"
                             value="-"
                             onClick={() =>
-                              dispatch({
-                                type: "DECREASE-ITEM",
-                                payload: { price },
-                              })
+                              qtyHandler(cartData, "decrement", cartDispatch)
                             }
                           >
                             -
@@ -110,21 +112,26 @@ const Cart = () => {
             <div>
               <div class="space-between">
                 <h4>Items in cart</h4>
-                <h3>{cartItemsCount}</h3>
+                <h3>{addToCart.length}</h3>
               </div>
               <div class="space-between">
                 <h4>Items total price</h4>
-                <h3>{ItemsCost}</h3>
+                <h3>{original_price}</h3>
               </div>
 
               <div class="space-between">
-                <h4>Items quantity</h4>
-                <h3>{qty}</h3>
+                <h4>Discount </h4>
+                <h3>{discount_price}</h3>
+              </div>
+
+              <div class="space-between">
+                <h4>Delivery Charges </h4>
+                <h3>{delivery_charges}</h3>
               </div>
               <hr />
               <div class="space-between">
                 <h3>Total Pay Amount</h3>
-                <h3>{ItemsCost}</h3>
+                <h3>{original_price + discount_price - delivery_charges}</h3>
               </div>
               <hr />
             </div>

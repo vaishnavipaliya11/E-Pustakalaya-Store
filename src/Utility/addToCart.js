@@ -14,6 +14,5 @@ export const addToCart = async(product,cartDispatch) =>{
         }
       );
 
-      console.log(data);
       cartDispatch({ type: "ADD_TO_CART", payload: data.cart })
 }
