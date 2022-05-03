@@ -7,14 +7,12 @@ import axios from "axios";
 
 const Login = () => {
   const [userDetails, setUserDetails] = useState({ email: "", password: "" });
-  const { auth, setAuth } = useAuth();
+  const { setAuth } = useAuth();
   const navigate = useNavigate();
 
   const onChangehandler = (e) => {
     const { name, value } = e.target;
     setUserDetails({ ...userDetails, [name]: value });
-
-    console.log(userDetails);
   };
 
   const loginHandler = async (e) => {

@@ -1,5 +1,5 @@
 import React from "react";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../Context/authContext";
 import "./Sign.css";
 import { useState } from "react";
@@ -19,9 +19,7 @@ const SignUp = () => {
   const handelUserInput = (e) => {
     const { name, value } = e.target;
     setUserData({ ...userData, [name]: value });
-
     setErrorMsg(false);
-    console.log(userData);
   };
 
   const signUpHandler = async (e) => {
@@ -56,69 +54,67 @@ const SignUp = () => {
 
   return (
     <div className="form-container">
-    <div className="validation">
-      <h2>Sign Up</h2>
-      <form action="">
-        <div>
-          <input
-            type="text"
-            className="form-input"
-            placeholder="Enter your First Name "
-            name="firstName"
-            onChange={handelUserInput}
-            value={userData.firstName}
-          />
-        </div>
+      <div className="validation">
+        <h2>Sign Up</h2>
+        <form action="">
+          <div>
+            <input
+              type="text"
+              className="form-input"
+              placeholder="Enter your First Name "
+              name="firstName"
+              onChange={handelUserInput}
+              value={userData.firstName}
+            />
+          </div>
 
-        <div>
-          <input
-            type="text"
-            className="form-input"
-            name="lastName"
-            placeholder="Enter your Last Name"
-            onChange={handelUserInput}
-            value={userData.lastName}
-          />
-        </div>
+          <div>
+            <input
+              type="text"
+              className="form-input"
+              name="lastName"
+              placeholder="Enter your Last Name"
+              onChange={handelUserInput}
+              value={userData.lastName}
+            />
+          </div>
 
-        <div>
-          <input
-            type="email"
-            className="form-input"
-            name="Email"
-            placeholder="Enter your email"
-            onChange={handelUserInput}
-            value={userData.Email}
-          />
-        </div>
+          <div>
+            <input
+              type="email"
+              className="form-input"
+              name="Email"
+              placeholder="Enter your email"
+              onChange={handelUserInput}
+              value={userData.Email}
+            />
+          </div>
 
-        <div>
-          <input
-            type="text"
-            className="form-input"
-            placeholder="Enter your password"
-            name="Password"
-            onChange={handelUserInput}
-            value={userData.Password}
-          ></input>
-        </div>
+          <div>
+            <input
+              type="text"
+              className="form-input"
+              placeholder="Enter your password"
+              name="Password"
+              onChange={handelUserInput}
+              value={userData.Password}
+            ></input>
+          </div>
 
-        <div style={{ color: "red" }}>
-          <p>{erorMsg && "Enter the feilds"}</p>
-        </div>
+          <div style={{ color: "red" }}>
+            <p>{erorMsg && "Enter the feilds"}</p>
+          </div>
 
-        <div>
-        
-            <p onClick={()=> navigate("/login")}> Already have an account?</p>
-          
+          <div>
+            <p onClick={() => navigate("/login")}> Already have an account?</p>
 
-          <button className="remove-card-btn" onClick={signUpHandler}>
-            Sign up
-          </button>
-        </div>
-      </form>
+            <button className="remove-card-btn" onClick={signUpHandler}>
+              Sign up
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-  </div>
   );
 };
 
