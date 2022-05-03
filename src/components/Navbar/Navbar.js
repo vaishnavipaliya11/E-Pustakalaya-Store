@@ -3,11 +3,17 @@ import "./NavBar.css";
 import { Link } from "react-router-dom";
 import "../../pages/index";
 import { useFilter } from "../../Context/Filter_context";
+import { useAuth } from "../../Context/authContext";
 
 const Navbar = () => {
   const { state } = useFilter();
-  const { cartItemsCount,wishCount } = state;
+  const { cartItemsCount, wishCount } = state;
+  const { auth,setAuth } = useAuth();
 
+  const logOutHandler = () => {
+    setAuth(localStorage.removeItem("token"));
+    navigate("/login");
+  };
   return (
     <div>
       <nav class="topnav">
@@ -36,12 +42,20 @@ const Navbar = () => {
           </div>
 
           <div class="icon-container">
-            <Link class="topnav-link" to="/login">
-              <h3>
-                <i class="bi bi-person-fill"></i>
-                <span></span>
-              </h3>
-            </Link>
+            
+              {auth ? (
+                <Link class="topnav-link" to="/login">
+                <h3 onClick={logOutHandler}>
+                <i class="bi bi-box-arrow-right"></i>
+                </h3>
+                </Link>
+              ) : (
+                <h3>
+                  <i class="bi bi-person-fill"></i>
+                  <span></span>
+                </h3>
+              )}
+           
 
             <Link class="topnav-link" to="/wishlist">
               <h3>
