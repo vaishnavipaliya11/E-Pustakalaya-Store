@@ -8,14 +8,18 @@ import { getSorting } from "../../Utility/sorting";
 import "./Products.css";
 import "../../components/Cards/Card.css";
 import { useState } from "react";
-
+import { useCart } from "../../Context/cartContext";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../Context/authContext";
+import { addToCart } from "../../Utility/addToCart";
 
 const Products = () => {
   const { state, dispatch } = useFilter();
   const { sorting, rating, categories, price } = state;
   const { data } = useAxios();
-  
-
+  const { cartState, cartDispatch } = useCart();
+  const { auth } = useAuth();
+  const navigate = useNavigate();
 
   const finalRatingProducts = getRatingProducts(data, rating);
   const finalCategoryProducts = getCategoryProducts(
@@ -27,7 +31,6 @@ const Products = () => {
     price
   );
   const finalSortingProducts = getSorting(finalRangeProducts, sorting);
-
 
   return (
     <div>
@@ -46,7 +49,6 @@ const Products = () => {
 
             <div class="price-range-bar">
               <input
-        
                 type="range"
                 min="120"
                 max="500"
@@ -64,7 +66,6 @@ const Products = () => {
               <p class="bar-heading">Category</p>
               <div>
                 <input
-            
                   type="checkbox"
                   name="religious"
                   onChange={() => dispatch({ type: "wall" })}
@@ -73,7 +74,6 @@ const Products = () => {
               </div>
               <div>
                 <input
-                
                   type="checkbox"
                   name="serve"
                   onChange={() => dispatch({ type: "serve" })}
@@ -83,7 +83,6 @@ const Products = () => {
 
               <div>
                 <input
-              
                   type="checkbox"
                   name="weaving"
                   onChange={() => dispatch({ type: "weaving" })}
@@ -93,7 +92,6 @@ const Products = () => {
 
               <div>
                 <input
-               
                   type="checkbox"
                   name="decor"
                   onChange={() => dispatch({ type: "decor" })}
@@ -106,8 +104,6 @@ const Products = () => {
               <p class="bar-heading">Ratings</p>
               <div>
                 <input
-              
-                
                   type="radio"
                   name="p-ratings"
                   id="best-ratings"
@@ -117,8 +113,6 @@ const Products = () => {
               </div>
               <div>
                 <input
-            
-                
                   type="radio"
                   name="p-ratings"
                   id="better-ratings"
@@ -128,8 +122,6 @@ const Products = () => {
               </div>
               <div>
                 <input
-          
-            
                   type="radio"
                   name="p-ratings"
                   id="good-ratings"
@@ -143,8 +135,6 @@ const Products = () => {
               <p class="bar-heading">Sort By</p>
               <div>
                 <input
-          
-             
                   type="radio"
                   name="sort"
                   id="low-high"
@@ -154,8 +144,6 @@ const Products = () => {
               </div>
               <div>
                 <input
-              
-                
                   type="radio"
                   name="sort"
                   id="high-low"
@@ -173,68 +161,71 @@ const Products = () => {
             Popular Arts{" "}
           </h1>
           <div className="mapped-products">
-            {finalSortingProducts.map(
-              (cardData) => {
-                const {title, price, rating, categoryName, img, _id}= cardData
-                return (
-                  <div>
-                    <div class="products-card-container">
-                      <div class="product-card">
-                        <div class="badge">
-                        
-                        <button className="clear-btn" onClick={()=>
-                          dispatch({type:"MOVE-TO-WISHLIST", 
-                        payload:{title, price, rating, categoryName, img, _id},})}>
+            {finalSortingProducts.map((cardData) => {
+              const { title, price, rating, categoryName, img, _id } = cardData;
+              return (
+                <div>
+                  <div class="products-card-container">
+                    <div class="product-card">
+                      <div class="badge">
+                        <button
+                          className="clear-btn"
+                          onClick={() =>
+                            dispatch({
+                              type: "MOVE-TO-WISHLIST",
+                              payload: {
+                                title,
+                                price,
+                                rating,
+                                categoryName,
+                                img,
+                                _id,
+                              },
+                            })
+                          }
+                        >
                           <i class="bi bi-suit-heart"></i>
                         </button>
-                        </div>
-                        <div class="product-tumb">
-                          <img src={img} />
-                        </div>
-                        <div class="product-details">
-                          <span class="product-catagory">
-                            {" "}
-                            <p>catagory-{categoryName}</p>
+                      </div>
+                      <div class="product-tumb">
+                        <img src={img} />
+                      </div>
+                      <div class="product-details">
+                        <span class="product-catagory">
+                          {" "}
+                          <p>catagory-{categoryName}</p>
+                        </span>
+                        <p>{title}</p>
+                        <p>{rating}⭐</p>
+                        <div class="product-bottom-details">
+                          <div class="product-price">
+                            <small>₹96.00</small>
+                            {price}₹
+                          </div>
+                          <div class="product-links">
+                          
                             
-                          </span>
-                          <p>
-                            {title}
-                          </p>
-                          <p>{rating}⭐</p>
-                          <div class="product-bottom-details">
-                            <div class="product-price">
-                              <small>₹96.00</small>
-                              {price}₹
-                            </div>
-                            <div class="product-links">
-                              
-                              <button className="add-to-cart"
+                              <button
+                                className="add-to-cart"
                                 onClick={() =>
-                                  dispatch({
-                                    type: "ADD-TO-CART",
-                                    payload: {
-                                      _id,
-                                      price,
-                                      rating,
-                                      categoryName,
-                                      title,
-                                      img,
-                                      
-                                    },
-                                  })
+                                  auth
+                                    ? addToCart(cardData, cartDispatch)
+                                    : navigate("/login")
                                 }
                               >
                                 Add to cart
                               </button>
-                            </div>
+                             
+                           
+                           
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                );
-              }
-            )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
