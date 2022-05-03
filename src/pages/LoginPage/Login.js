@@ -22,15 +22,12 @@ const Login = () => {
         email: userDetails.email,
         password: userDetails.password,
       });
-      console.log(response);
       localStorage.setItem("token", response.data.encodedToken);
       setAuth(true);
       navigate("/");
-      console.log(response);
     } catch (error) {
       console.log(error);
     }
-    console.log(userDetails);
   };
 
   const GuestloginHandler = async (e) => {

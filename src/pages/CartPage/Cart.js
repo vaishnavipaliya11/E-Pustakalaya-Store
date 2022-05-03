@@ -25,84 +25,104 @@ const Cart = () => {
       <article class="main-cart-container">
         <div className="product-scroll">
           <div class="cart-items">
-            {addToCart.map((cartData) => {
-              const { title, price, categoryName, rating, img, _id } = cartData;
-              return (
-                <div>
-                  <div class="products-card-container">
-                    <div class="cart-arrival-card">
-                      <div
-                        class="badge"
-                        onClick={() => removeFromCart(cartData, cartDispatch)}
-                      >
-                        X
-                      </div>
-                      <div class="cart-product-tumb">
-                        <img src={img} alt="" />
-                      </div>
-                      <div class="cart-product-details">
-                        <span class="product-catagory">
-                          {" "}
-                          <b>catagory-</b>
-                          {categoryName}
-                        </span>
-                        <h2>{title}</h2>
-
-                        <div>
-                          <button
-                            class="cart-qty-plus"
-                            type="button"
-                            value="+"
+            {addToCart.length === 0 ? (
+              <div>
+                {" "}
+                <h2>Your Cart is Empty</h2>
+              </div>
+            ) : (
+              <div>
+                {addToCart.map((cartData) => {
+                  const { title, price, categoryName, rating, img, _id } =
+                    cartData;
+                  return (
+                    <div>
+                      <div class="products-card-container">
+                        <div class="cart-arrival-card">
+                          <div
+                            class="badge"
                             onClick={() =>
-                              qtyHandler(cartData, "increment", cartDispatch)
+                              removeFromCart(cartData, cartDispatch)
                             }
                           >
-                            +
-                          </button>
+                            X
+                          </div>
+                          <div class="cart-product-tumb">
+                            <img src={img} alt="" />
+                          </div>
+                          <div class="cart-product-details">
+                            <span class="product-catagory">
+                              {" "}
+                              <b>catagory-</b>
+                              {categoryName}
+                            </span>
+                            <h2>{title}</h2>
 
-                          <button
-                            class="cart-qty-minus"
-                            type="button"
-                            value="-"
-                            onClick={() =>
-                              qtyHandler(cartData, "decrement", cartDispatch)
-                            }
-                          >
-                            -
-                          </button>
-                        </div>
+                            <div>
+                              <button
+                                class="cart-qty-plus"
+                                type="button"
+                                value="+"
+                                onClick={() =>
+                                  qtyHandler(
+                                    cartData,
+                                    "increment",
+                                    cartDispatch
+                                  )
+                                }
+                              >
+                                +
+                              </button>
 
-                        <div class="product-price">
-                          <small>₹96.00</small>₹{price}
-                        </div>
-                        <div class="cart-product-bottom-details"></div>
-                        <div class="product-links">
-                          <button
-                            class="butoon-wishlist"
-                            onClick={() =>
-                              dispatch({
-                                type: "MOVE-TO-WISHLIST",
-                                payload: {
-                                  price,
-                                  rating,
-                                  categoryName,
-                                  title,
-                                  img,
-                                  _id,
-                                },
-                              })
-                            }
-                          >
-                            Move to wishlist
-                          </button>
+                              <button
+                                class="cart-qty-minus"
+                                type="button"
+                                value="-"
+                                onClick={() =>
+                                  qtyHandler(
+                                    cartData,
+                                    "decrement",
+                                    cartDispatch
+                                  )
+                                }
+                              >
+                                -
+                              </button>
+                            </div>
+
+                            <div class="product-price">
+                              <small>₹96.00</small>₹{price}
+                            </div>
+                            <div class="cart-product-bottom-details"></div>
+                            <div class="product-links">
+                              <button
+                                class="butoon-wishlist"
+                                onClick={() =>
+                                  dispatch({
+                                    type: "MOVE-TO-WISHLIST",
+                                    payload: {
+                                      price,
+                                      rating,
+                                      categoryName,
+                                      title,
+                                      img,
+                                      _id,
+                                    },
+                                  })
+                                }
+                              >
+                                Move to wishlist
+                              </button>
+                            </div>
+                          </div>
                         </div>
                       </div>
+                      <div></div>
                     </div>
-                  </div>
-                  <div></div>
-                </div>
-              );
-            })}
+                  );
+                })}
+              </div>
+            )}
           </div>
         </div>
 
@@ -121,12 +141,12 @@ const Cart = () => {
 
               <div class="space-between">
                 <h4>Discount </h4>
-                <h3>{discount_price}</h3>
+                <h3>{discount_price.toFixed(2)}</h3>
               </div>
 
               <div class="space-between">
                 <h4>Delivery Charges </h4>
-                <h3>{delivery_charges}</h3>
+                <h3>{delivery_charges.toFixed(2)}</h3>
               </div>
               <hr />
               <div class="space-between">
