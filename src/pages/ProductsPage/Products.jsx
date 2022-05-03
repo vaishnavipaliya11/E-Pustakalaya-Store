@@ -174,7 +174,8 @@ const Products = () => {
           </h1>
           <div className="mapped-products">
             {finalSortingProducts.map(
-              ({ title, price, rating, categoryName, img, _id }) => {
+              (cardData) => {
+                const {title, price, rating, categoryName, img, _id}= cardData
                 return (
                   <div>
                     <div class="products-card-container">
