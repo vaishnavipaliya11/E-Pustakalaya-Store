@@ -13,7 +13,6 @@ export const addToWishlist = async(product,wishListDispatch)=>{
             },
           }
         );
-        console.log("data wishlist",data.wishlist);
         wishListDispatch({ type: "ADD_TO_WISHLIST", payload: data.wishlist });
       } catch (error) {
         console.log(error.response.data);

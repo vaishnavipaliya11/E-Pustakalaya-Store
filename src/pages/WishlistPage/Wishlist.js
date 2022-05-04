@@ -1,27 +1,13 @@
 import React from "react";
 import "./Wishlist.css";
-import { useFilter } from "../../Context/Filter_context";
 import { useWishlist } from "../../Context/wishlistContext";
+import { useCart } from "../../Context/cartContext";
+import { removeFromWishlist } from "../../Utility/removeFromWishlist";
+import { addToCart } from "../../Utility/addToCart";
 function Wishlist() {
-  const { state, dispatch } = useFilter();
-  const { moveToWishlist, addToCart } = state;
-
+  const { cartDispatch } = useCart();
   const { wishListState, wishListDispatch } = useWishlist();
   const { wishList } = wishListState;
-
-  function calMoveToCart(price, rating, categoryName, title, img, _id) {
-    addToCart.find((product) => product._id === _id)
-      ? dispatch({
-          type: "INCREASE-ITEM",
-          payload: { price, rating, categoryName, title, img, _id },
-        })
-      : dispatch({
-          type: "ADD-TO-CART",
-          payload: { price, rating, categoryName, title, img, _id },
-        });
-  }
-
-  console.log("wishlist called");
 
   return (
     <div>
@@ -36,17 +22,7 @@ function Wishlist() {
                     <button
                       class="badge wish-badge"
                       onClick={() =>
-                        dispatch({
-                          type: "REMOVE-FROM-WISHLIST",
-                          payload: {
-                            price,
-                            rating,
-                            categoryName,
-                            title,
-                            img,
-                            _id,
-                          },
-                        })
+                        removeFromWishlist(cardData, wishListDispatch)
                       }
                     >
                       X
@@ -69,18 +45,7 @@ function Wishlist() {
                       <div class="product-links wishlist-cards">
                         <button
                           class="wishlist-btn"
-                          onClick={() =>
-                            // dispatch({type:"ADD-TO-CART",
-                            // payload:{title, price, categoryName, rating, img, _id }})
-                            calMoveToCart(
-                              price,
-                              rating,
-                              categoryName,
-                              title,
-                              img,
-                              _id
-                            )
-                          }
+                          onClick={() => addToCart(cardData, cartDispatch)}
                         >
                           Move to Cart
                         </button>
