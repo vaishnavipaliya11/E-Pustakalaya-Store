@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getUserToken } from "./getUserToken";
 
-export const addToCart = async(product,cartDispatch) =>{
+export const add_to_cart = async(product,cartDispatch) =>{
     const {data}= await axios.post(
         "/api/user/cart",
         {

@@ -11,7 +11,7 @@ import { useState } from "react";
 import { useCart } from "../../Context/cartContext";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../Context/authContext";
-import { addToCart } from "../../Utility/addToCart";
+import { add_to_cart } from "../../Utility/addToCart";
 import { useWishlist } from "../../Context/wishlistContext";
 import { addToWishlist } from "../../Utility/addToWishlist";
 
@@ -202,7 +202,7 @@ const Products = () => {
                               className="add-to-cart"
                               onClick={() =>
                                 auth
-                                  ? addToCart(cardData, cartDispatch)
+                                  ? add_to_cart(cardData, cartDispatch)
                                   : navigate("/login")
                               }
                             >

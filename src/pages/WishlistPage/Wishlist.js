@@ -3,11 +3,23 @@ import "./Wishlist.css";
 import { useWishlist } from "../../Context/wishlistContext";
 import { useCart } from "../../Context/cartContext";
 import { removeFromWishlist } from "../../Utility/removeFromWishlist";
-import { addToCart } from "../../Utility/addToCart";
+import { add_to_cart } from "../../Utility/addToCart";
+import {qtyHandler} from "../../Utility/qtyHandler"
 function Wishlist() {
-  const { cartDispatch } = useCart();
+  const { cartState,cartDispatch } = useCart();
+  const {addToCart}= cartState
   const { wishListState, wishListDispatch } = useWishlist();
   const { wishList } = wishListState;
+
+  const moveToCart=(cardData)=>{
+    if (addToCart.find((item) => item._id === cardData._id)) {
+      qtyHandler(cardData, "increment", cartDispatch);
+      removeFromWishlist(cardData, wishListDispatch);
+    } else {
+      add_to_cart(cardData, cartDispatch);
+      removeFromWishlist(cardData, wishListDispatch);
+    }
+  }
 
   return (
     <div>
@@ -45,7 +57,7 @@ function Wishlist() {
                       <div class="product-links wishlist-cards">
                         <button
                           class="wishlist-btn"
-                          onClick={() => addToCart(cardData, cartDispatch)}
+                          onClick={() =>moveToCart(cardData)}
                         >
                           Move to Cart
                         </button>

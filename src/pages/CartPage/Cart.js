@@ -1,13 +1,11 @@
 import React from "react";
 import { useCart } from "../../Context/cartContext";
-import { useFilter } from "../../Context/Filter_context";
 import { removeFromCart } from "../../Utility/removeFromCart";
 import { qtyHandler } from "../../Utility/qtyHandler";
 import "./Cart.css";
 import { useWishlist } from "../../Context/wishlistContext";
 import { addToWishlist } from "../../Utility/addToWishlist";
 const Cart = () => {
-  const { state, dispatch } = useFilter();
 
   const { cartState, cartDispatch } = useCart();
   const { addToCart } = cartState;
@@ -36,7 +34,7 @@ const Cart = () => {
             ) : (
               <div>
                 {addToCart.map((cartData) => {
-                  const { title, price, categoryName, rating, img, _id } =
+                  const { title, price, categoryName, img, _id } =
                     cartData;
                   return (
                     <div>
