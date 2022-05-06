@@ -6,12 +6,11 @@ import "./Cart.css";
 import { useWishlist } from "../../Context/wishlistContext";
 import { addToWishlist } from "../../Utility/addToWishlist";
 const Cart = () => {
-
   const { cartState, cartDispatch } = useCart();
   const { addToCart } = cartState;
 
-  const {wishListDispatch}= useWishlist()
-
+  const { wishListState, wishListDispatch } = useWishlist();
+  const { wishList } = wishListState;
   let original_price = 0;
   let discount_price = 0;
   let delivery_charges = 0;
@@ -20,6 +19,15 @@ const Cart = () => {
     discount_price += cartData.price * cartData.qty * (10 / 100);
     delivery_charges = cartData.price * (15 / 100);
   });
+
+  const moveToWishlist = (cartData) => {
+    if (wishList.find((item) => item._id === cartData._id)) {
+      removeFromCart(cartData, cartDispatch);
+    } else {
+      addToWishlist(cartData, wishListDispatch);
+      removeFromCart(cartData, cartDispatch);
+    }
+  };
 
   return (
     <div>
@@ -34,8 +42,7 @@ const Cart = () => {
             ) : (
               <div>
                 {addToCart.map((cartData) => {
-                  const { title, price, categoryName, img, _id } =
-                    cartData;
+                  const { title, price, categoryName, img, _id } = cartData;
                   return (
                     <div>
                       <div class="products-card-container">
@@ -98,9 +105,7 @@ const Cart = () => {
                             <div class="product-links">
                               <button
                                 class="butoon-wishlist"
-                                onClick={() =>
-                                  addToWishlist(cartData, wishListDispatch)
-                                }
+                                onClick={() => moveToWishlist(cartData)}
                               >
                                 Move to wishlist
                               </button>
@@ -142,7 +147,13 @@ const Cart = () => {
               <hr />
               <div class="space-between">
                 <h3>Total Pay Amount</h3>
-                <h3>{(original_price + discount_price - delivery_charges).toFixed()}</h3>
+                <h3>
+                  {(
+                    original_price +
+                    discount_price -
+                    delivery_charges
+                  ).toFixed()}
+                </h3>
               </div>
               <hr />
             </div>
