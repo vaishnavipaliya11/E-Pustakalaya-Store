@@ -11,7 +11,9 @@ import { useState } from "react";
 import { useCart } from "../../Context/cartContext";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../Context/authContext";
-import { addToCart } from "../../Utility/addToCart";
+import { add_to_cart } from "../../Utility/addToCart";
+import { useWishlist } from "../../Context/wishlistContext";
+import { addToWishlist } from "../../Utility/addToWishlist";
 
 const Products = () => {
   const { state, dispatch } = useFilter();
@@ -20,6 +22,7 @@ const Products = () => {
   const { cartState, cartDispatch } = useCart();
   const { auth } = useAuth();
   const navigate = useNavigate();
+  const{wishListDispatch}= useWishlist()
 
   const finalRatingProducts = getRatingProducts(data, rating);
   const finalCategoryProducts = getCategoryProducts(
@@ -171,17 +174,9 @@ const Products = () => {
                         <button
                           className="clear-btn"
                           onClick={() =>
-                            dispatch({
-                              type: "MOVE-TO-WISHLIST",
-                              payload: {
-                                title,
-                                price,
-                                rating,
-                                categoryName,
-                                img,
-                                _id,
-                              },
-                            })
+                            auth
+                              ? addToWishlist(cardData, wishListDispatch)
+                              : navigate("/login")
                           }
                         >
                           <i class="bi bi-suit-heart"></i>
@@ -203,21 +198,16 @@ const Products = () => {
                             {price}₹
                           </div>
                           <div class="product-links">
-                          
-                            
-                              <button
-                                className="add-to-cart"
-                                onClick={() =>
-                                  auth
-                                    ? addToCart(cardData, cartDispatch)
-                                    : navigate("/login")
-                                }
-                              >
-                                Add to cart
-                              </button>
-                             
-                           
-                           
+                            <button
+                              className="add-to-cart"
+                              onClick={() =>
+                                auth
+                                  ? add_to_cart(cardData, cartDispatch)
+                                  : navigate("/login")
+                              }
+                            >
+                              Add to cart
+                            </button>
                           </div>
                         </div>
                       </div>

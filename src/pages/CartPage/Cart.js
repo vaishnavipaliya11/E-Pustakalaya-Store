@@ -1,16 +1,16 @@
 import React from "react";
 import { useCart } from "../../Context/cartContext";
-import { useFilter } from "../../Context/Filter_context";
 import { removeFromCart } from "../../Utility/removeFromCart";
 import { qtyHandler } from "../../Utility/qtyHandler";
 import "./Cart.css";
-
+import { useWishlist } from "../../Context/wishlistContext";
+import { addToWishlist } from "../../Utility/addToWishlist";
 const Cart = () => {
-  const { state, dispatch } = useFilter();
-
   const { cartState, cartDispatch } = useCart();
   const { addToCart } = cartState;
 
+  const { wishListState, wishListDispatch } = useWishlist();
+  const { wishList } = wishListState;
   let original_price = 0;
   let discount_price = 0;
   let delivery_charges = 0;
@@ -19,6 +19,15 @@ const Cart = () => {
     discount_price += cartData.price * cartData.qty * (10 / 100);
     delivery_charges = cartData.price * (15 / 100);
   });
+
+  const moveToWishlist = (cartData) => {
+    if (wishList.find((item) => item._id === cartData._id)) {
+      removeFromCart(cartData, cartDispatch);
+    } else {
+      addToWishlist(cartData, wishListDispatch);
+      removeFromCart(cartData, cartDispatch);
+    }
+  };
 
   return (
     <div>
@@ -33,8 +42,7 @@ const Cart = () => {
             ) : (
               <div>
                 {addToCart.map((cartData) => {
-                  const { title, price, categoryName, rating, img, _id } =
-                    cartData;
+                  const { title, price, categoryName, img, _id } = cartData;
                   return (
                     <div>
                       <div class="products-card-container">
@@ -97,19 +105,7 @@ const Cart = () => {
                             <div class="product-links">
                               <button
                                 class="butoon-wishlist"
-                                onClick={() =>
-                                  dispatch({
-                                    type: "MOVE-TO-WISHLIST",
-                                    payload: {
-                                      price,
-                                      rating,
-                                      categoryName,
-                                      title,
-                                      img,
-                                      _id,
-                                    },
-                                  })
-                                }
+                                onClick={() => moveToWishlist(cartData)}
                               >
                                 Move to wishlist
                               </button>
@@ -141,17 +137,23 @@ const Cart = () => {
 
               <div class="space-between">
                 <h4>Discount </h4>
-                <h3>{discount_price.toFixed(2)}</h3>
+                <h3>{discount_price.toFixed()}</h3>
               </div>
 
               <div class="space-between">
                 <h4>Delivery Charges </h4>
-                <h3>{delivery_charges.toFixed(2)}</h3>
+                <h3>{delivery_charges.toFixed()}</h3>
               </div>
               <hr />
               <div class="space-between">
                 <h3>Total Pay Amount</h3>
-                <h3>{original_price + discount_price - delivery_charges}</h3>
+                <h3>
+                  {(
+                    original_price +
+                    discount_price -
+                    delivery_charges
+                  ).toFixed()}
+                </h3>
               </div>
               <hr />
             </div>
