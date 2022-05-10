@@ -14,15 +14,17 @@ import { useAuth } from "../../Context/authContext";
 import { add_to_cart } from "../../Utility/addToCart";
 import { useWishlist } from "../../Context/wishlistContext";
 import { addToWishlist } from "../../Utility/addToWishlist";
-
+import { removeFromWishlist } from "../../Utility/removeFromWishlist";
 const Products = () => {
   const { state, dispatch } = useFilter();
   const { sorting, rating, categories, price } = state;
   const { data } = useAxios();
   const { cartState, cartDispatch } = useCart();
+  const {addToCart}= cartState
   const { auth } = useAuth();
   const navigate = useNavigate();
-  const{wishListDispatch}= useWishlist()
+  const { wishListState, wishListDispatch } = useWishlist();
+  const { wishList } = wishListState;
 
   const finalRatingProducts = getRatingProducts(data, rating);
   const finalCategoryProducts = getCategoryProducts(
@@ -34,6 +36,16 @@ const Products = () => {
     price
   );
   const finalSortingProducts = getSorting(finalRangeProducts, sorting);
+
+  const wishlistHandler = (cardData) => {
+    if (wishList.find((item) => item._id === cardData._id)) {
+      removeFromWishlist(cardData, wishListDispatch);
+    } else if (auth) {
+      addToWishlist(cardData, wishListDispatch);
+    } else {
+      navigate("/login");
+    }
+  };
 
   return (
     <div>
@@ -171,16 +183,21 @@ const Products = () => {
                   <div class="products-card-container">
                     <div class="product-card">
                       <div class="badge">
-                        <button
-                          className="clear-btn"
-                          onClick={() =>
-                            auth
-                              ? addToWishlist(cardData, wishListDispatch)
-                              : navigate("/login")
-                          }
-                        >
-                          <i class="bi bi-suit-heart"></i>
-                        </button>
+                        {wishList.find((item) => item._id === cardData._id) ? (
+                          <button
+                            className="clear-btn"
+                            onClick={() => wishlistHandler(cardData)}
+                          >
+                            <i class="bi bi-heart-fill icon-wishlisted"></i>
+                          </button>
+                        ) : (
+                          <button
+                            className="clear-btn"
+                            onClick={() => wishlistHandler(cardData)}
+                          >
+                            <i class="bi bi-suit-heart"></i>
+                          </button>
+                        )}
                       </div>
                       <div class="product-tumb">
                         <img src={img} />
@@ -198,6 +215,18 @@ const Products = () => {
                             {price}₹
                           </div>
                           <div class="product-links">
+                          {addToCart.find(
+                            (item) => item._id === cardData._id
+                          ) ? (
+                            <button
+                              className="add-to-cart"
+                              onClick={() =>
+                                auth ? navigate("/cart") : navigate("/login")
+                              }
+                            >
+                              Go to cart
+                            </button>
+                          ) : (
                             <button
                               className="add-to-cart"
                               onClick={() =>
@@ -208,6 +237,7 @@ const Products = () => {
                             >
                               Add to cart
                             </button>
+                          )}
                           </div>
                         </div>
                       </div>
