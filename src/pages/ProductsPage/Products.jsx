@@ -20,7 +20,7 @@ const Products = () => {
   const { sorting, rating, categories, price } = state;
   const { data } = useAxios();
   const { cartState, cartDispatch } = useCart();
-  const {addToCart}= cartState
+  const { addToCart } = cartState;
   const { auth } = useAuth();
   const navigate = useNavigate();
   const { wishListState, wishListDispatch } = useWishlist();
@@ -113,7 +113,6 @@ const Products = () => {
                   type="checkbox"
                   name="decor"
                   checked={state.categories.decor}
-
                   onChange={() => dispatch({ type: "decor" })}
                 />
                 Decor-Art
@@ -220,29 +219,29 @@ const Products = () => {
                             {price}₹
                           </div>
                           <div class="product-links">
-                          {addToCart.find(
-                            (item) => item._id === cardData._id
-                          ) ? (
-                            <button
-                              className="add-to-cart"
-                              onClick={() =>
-                                auth ? navigate("/cart") : navigate("/login")
-                              }
-                            >
-                              Go to cart
-                            </button>
-                          ) : (
-                            <button
-                              className="add-to-cart"
-                              onClick={() =>
-                                auth
-                                  ? add_to_cart(cardData, cartDispatch)
-                                  : navigate("/login")
-                              }
-                            >
-                              Add to cart
-                            </button>
-                          )}
+                            {addToCart.find(
+                              (item) => item._id === cardData._id
+                            ) ? (
+                              <button
+                                className="add-to-cart"
+                                onClick={() =>
+                                  auth ? navigate("/cart") : navigate("/login")
+                                }
+                              >
+                                Go to cart
+                              </button>
+                            ) : (
+                              <button
+                                className="add-to-cart"
+                                onClick={() =>
+                                  auth
+                                    ? add_to_cart(cardData, cartDispatch)
+                                    : navigate("/login")
+                                }
+                              >
+                                Add to cart
+                              </button>
+                            )}
                           </div>
                         </div>
                       </div>
