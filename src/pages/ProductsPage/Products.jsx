@@ -83,6 +83,7 @@ const Products = () => {
                 <input
                   type="checkbox"
                   name="religious"
+                  checked={state.categories.wall}
                   onChange={() => dispatch({ type: "wall" })}
                 />
                 Wall-Art
@@ -91,6 +92,7 @@ const Products = () => {
                 <input
                   type="checkbox"
                   name="serve"
+                  checked={state.categories.serve}
                   onChange={() => dispatch({ type: "serve" })}
                 />
                 Serving-Art
@@ -100,6 +102,7 @@ const Products = () => {
                 <input
                   type="checkbox"
                   name="weaving"
+                  checked={state.categories.weaving}
                   onChange={() => dispatch({ type: "weaving" })}
                 />
                 Weaving-Art
@@ -109,6 +112,8 @@ const Products = () => {
                 <input
                   type="checkbox"
                   name="decor"
+                  checked={state.categories.decor}
+
                   onChange={() => dispatch({ type: "decor" })}
                 />
                 Decor-Art
