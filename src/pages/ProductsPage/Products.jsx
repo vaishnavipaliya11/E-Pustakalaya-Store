@@ -126,6 +126,8 @@ const Products = () => {
                   type="radio"
                   name="p-ratings"
                   id="best-ratings"
+
+                  checked={state.rating === 4}
                   onChange={() => dispatch({ type: "RATINGS", payload: 4 })}
                 />{" "}
                 4 & above
@@ -135,6 +137,7 @@ const Products = () => {
                   type="radio"
                   name="p-ratings"
                   id="better-ratings"
+                  checked={state.rating === 3}
                   onChange={() => dispatch({ type: "RATINGS", payload: 3 })}
                 />{" "}
                 3 & above
@@ -144,6 +147,7 @@ const Products = () => {
                   type="radio"
                   name="p-ratings"
                   id="good-ratings"
+                  checked={state.rating === 2}
                   onChange={() => dispatch({ type: "RATINGS", payload: 2 })}
                 />{" "}
                 2 & above
@@ -157,6 +161,7 @@ const Products = () => {
                   type="radio"
                   name="sort"
                   id="low-high"
+                  checked={state.sorting === "LOW_TO_HIGH"}
                   onChange={() => dispatch({ type: "LOW_TO_HIGH" })}
                 />
                 Price- low to high
@@ -166,6 +171,7 @@ const Products = () => {
                   type="radio"
                   name="sort"
                   id="high-low"
+                  checked={state.sorting === "HIGH_TO_LOW"}
                   onChange={() => dispatch({ type: "HIGH_TO_LOW" })}
                 />
                 Price- high to low
