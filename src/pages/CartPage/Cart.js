@@ -15,7 +15,7 @@ const Cart = () => {
   let delivery_charges = 0;
   addToCart.forEach((cartData) => {
     originalPrice = originalPrice + cartData.price * cartData.qty;
-    delivery_charges = cartData.price * (15 / 100);
+    delivery_charges = delivery_charges + cartData.price * (15 / 100);
   });
 
   const moveToWishlist = (cartData) => {
