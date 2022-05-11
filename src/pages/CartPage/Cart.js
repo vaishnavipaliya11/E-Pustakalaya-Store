@@ -80,20 +80,26 @@ const Cart = () => {
                                 +
                               </button>
 
-                              <button
-                                class="cart-qty-minus"
-                                type="button"
-                                value="-"
-                                onClick={() =>
-                                  qtyHandler(
-                                    cartData,
-                                    "decrement",
-                                    cartDispatch
-                                  )
-                                }
-                              >
-                                -
-                              </button>
+                              {originalPrice<=0 ?
+                              <button class="cart-qty-minus"
+                               disabled>-</button>
+                            :<button
+                            class="cart-qty-minus"
+                            type="button"
+                            value="-"
+                            onClick={() =>
+                              qtyHandler(
+                                cartData,
+                                "decrement",
+                                cartDispatch
+                              )
+                            }
+                           
+                          >
+                            -
+                          </button>
+                          }
+                              
                             </div>
 
                             <div class="product-price">
