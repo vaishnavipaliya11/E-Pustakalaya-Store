@@ -7,7 +7,6 @@ import { getRatingProducts } from "../../Utility/rating";
 import { getSorting } from "../../Utility/sorting";
 import "./Products.css";
 import "../../components/Cards/Card.css";
-import { useState } from "react";
 import { useCart } from "../../Context/cartContext";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../Context/authContext";
@@ -15,6 +14,7 @@ import { add_to_cart } from "../../Utility/addToCart";
 import { useWishlist } from "../../Context/wishlistContext";
 import { addToWishlist } from "../../Utility/addToWishlist";
 import { removeFromWishlist } from "../../Utility/removeFromWishlist";
+
 const Products = () => {
   const { state, dispatch } = useFilter();
   const { sorting, rating, categories, price } = state;
@@ -198,7 +198,9 @@ const Products = () => {
                             className="clear-btn"
                             onClick={() => wishlistHandler(cardData)}
                           >
+
                             <i class="bi bi-heart-fill icon-wishlisted"></i>
+
                           </button>
                         ) : (
                           <button
@@ -208,6 +210,7 @@ const Products = () => {
                             <i class="bi bi-suit-heart"></i>
                           </button>
                         )}
+
                       </div>
                       <div class="product-tumb">
                         <img src={img} />
@@ -264,3 +267,5 @@ const Products = () => {
 };
 
 export { Products };
+
+
