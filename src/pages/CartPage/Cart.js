@@ -11,13 +11,11 @@ const Cart = () => {
 
   const { wishListState, wishListDispatch } = useWishlist();
   const { wishList } = wishListState;
-  let original_price = 0;
-  let discount_price = 0;
+  let originalPrice = 0;
   let delivery_charges = 0;
   addToCart.forEach((cartData) => {
-    original_price += cartData.price * cartData.qty;
-    discount_price += cartData.price * cartData.qty * (10 / 100);
-    delivery_charges = cartData.price * (15 / 100);
+    originalPrice = originalPrice + cartData.price * cartData.qty;
+    delivery_charges = delivery_charges + cartData.price * (15 / 100);
   });
 
   const moveToWishlist = (cartData) => {
@@ -82,20 +80,26 @@ const Cart = () => {
                                 +
                               </button>
 
-                              <button
-                                class="cart-qty-minus"
-                                type="button"
-                                value="-"
-                                onClick={() =>
-                                  qtyHandler(
-                                    cartData,
-                                    "decrement",
-                                    cartDispatch
-                                  )
-                                }
-                              >
-                                -
-                              </button>
+                              {originalPrice<=0 ?
+                              <button class="cart-qty-minus"
+                               disabled>-</button>
+                            :<button
+                            class="cart-qty-minus"
+                            type="button"
+                            value="-"
+                            onClick={() =>
+                              qtyHandler(
+                                cartData,
+                                "decrement",
+                                cartDispatch
+                              )
+                            }
+                           
+                          >
+                            -
+                          </button>
+                          }
+                              
                             </div>
 
                             <div class="product-price">
@@ -127,30 +131,25 @@ const Cart = () => {
             <h2 class="align-center">Price Details</h2>
             <div>
               <div class="space-between">
-                <h4>Items in cart</h4>
+                <h4>Number of Cards</h4>
                 <h3>{addToCart.length}</h3>
               </div>
               <div class="space-between">
                 <h4>Items total price</h4>
-                <h3>{original_price}</h3>
-              </div>
-
-              <div class="space-between">
-                <h4>Discount </h4>
-                <h3>{discount_price.toFixed()}</h3>
+                <h3>{originalPrice}</h3>
               </div>
 
               <div class="space-between">
                 <h4>Delivery Charges </h4>
-                <h3>{delivery_charges.toFixed()}</h3>
+                 <h3>{delivery_charges.toFixed()}</h3>
               </div>
               <hr />
               <div class="space-between">
                 <h3>Total Pay Amount</h3>
                 <h3>
                   {(
-                    original_price +
-                    discount_price -
+                    originalPrice +
+                    
                     delivery_charges
                   ).toFixed()}
                 </h3>

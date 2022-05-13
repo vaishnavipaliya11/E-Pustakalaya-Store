@@ -1,6 +1,6 @@
 import React from "react";
 import "./NavBar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../pages/index";
 import { useAuth } from "../../Context/authContext";
 import { useCart } from "../../Context/cartContext";
@@ -8,7 +8,7 @@ import { useWishlist } from "../../Context/wishlistContext";
 
 const Navbar = () => {
   const { auth, setAuth } = useAuth();
-
+const navigate = useNavigate()
   const { cartState } = useCart();
   const { addToCart } = cartState;
   const { wishListState } = useWishlist();
@@ -53,7 +53,7 @@ const Navbar = () => {
                 </h3>
               </Link>
             ) : (
-              <h3>
+              <h3 onClick={()=> navigate("/login")}>
                 <i class="bi bi-person-fill"></i>
                 <span></span>
               </h3>

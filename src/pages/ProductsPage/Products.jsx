@@ -25,6 +25,7 @@ const Products = () => {
   const navigate = useNavigate();
   const { wishListState, wishListDispatch } = useWishlist();
   const { wishList } = wishListState;
+
   const finalRatingProducts = getRatingProducts(data, rating);
   const finalCategoryProducts = getCategoryProducts(
     finalRatingProducts,
@@ -82,6 +83,7 @@ const Products = () => {
                 <input
                   type="checkbox"
                   name="religious"
+                  checked={state.categories.wall}
                   onChange={() => dispatch({ type: "wall" })}
                 />
                 Wall-Art
@@ -90,6 +92,7 @@ const Products = () => {
                 <input
                   type="checkbox"
                   name="serve"
+                  checked={state.categories.serve}
                   onChange={() => dispatch({ type: "serve" })}
                 />
                 Serving-Art
@@ -99,6 +102,7 @@ const Products = () => {
                 <input
                   type="checkbox"
                   name="weaving"
+                  checked={state.categories.weaving}
                   onChange={() => dispatch({ type: "weaving" })}
                 />
                 Weaving-Art
@@ -108,6 +112,7 @@ const Products = () => {
                 <input
                   type="checkbox"
                   name="decor"
+                  checked={state.categories.decor}
                   onChange={() => dispatch({ type: "decor" })}
                 />
                 Decor-Art
@@ -121,6 +126,8 @@ const Products = () => {
                   type="radio"
                   name="p-ratings"
                   id="best-ratings"
+
+                  checked={state.rating === 4}
                   onChange={() => dispatch({ type: "RATINGS", payload: 4 })}
                 />{" "}
                 4 & above
@@ -130,6 +137,7 @@ const Products = () => {
                   type="radio"
                   name="p-ratings"
                   id="better-ratings"
+                  checked={state.rating === 3}
                   onChange={() => dispatch({ type: "RATINGS", payload: 3 })}
                 />{" "}
                 3 & above
@@ -139,6 +147,7 @@ const Products = () => {
                   type="radio"
                   name="p-ratings"
                   id="good-ratings"
+                  checked={state.rating === 2}
                   onChange={() => dispatch({ type: "RATINGS", payload: 2 })}
                 />{" "}
                 2 & above
@@ -152,6 +161,7 @@ const Products = () => {
                   type="radio"
                   name="sort"
                   id="low-high"
+                  checked={state.sorting === "LOW_TO_HIGH"}
                   onChange={() => dispatch({ type: "LOW_TO_HIGH" })}
                 />
                 Price- low to high
@@ -161,6 +171,7 @@ const Products = () => {
                   type="radio"
                   name="sort"
                   id="high-low"
+                  checked={state.sorting === "HIGH_TO_LOW"}
                   onChange={() => dispatch({ type: "HIGH_TO_LOW" })}
                 />
                 Price- high to low
@@ -187,7 +198,9 @@ const Products = () => {
                             className="clear-btn"
                             onClick={() => wishlistHandler(cardData)}
                           >
-                            <i class="bi bi-heart-fill icon-wishlisted" ></i>
+
+                            <i class="bi bi-heart-fill icon-wishlisted"></i>
+
                           </button>
                         ) : (
                           <button
@@ -197,7 +210,7 @@ const Products = () => {
                             <i class="bi bi-suit-heart"></i>
                           </button>
                         )}
-                        
+
                       </div>
                       <div class="product-tumb">
                         <img src={img} />
@@ -215,16 +228,29 @@ const Products = () => {
                             {price}₹
                           </div>
                           <div class="product-links">
-                            <button
-                              className="add-to-cart"
-                              onClick={() =>
-                                auth
-                                  ? add_to_cart(cardData, cartDispatch)
-                                  : navigate("/login")
-                              }
-                            >
-                              Add to cart
-                            </button>
+                            {addToCart.find(
+                              (item) => item._id === cardData._id
+                            ) ? (
+                              <button
+                                className="add-to-cart"
+                                onClick={() =>
+                                  auth ? navigate("/cart") : navigate("/login")
+                                }
+                              >
+                                Go to cart
+                              </button>
+                            ) : (
+                              <button
+                                className="add-to-cart"
+                                onClick={() =>
+                                  auth
+                                    ? add_to_cart(cardData, cartDispatch)
+                                    : navigate("/login")
+                                }
+                              >
+                                Add to cart
+                              </button>
+                            )}
                           </div>
                         </div>
                       </div>
