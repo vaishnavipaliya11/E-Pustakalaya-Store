@@ -80,7 +80,7 @@ const Cart = () => {
                                 +
                               </button>
 
-                              {originalPrice<=0 ?
+                              {cartData.qty === 1 ?
                               <button class="cart-qty-minus"
                                disabled>-</button>
                             :<button
