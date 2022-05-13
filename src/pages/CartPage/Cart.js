@@ -1,85 +1,128 @@
 import React from "react";
-import { useFilter } from "../../Context/Filter_context";
+import { useCart } from "../../Context/cartContext";
+import { removeFromCart } from "../../Utility/removeFromCart";
+import { qtyHandler } from "../../Utility/qtyHandler";
 import "./Cart.css";
-
+import { useWishlist } from "../../Context/wishlistContext";
+import { addToWishlist } from "../../Utility/addToWishlist";
 const Cart = () => {
-  const { state, dispatch } = useFilter();
-  const { addToCart, cartItemsCount, ItemsCost, totalCost,qty } =
-    state;
-   
+  const { cartState, cartDispatch } = useCart();
+  const { addToCart } = cartState;
+
+  const { wishListState, wishListDispatch } = useWishlist();
+  const { wishList } = wishListState;
+  let originalPrice = 0;
+  let delivery_charges = 0;
+  addToCart.forEach((cartData) => {
+    originalPrice = originalPrice + cartData.price * cartData.qty;
+    delivery_charges = delivery_charges + cartData.price * (15 / 100);
+  });
+
+  const moveToWishlist = (cartData) => {
+    if (wishList.find((item) => item._id === cartData._id)) {
+      removeFromCart(cartData, cartDispatch);
+    } else {
+      addToWishlist(cartData, wishListDispatch);
+      removeFromCart(cartData, cartDispatch);
+    }
+  };
 
   return (
     <div>
       <article class="main-cart-container">
         <div className="product-scroll">
           <div class="cart-items">
-            {addToCart.map(({ title, price, categoryName, rating, img, _id }) => {
-              return (
-                <div>
-                  <div class="products-card-container">
-                    <div class="cart-arrival-card">
-                      <div class="badge"  onClick={() => dispatch({type:"REMOVE-FROM-CART", 
-                      payload:{title, price, categoryName, rating, img, _id}})}>X</div>
-                      <div class="cart-product-tumb">
-                        <img src={img} alt="" />
-                      </div>
-                      <div class="cart-product-details">
-                        <span class="product-catagory">
-                          {" "}
-                          <b>catagory-</b>
-                          {categoryName}
-                        </span>
-                        <h2>{title}</h2>
-
-                        <div>
-                          <button
-                            class="cart-qty-plus"
-                            type="button"
-                            value="+"
+            {addToCart.length === 0 ? (
+              <div>
+                {" "}
+                <h2>Your Cart is Empty</h2>
+              </div>
+            ) : (
+              <div>
+                {addToCart.map((cartData) => {
+                  const { title, price, categoryName, img, _id } = cartData;
+                  return (
+                    <div>
+                      <div class="products-card-container">
+                        <div class="cart-arrival-card">
+                          <div
+                            class="badge"
                             onClick={() =>
-                              dispatch({
-                                type: "INCREASE-ITEM",
-                                payload: { price },
-                              })
+                              removeFromCart(cartData, cartDispatch)
                             }
                           >
-                            +
-                          </button>
+                            X
+                          </div>
+                          <div class="cart-product-tumb">
+                            <img src={img} alt="" />
+                          </div>
+                          <div class="cart-product-details">
+                            <span class="product-catagory">
+                              {" "}
+                              <b>catagory-</b>
+                              {categoryName}
+                            </span>
+                            <h2>{title}</h2>
 
-                          <button
+                            <div>
+                              <button
+                                class="cart-qty-plus"
+                                type="button"
+                                value="+"
+                                onClick={() =>
+                                  qtyHandler(
+                                    cartData,
+                                    "increment",
+                                    cartDispatch
+                                  )
+                                }
+                              >
+                                +
+                              </button>
+
+                              {originalPrice<=0 ?
+                              <button class="cart-qty-minus"
+                               disabled>-</button>
+                            :<button
                             class="cart-qty-minus"
                             type="button"
                             value="-"
                             onClick={() =>
-                              dispatch({
-                                type: "DECREASE-ITEM",
-                                payload: { price },
-                              })
+                              qtyHandler(
+                                cartData,
+                                "decrement",
+                                cartDispatch
+                              )
                             }
+                           
                           >
                             -
                           </button>
-                        </div>
+                          }
+                              
+                            </div>
 
-                        <div class="product-price">
-                          <small>₹96.00</small>₹{price}
-                        </div>
-                        <div class="cart-product-bottom-details"></div>
-                        <div class="product-links">
-                        
-                          <button class="butoon-wishlist" 
-                          onClick={() => dispatch({type:"MOVE-TO-WISHLIST", 
-                          payload:{price, rating, categoryName, title,img,_id}})}>
-                            Move to wishlist
-                          </button>
+                            <div class="product-price">
+                              <small>₹96.00</small>₹{price}
+                            </div>
+                            <div class="cart-product-bottom-details"></div>
+                            <div class="product-links">
+                              <button
+                                class="butoon-wishlist"
+                                onClick={() => moveToWishlist(cartData)}
+                              >
+                                Move to wishlist
+                              </button>
+                            </div>
+                          </div>
                         </div>
                       </div>
+                      <div></div>
                     </div>
-                  </div>
-                  <div></div>
-                </div>
-              );
-            })}
+                  );
+                })}
+              </div>
+            )}
           </div>
         </div>
 
@@ -88,22 +131,28 @@ const Cart = () => {
             <h2 class="align-center">Price Details</h2>
             <div>
               <div class="space-between">
-                <h4>Items in cart</h4>
-                <h3>{cartItemsCount}</h3>
+                <h4>Number of Cards</h4>
+                <h3>{addToCart.length}</h3>
               </div>
               <div class="space-between">
                 <h4>Items total price</h4>
-                <h3>{ItemsCost}</h3>
+                <h3>{originalPrice}</h3>
               </div>
 
               <div class="space-between">
-                <h4>Items quantity</h4>
-                <h3>{qty}</h3>
+                <h4>Delivery Charges </h4>
+                 <h3>{delivery_charges.toFixed()}</h3>
               </div>
               <hr />
               <div class="space-between">
                 <h3>Total Pay Amount</h3>
-                <h3>{ItemsCost}</h3>
+                <h3>
+                  {(
+                    originalPrice +
+                    
+                    delivery_charges
+                  ).toFixed()}
+                </h3>
               </div>
               <hr />
             </div>

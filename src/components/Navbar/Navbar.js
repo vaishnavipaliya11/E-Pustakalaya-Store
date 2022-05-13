@@ -1,13 +1,23 @@
 import React from "react";
 import "./NavBar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../pages/index";
-import { useFilter } from "../../Context/Filter_context";
+import { useAuth } from "../../Context/authContext";
+import { useCart } from "../../Context/cartContext";
+import { useWishlist } from "../../Context/wishlistContext";
 
 const Navbar = () => {
-  const { state } = useFilter();
-  const { cartItemsCount,wishCount } = state;
+  const { auth, setAuth } = useAuth();
+const navigate = useNavigate()
+  const { cartState } = useCart();
+  const { addToCart } = cartState;
+  const { wishListState } = useWishlist();
+  const { wishList } = wishListState;
 
+  const logOutHandler = () => {
+    setAuth(localStorage.removeItem("token"));
+    navigate("/login");
+  };
   return (
     <div>
       <nav class="topnav">
@@ -36,24 +46,30 @@ const Navbar = () => {
           </div>
 
           <div class="icon-container">
-            <Link class="topnav-link" to="/login">
-              <h3>
+            {auth ? (
+              <Link class="topnav-link" to="/login">
+                <h3 onClick={logOutHandler}>
+                  <i class="bi bi-box-arrow-right"></i>
+                </h3>
+              </Link>
+            ) : (
+              <h3 onClick={()=> navigate("/login")}>
                 <i class="bi bi-person-fill"></i>
                 <span></span>
               </h3>
-            </Link>
+            )}
 
             <Link class="topnav-link" to="/wishlist">
               <h3>
                 <i class="bi bi-suit-heart-fill"></i>
-                <span class="cart-badge">{wishCount}</span>
+                <span class="cart-badge">{wishList.length}</span>
               </h3>
             </Link>
 
             <Link class="topnav-link" to="/cart">
               <h3>
                 <i class="bi bi-cart-check-fill"></i>
-                <span class="cart-badge">{cartItemsCount}</span>
+                <span class="cart-badge">{addToCart.length}</span>
               </h3>
             </Link>
           </div>
