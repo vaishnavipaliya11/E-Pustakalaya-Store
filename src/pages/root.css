@@ -27,4 +27,5 @@
     color: var(--primary-color);
     align-self: center;
     margin: 0.5rem;
+    padding-top: 1rem;
 }

@@ -46,7 +46,7 @@ const Cart = () => {
                       <div class="products-card-container">
                         <div class="cart-arrival-card">
                           <div
-                            class="badge"
+                            className="badge"
                             onClick={() =>
                               removeFromCart(cartData, cartDispatch)
                             }
@@ -57,11 +57,6 @@ const Cart = () => {
                             <img src={img} alt="" />
                           </div>
                           <div class="cart-product-details">
-                            <span class="product-catagory">
-                              {" "}
-                              <b>catagory-</b>
-                              {categoryName}
-                            </span>
                             <h2>{title}</h2>
 
                             <div>
@@ -80,31 +75,29 @@ const Cart = () => {
                                 +
                               </button>
 
-                              {cartData.qty === 1 ?
-                              <button class="cart-qty-minus"
-                               disabled>-</button>
-                            :<button
-                            class="cart-qty-minus"
-                            type="button"
-                            value="-"
-                            onClick={() =>
-                              qtyHandler(
-                                cartData,
-                                "decrement",
-                                cartDispatch
-                              )
-                            }
-                           
-                          >
-                            -
-                          </button>
-                          }
-                              
+                              {cartData.qty === 1 ? (
+                                <button class="cart-qty-minus" disabled>
+                                  -
+                                </button>
+                              ) : (
+                                <button
+                                  class="cart-qty-minus"
+                                  type="button"
+                                  value="-"
+                                  onClick={() =>
+                                    qtyHandler(
+                                      cartData,
+                                      "decrement",
+                                      cartDispatch
+                                    )
+                                  }
+                                >
+                                  -
+                                </button>
+                              )}
                             </div>
 
-                            <div class="product-price">
-                              <small>₹96.00</small>₹{price}
-                            </div>
+                            <div class="product-price">₹{price}</div>
                             <div class="cart-product-bottom-details"></div>
                             <div class="product-links">
                               <button
@@ -141,18 +134,12 @@ const Cart = () => {
 
               <div class="space-between">
                 <h4>Delivery Charges </h4>
-                 <h3>{delivery_charges.toFixed()}</h3>
+                <h3>{delivery_charges.toFixed()}</h3>
               </div>
               <hr />
               <div class="space-between">
                 <h3>Total Pay Amount</h3>
-                <h3>
-                  {(
-                    originalPrice +
-                    
-                    delivery_charges
-                  ).toFixed()}
-                </h3>
+                <h3>{(originalPrice + delivery_charges).toFixed()}</h3>
               </div>
               <hr />
             </div>

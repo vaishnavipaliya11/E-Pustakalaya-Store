@@ -18,6 +18,7 @@ body {
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
+    height: calc(100vh - 5rem);
 }
 
 /*topnav*/
@@ -25,8 +26,7 @@ body {
 .slider-img {
     grid-area: slider;
     background-color: white;
-    padding: 1rem;
-    margin-bottom: 2rem;
+    margin: 2rem;
 }
 
 /* slider */
@@ -37,7 +37,7 @@ body {
 }
 
 .banner-img {
-    width: 90%;
+    /* width: 90%; */
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 .text-right {
@@ -98,3 +98,8 @@ body {
 .category-container-home{
     grid-area: 'category';
 }
+
+.vertical-card-container{
+    background-color: transparent;
+}
+

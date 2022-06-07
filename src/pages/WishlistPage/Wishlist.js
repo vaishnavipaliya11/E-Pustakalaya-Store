@@ -43,11 +43,6 @@ function Wishlist() {
                       <img src={img} alt="" />
                     </div>
                     <div class="cart-product-details">
-                      <span class="product-catagory">
-                        {" "}
-                        <b>catagory-</b>
-                        {categoryName}
-                      </span>
                       <h2>{title}</h2>
 
                       <div class="product-price">

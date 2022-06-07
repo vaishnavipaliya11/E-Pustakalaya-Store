@@ -66,7 +66,7 @@
     padding: 5px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
   }
   
   .product-catagory {
@@ -121,6 +121,8 @@
     font-size: 18px;
     color: var(--main-color);
     font-weight: 400;
+    margin: 0.5rem;
+    padding: 0.5rem;
   }
   
   .product-price small {
@@ -133,6 +135,7 @@
   
   .product-links {
     text-align: right;
+    padding: 0.5rem;
   }
   
   .product-links a {
@@ -151,8 +154,7 @@
   .butoon-wishlist{
     align-self: center;
     color: var(--primary-color);
-    font-weight: bold;
-    padding:5px 60px;
+    padding:5px 25px;
     outline: none;
     border: 1px solid var(--primary-color);
     border-radius:10px;
@@ -206,3 +208,4 @@
     color: white;
   }
   
+ 

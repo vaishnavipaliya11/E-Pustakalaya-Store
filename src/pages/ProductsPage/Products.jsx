@@ -126,7 +126,6 @@ const Products = () => {
                   type="radio"
                   name="p-ratings"
                   id="best-ratings"
-
                   checked={state.rating === 4}
                   onChange={() => dispatch({ type: "RATINGS", payload: 4 })}
                 />{" "}
@@ -198,9 +197,7 @@ const Products = () => {
                             className="clear-btn"
                             onClick={() => wishlistHandler(cardData)}
                           >
-
                             <i class="bi bi-heart-fill icon-wishlisted"></i>
-
                           </button>
                         ) : (
                           <button
@@ -210,7 +207,6 @@ const Products = () => {
                             <i class="bi bi-suit-heart"></i>
                           </button>
                         )}
-
                       </div>
                       <div class="product-tumb">
                         <img src={img} />
@@ -227,7 +223,7 @@ const Products = () => {
                             <small>₹96.00</small>
                             {price}₹
                           </div>
-                          <div class="product-links">
+                          <div>
                             {addToCart.find(
                               (item) => item._id === cardData._id
                             ) ? (
@@ -267,5 +263,3 @@ const Products = () => {
 };
 
 export { Products };
-
-

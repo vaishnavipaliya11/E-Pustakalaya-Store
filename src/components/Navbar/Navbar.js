@@ -32,32 +32,11 @@ const navigate = useNavigate()
             </Link>
           </nav>
           <div class="align-center">
-            <div class="search-bar">
-              <input
-                type="search"
-                name="email"
-                placeholder="Search"
-                class="input-rounded"
-              />
-              <button class="link-no-style search-bar-btn">
-                <i style={{ fontSize: "1.5rem" }} class="bi bi-search"></i>
-              </button>
-            </div>
+            
           </div>
 
           <div class="icon-container">
-            {auth ? (
-              <Link class="topnav-link" to="/login">
-                <h3 onClick={logOutHandler}>
-                  <i class="bi bi-box-arrow-right"></i>
-                </h3>
-              </Link>
-            ) : (
-              <h3 onClick={()=> navigate("/login")}>
-                <i class="bi bi-person-fill"></i>
-                <span></span>
-              </h3>
-            )}
+            
 
             <Link class="topnav-link" to="/wishlist">
               <h3>
@@ -72,6 +51,20 @@ const navigate = useNavigate()
                 <span class="cart-badge">{addToCart.length}</span>
               </h3>
             </Link>
+
+            {auth ? (
+              <Link class="topnav-link" to="/login">
+                <h3 onClick={logOutHandler}>
+                  <i class="bi bi-box-arrow-right"></i>
+                </h3>
+              </Link>
+            ) : (
+              <h3 onClick={()=> navigate("/login")}>
+                <i class="bi bi-person-fill"></i>
+                <span></span>
+              </h3>
+            )}
+
           </div>
         </header>
       </nav>
