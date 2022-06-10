@@ -46,80 +46,19 @@ const filterReducerFunc = (state, action) => {
           serve: false,
         },
         price: 500,
-        addToCart: [],
-        cartItemsCount: 0,
-        ItemsCost: 0,
-        totalCost: 0,
-        deliveryCharge: 40,
-        decreaseItem: [],
-        increaseItem: [],
-        moveToWishlist: [],
-        removeFromWishlist: [],
-        removeFromCart: [],
-        wishCount: 0,
-        qty: 1,
+        
       };
 
-    case "ADD-TO-CART":
-      return {
-        ...state,
-        addToCart: [...state.addToCart, { ...action.payload }],
-        cartItemsCount: state.cartItemsCount + 1,
-        totalCost: Number(state.totalCost) + Number(action.payload.price),
-        ItemsCost: Number(state.ItemsCost) + Number(action.payload.price),
-      };
+  
 
-    case "REMOVE-FROM-CART":
-      if (state.ItemsCost) {
-        return {
-          ...state,
-          addToCart: [
-            ...state.addToCart.filter((item) => {
-              return action.payload._id !== item._id;
-            }),
-          ],
-          ItemsCost: Number(state.ItemsCost) - Number(action.payload.price),
-          cartItemsCount: state.cartItemsCount - 1,
-        };
-      }
+   
 
-    case "REMOVE-FROM-WISHLIST":
-      return {
-        ...state,
-        moveToWishlist: [
-          ...state.moveToWishlist.filter((item) => {
-            return action.payload._id !== item._id;
-          }),
-        ],
-        wishCount: state.wishCount - 1,
-      };
+    
 
-    case "MOVE-TO-WISHLIST":
-      return {
-        ...state,
-        moveToWishlist: [...state.moveToWishlist, { ...action.payload }],
-        wishCount: state.wishCount + 1,
-      };
 
-    case "INCREASE-ITEM":
-      return {
-        ...state,
-        increaseItem: [...state.increaseItem, { ...action.payload }],
-        qty: Number(state.qty) + 1,
-        totalCost: Number(state.totalCost) + Number(state.ItemsCost),
-        ItemsCost: Number(state.ItemsCost) + Number(action.payload.price),
-      };
 
-    case "DECREASE-ITEM":
-      if (state.ItemsCost) {
-        return {
-          ...state,
-          increaseItem: [...state.increaseItem, { ...action.payload }],
-          qty: state.qty - 1,
-          totalCost: Number(state.totalCost) - Number(action.payload.price),
-          ItemsCost: Number(state.ItemsCost) - Number(action.payload.price),
-        };
-      }
+
+   
 
     default:
       return state;
