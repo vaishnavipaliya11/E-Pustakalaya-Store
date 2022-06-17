@@ -1,5 +1,6 @@
 import axios from "axios";
 import {getUserToken} from "../Utility/getUserToken"
+import toast from "react-hot-toast";
 export const addToWishlist = async(product,wishListDispatch)=>{
     try {
         const { data } = await axios.post(
@@ -13,6 +14,7 @@ export const addToWishlist = async(product,wishListDispatch)=>{
             },
           }
         );
+        toast.success("Product wishlisted")
         wishListDispatch({ type: "ADD_TO_WISHLIST", payload: data.wishlist });
       } catch (error) {
         console.log(error.response.data);

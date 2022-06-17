@@ -5,7 +5,7 @@ import "../../pages/index";
 import { useAuth } from "../../Context/authContext";
 import { useCart } from "../../Context/cartContext";
 import { useWishlist } from "../../Context/wishlistContext";
-
+import toast from "react-hot-toast";
 const Navbar = () => {
   const { auth, setAuth } = useAuth();
 const navigate = useNavigate()
@@ -16,6 +16,7 @@ const navigate = useNavigate()
 
   const logOutHandler = () => {
     setAuth(localStorage.removeItem("token"));
+    toast.success("logout successfully!!")
     navigate("/login");
   };
   return (

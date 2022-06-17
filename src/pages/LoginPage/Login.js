@@ -4,6 +4,7 @@ import { useState } from "react";
 import "./Login.css";
 import { useAuth } from "../../Context/authContext";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const [userDetails, setUserDetails] = useState({ email: "", password: "" });
@@ -37,7 +38,9 @@ const Login = () => {
         email: "vaishnavipaliya@gmail.com",
         password: "vaishnavi",
       });
+      toast.success('Login Successfully!');
       localStorage.setItem("token", data.encodedToken);
+     
       setAuth(true);
       navigate("/");
     } catch (error) {

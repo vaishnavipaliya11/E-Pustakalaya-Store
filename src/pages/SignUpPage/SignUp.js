@@ -4,7 +4,7 @@ import { useAuth } from "../../Context/authContext";
 import "./Sign.css";
 import { useState } from "react";
 import axios from "axios";
-
+import toast from "react-hot-toast";
 const SignUp = () => {
   const navigate = useNavigate();
   const { auth, setAuth } = useAuth();
@@ -34,7 +34,7 @@ const SignUp = () => {
       });
 
       localStorage.setItem("token", response.data.encodedToken);
-
+      toast.success("Signed Up Successfully!")
       setAuth(true);
       navigate("/login");
     } catch (error) {

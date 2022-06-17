@@ -1,6 +1,6 @@
 import axios from "axios";
 import { getUserToken } from "./getUserToken";
-
+import toast from "react-hot-toast";
 export const removeFromCart = async (product, cartDispatch) => {
   const { _id } = product;
   try {
@@ -9,6 +9,7 @@ export const removeFromCart = async (product, cartDispatch) => {
         authorization: getUserToken(),
       },
     });
+    toast.success("Product removed")
     cartDispatch({ type: "REMOVE_FROM_CART", payload: data.cart });
   } catch (error) {
     console.log(error);
