@@ -34,8 +34,8 @@ const Login = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post("api/auth/login", {
-        email: "adarshbalika@gmail.com",
-        password: "adarshbalika",
+        email: "vaishnavipaliya@gmail.com",
+        password: "vaishnavi",
       });
       localStorage.setItem("token", data.encodedToken);
       setAuth(true);
