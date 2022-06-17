@@ -41,7 +41,7 @@ export const products = [
     {
       _id: uuid(),
       img:"https://i.etsystatic.com/27723862/r/il/4f6a4f/3103278791/il_340x270.3103278791_2cn0.jpg",
-      title: "Mystic Art By Madhuri",
+      title: "Mystic Arts",
       author: "by vaishnavi",
       price: 199,
       rating:5,

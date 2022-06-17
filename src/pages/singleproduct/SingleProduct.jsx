@@ -4,13 +4,18 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useAxios } from "../../Api/API";
 import { useAuth } from "../../Context/authContext";
 import { useCart } from "../../Context/cartContext";
+import { useWishlist } from "../../Context/wishlistContext";
 import { add_to_cart } from "../../Utility/addToCart";
+import { addToWishlist } from "../../Utility/addToWishlist";
+import { removeFromWishlist } from "../../Utility/removeFromWishlist";
 import "./singleproduct.css";
 export const SingleProduct = () => {
   const [singleproduct, setSingleProduct] = useState("");
   const { product_id } = useParams();
   const { cartState, cartDispatch } = useCart();
   const { addToCart } = cartState;
+  const {wishListState, wishListDispatch}= useWishlist()
+  const {wishList}= wishListState
   const { auth } = useAuth();
   const navigate = useNavigate();
   useEffect(() => {
@@ -22,7 +27,16 @@ export const SingleProduct = () => {
     setSingleProduct(response.data.product);
   };
 
-  console.log(singleproduct);
+  const wishlistHandler = (cardData) => {
+    if (wishList.find((item) => item._id === cardData._id)) {
+      removeFromWishlist(cardData, wishListDispatch);
+    } else if (auth) {
+      addToWishlist(cardData, wishListDispatch);
+    } else {
+      navigate("/login");
+    }
+  };
+
   return (
     <div className="single-product-main-container">
       <div className="single-product-container">
@@ -30,18 +44,19 @@ export const SingleProduct = () => {
           <img src={singleproduct?.img}></img>
         </div>
         <div className="single-product-details">
-          <div>
+          <div className="single-product-descrption">
             <h1>{singleproduct?.title}</h1>
             <p>{singleproduct?.author}</p>
-            <p>{singleproduct?.rating}</p>
+            <p>{singleproduct?.rating}⭐</p>
             <p>
               ₹{singleproduct?.price}{" "}
-              <small>
+              <small style={{"color":"gray"}}>
                 {" "}
                 <s>₹500</s>
               </small>
             </p>
           </div>
+          <hr/>
           <div>
             {addToCart.find((item) => item._id === singleproduct._id) ? (
               <button
@@ -62,7 +77,25 @@ export const SingleProduct = () => {
                 Add to cart
               </button>
             )}
-            <button>add to wishlist</button>
+            {wishList.find((item) => item._id === singleproduct._id) ? (
+                <button
+                  className="add-to-cart"
+                  onClick={() => (auth ? navigate("/wishlist") : navigate("/login"))}
+                >
+                  Go to wishlist
+                </button>
+              ) : (
+                <button
+                  className="add-to-cart"
+                  onClick={() =>
+                    auth
+                      ? wishlistHandler(singleproduct) 
+                      : navigate("/login")
+                  }
+                >
+                  Add to wishlist
+                </button>
+              )}
           </div>
         </div>
       </div>
