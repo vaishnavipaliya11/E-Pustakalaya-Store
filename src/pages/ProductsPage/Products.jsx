@@ -14,7 +14,7 @@ import { add_to_cart } from "../../Utility/addToCart";
 import { useWishlist } from "../../Context/wishlistContext";
 import { addToWishlist } from "../../Utility/addToWishlist";
 import { removeFromWishlist } from "../../Utility/removeFromWishlist";
-
+import { Link } from "react-router-dom";
 const Products = () => {
   const { state, dispatch } = useFilter();
   const { sorting, rating, categories, price } = state;
@@ -208,8 +208,12 @@ const Products = () => {
                           </button>
                         )}
                       </div>
-                      <div class="product-tumb">
-                        <img src={img} />
+                      
+                      
+                      
+                      <div class="product-tumb"
+                      >
+                      <Link to={`/singleproduct/${_id}`}> <img src={img} /></Link> 
                       </div>
                       <div class="product-details">
                         <span class="product-catagory">

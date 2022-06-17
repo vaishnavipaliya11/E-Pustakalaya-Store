@@ -10,12 +10,7 @@ const FilterProvider = ({children}) => {
     const [state,dispatch] = useReducer(filterReducerFunc,{
         sorting: null,rating:null, categories:{serve: false,
             wall: false, weaving:false, decor: false},
-            price:500, addToCart: [],  cartItemsCount:0,
-            ItemsCost:0,
-            totalCost:0,
-            btnAdd:"Add Cart",
-            deliveryCharge:40,decreaseItem:[],increaseItem:[]
-            ,moveToWishlist:[],removeFromWishlist:[], removeFromCart:[],wishCount:0,qty:1
+            price:500,
         });
 
         return(

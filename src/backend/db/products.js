@@ -16,6 +16,7 @@ export const products = [
       rating:3,
       discount:30,
       categoryName: "wall",
+     
     },
     {
       _id: uuid(),
@@ -106,6 +107,7 @@ export const products = [
       rating:4,
       discount:50,
       categoryName: "decor",
+      description:"An art piece not only adds aesthetic value to your home but also helps evoke positive emotions. Add a touch of colour, sparkle, inspiration, joy— all at once."
     },
     {
       _id: uuid(),
