@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useAxios } from "../../Api/API";
 import { useAuth } from "../../Context/authContext";
 import { useCart } from "../../Context/cartContext";
 import { useWishlist } from "../../Context/wishlistContext";
@@ -14,8 +13,8 @@ export const SingleProduct = () => {
   const { product_id } = useParams();
   const { cartState, cartDispatch } = useCart();
   const { addToCart } = cartState;
-  const {wishListState, wishListDispatch}= useWishlist()
-  const {wishList}= wishListState
+  const { wishListState, wishListDispatch } = useWishlist();
+  const { wishList } = wishListState;
   const { auth } = useAuth();
   const navigate = useNavigate();
   useEffect(() => {
@@ -50,13 +49,13 @@ export const SingleProduct = () => {
             <p>{singleproduct?.rating}⭐</p>
             <p>
               ₹{singleproduct?.price}{" "}
-              <small style={{"color":"gray"}}>
+              <small style={{ color: "gray" }}>
                 {" "}
                 <s>₹500</s>
               </small>
             </p>
           </div>
-          <hr/>
+          <hr />
           <div>
             {addToCart.find((item) => item._id === singleproduct._id) ? (
               <button
@@ -78,24 +77,24 @@ export const SingleProduct = () => {
               </button>
             )}
             {wishList.find((item) => item._id === singleproduct._id) ? (
-                <button
-                  className="add-to-cart"
-                  onClick={() => (auth ? navigate("/wishlist") : navigate("/login"))}
-                >
-                  Go to wishlist
-                </button>
-              ) : (
-                <button
-                  className="add-to-cart"
-                  onClick={() =>
-                    auth
-                      ? wishlistHandler(singleproduct) 
-                      : navigate("/login")
-                  }
-                >
-                  Add to wishlist
-                </button>
-              )}
+              <button
+                className="add-to-cart"
+                onClick={() =>
+                  auth ? navigate("/wishlist") : navigate("/login")
+                }
+              >
+                Go to wishlist
+              </button>
+            ) : (
+              <button
+                className="add-to-cart"
+                onClick={() =>
+                  auth ? wishlistHandler(singleproduct) : navigate("/login")
+                }
+              >
+                Add to wishlist
+              </button>
+            )}
           </div>
         </div>
       </div>

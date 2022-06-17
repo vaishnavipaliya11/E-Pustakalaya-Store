@@ -8,7 +8,7 @@ import { useWishlist } from "../../Context/wishlistContext";
 import toast from "react-hot-toast";
 const Navbar = () => {
   const { auth, setAuth } = useAuth();
-const navigate = useNavigate()
+  const navigate = useNavigate();
   const { cartState } = useCart();
   const { addToCart } = cartState;
   const { wishListState } = useWishlist();
@@ -16,7 +16,7 @@ const navigate = useNavigate()
 
   const logOutHandler = () => {
     setAuth(localStorage.removeItem("token"));
-    toast.success("logout successfully!!")
+    toast.success("logout successfully!!");
     navigate("/login");
   };
   return (
@@ -32,13 +32,9 @@ const navigate = useNavigate()
               <h4 id="nav-title">Shop Now</h4>
             </Link>
           </nav>
-          <div class="align-center">
-            
-          </div>
+          <div class="align-center"></div>
 
           <div class="icon-container">
-            
-
             <Link class="topnav-link" to="/wishlist">
               <h3>
                 <i class="bi bi-suit-heart-fill"></i>
@@ -60,12 +56,11 @@ const navigate = useNavigate()
                 </h3>
               </Link>
             ) : (
-              <h3 onClick={()=> navigate("/login")}>
+              <h3 onClick={() => navigate("/login")}>
                 <i class="bi bi-person-fill"></i>
                 <span></span>
               </h3>
             )}
-
           </div>
         </header>
       </nav>
