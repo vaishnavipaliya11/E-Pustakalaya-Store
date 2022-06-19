@@ -10,7 +10,7 @@ const FilterProvider = ({children}) => {
     const [state,dispatch] = useReducer(filterReducerFunc,{
         sorting: null,rating:null, categories:{serve: false,
             wall: false, weaving:false, decor: false},
-            price:500,
+            price:500,search:""
         });
 
         return(

@@ -10,7 +10,7 @@ export const products = [
     {
       _id: uuid(),
       img:"https://i.etsystatic.com/24687126/r/il/b6261e/2891796307/il_340x270.2891796307_rw2m.jpg",
-      title: "Imperial-Darsh-Art",
+      title: "Imperial Darsh Art",
       author: "by mohit",
       price: 340,
       rating:3,
@@ -21,7 +21,7 @@ export const products = [
     {
       _id: uuid(),
       img:"https://i.etsystatic.com/27246620/r/il/acb53d/2935663828/il_340x270.2935663828_t7sa.jpg",
-      title: "Imperial-Darsh-Art",
+      title: "Imperial Darsh Art",
       author: " by mohit",
       price: 284,
       rating:5,
@@ -31,7 +31,7 @@ export const products = [
     {
       _id: uuid(),
       img:"https://i.etsystatic.com/25795829/r/il/f915ba/2736426503/il_340x270.2736426503_gqk5.jpg",
-      title: "Imperial-Darsh-Art",
+      title: "Imperial Darsh Art",
       author: "by vaishnavi",
       price: 1000,
       rating:4,

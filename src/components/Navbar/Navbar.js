@@ -6,6 +6,7 @@ import { useAuth } from "../../Context/authContext";
 import { useCart } from "../../Context/cartContext";
 import { useWishlist } from "../../Context/wishlistContext";
 import toast from "react-hot-toast";
+import { useFilter } from "../../Context/Filter_context";
 const Navbar = () => {
   const { auth, setAuth } = useAuth();
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const Navbar = () => {
   const { addToCart } = cartState;
   const { wishListState } = useWishlist();
   const { wishList } = wishListState;
-
+  const { state, dispatch } = useFilter();
   const logOutHandler = () => {
     setAuth(localStorage.removeItem("token"));
     toast.success("logout successfully!!");
@@ -32,8 +33,18 @@ const Navbar = () => {
               <h4 id="nav-title">Shop Now</h4>
             </Link>
           </nav>
-          <div class="align-center"></div>
+          
 
+          <div>
+            <input
+              type="search"
+              placeholder="Search for products"
+              onChange={(e) => {
+                navigate("/products");
+                dispatch({ type: "SEARCH", payload: e.target.value });
+              }}
+            />
+          </div>
           <div class="icon-container">
             <Link class="topnav-link" to="/wishlist">
               <h3>

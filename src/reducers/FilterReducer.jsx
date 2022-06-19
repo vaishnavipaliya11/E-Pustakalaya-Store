@@ -34,7 +34,8 @@ const filterReducerFunc = (state, action) => {
       };
     case "PRICE-RANGE":
       return { ...state, price: action.price_range };
-
+    case "SEARCH":
+      return {...state, search:action.payload}
     case "CLEAR":
       return {
         sorting: null,

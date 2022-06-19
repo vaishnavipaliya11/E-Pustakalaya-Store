@@ -15,9 +15,10 @@ import { useWishlist } from "../../Context/wishlistContext";
 import { addToWishlist } from "../../Utility/addToWishlist";
 import { removeFromWishlist } from "../../Utility/removeFromWishlist";
 import { Link } from "react-router-dom";
+import { getsearchProduct } from "../../Utility/searchProduct";
 const Products = () => {
   const { state, dispatch } = useFilter();
-  const { sorting, rating, categories, price } = state;
+  const { sorting, rating, categories, price,search } = state;
   const { data } = useAxios();
   const { cartState, cartDispatch } = useCart();
   const { addToCart } = cartState;
@@ -35,7 +36,8 @@ const Products = () => {
     finalCategoryProducts,
     price
   );
-  const finalSortingProducts = getSorting(finalRangeProducts, sorting);
+  const finalSearchProducts = getsearchProduct(finalRangeProducts,search)
+  const finalSortingProducts = getSorting(finalSearchProducts, sorting);
 
   const wishlistHandler = (cardData) => {
     if (wishList.find((item) => item._id === cardData._id)) {
