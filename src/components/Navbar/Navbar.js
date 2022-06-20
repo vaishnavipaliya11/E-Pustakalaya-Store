@@ -39,6 +39,7 @@ const Navbar = () => {
             <input
               type="search"
               placeholder="Search for products"
+              className="search-input"
               onChange={(e) => {
                 navigate("/products");
                 dispatch({ type: "SEARCH", payload: e.target.value });
