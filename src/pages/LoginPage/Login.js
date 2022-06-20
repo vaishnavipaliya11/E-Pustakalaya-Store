@@ -25,7 +25,7 @@ const Login = () => {
       });
       localStorage.setItem("token", response.data.encodedToken);
       setAuth(true);
-      navigate("/");
+      navigate("/products");
     } catch (error) {
       console.log(error);
     }
@@ -42,7 +42,7 @@ const Login = () => {
       localStorage.setItem("token", data.encodedToken);
      
       setAuth(true);
-      navigate("/");
+      navigate("/products");
     } catch (error) {
       console.log(error);
     }
@@ -51,7 +51,6 @@ const Login = () => {
     <div>
       <div className="login-container">
         <div className="login-card">
-          <h1>Log-in</h1>
           <form>
             <input
               name="email"
@@ -68,8 +67,8 @@ const Login = () => {
               onChange={(e) => onChangehandler(e)}
             />
 
-            <button onClick={(e) => loginHandler(e)}>Login</button>
-            <button onClick={(e) => GuestloginHandler(e)}>GuestLogin</button>
+            <button className="add-to-cart" onClick={(e) => loginHandler(e)}>Login</button>
+            <button className="add-to-cart"  onClick={(e) => GuestloginHandler(e)}>Guest-Login</button>
             <p>not a member yet?</p>
             <Link className="signup" to="/sign">
               sign-up now

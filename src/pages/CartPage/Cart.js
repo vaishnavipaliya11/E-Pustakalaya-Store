@@ -46,7 +46,7 @@ const Cart = () => {
                       <div class="products-card-container">
                         <div class="cart-arrival-card">
                           <div
-                            className="badge"
+                            className="badge cross-pd"
                             onClick={() =>
                               removeFromCart(cartData, cartDispatch)
                             }
@@ -59,22 +59,7 @@ const Cart = () => {
                           <div class="cart-product-details">
                             <h2>{title}</h2>
 
-                            <div>
-                              <button
-                                class="cart-qty-plus"
-                                type="button"
-                                value="+"
-                                onClick={() =>
-                                  qtyHandler(
-                                    cartData,
-                                    "increment",
-                                    cartDispatch
-                                  )
-                                }
-                              >
-                                +
-                              </button>
-
+                            <div className="cart-qty">
                               {cartData.qty === 1 ? (
                                 <button class="cart-qty-minus" disabled>
                                   -
@@ -95,6 +80,21 @@ const Cart = () => {
                                   -
                                 </button>
                               )}
+                              <div>{cartData.qty}</div>
+                              <button
+                                class="cart-qty-plus"
+                                type="button"
+                                value="+"
+                                onClick={() =>
+                                  qtyHandler(
+                                    cartData,
+                                    "increment",
+                                    cartDispatch
+                                  )
+                                }
+                              >
+                                +
+                              </button>
                             </div>
 
                             <div class="product-price">₹{price}</div>
@@ -124,7 +124,7 @@ const Cart = () => {
             <h2 class="align-center">Price Details</h2>
             <div>
               <div class="space-between">
-                <h4>Number of Cards</h4>
+                <h4>Type of Products</h4>
                 <h3>{addToCart.length}</h3>
               </div>
               <div class="space-between">

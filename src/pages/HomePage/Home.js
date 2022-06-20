@@ -18,7 +18,8 @@ export const Home = () => {
             Beautify you home with our ART store.
           </h1>
 
-          <div className="slider-img">
+          <div className="slider-img" 
+          onClick={()=> navigate("/products")}>
             <img
               className="banner-img "
               src="https://kadamindia.org/wp-content/uploads/2022/05/Untitled-design-57.png"
