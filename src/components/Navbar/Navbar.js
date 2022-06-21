@@ -26,10 +26,9 @@ const Navbar = () => {
       <nav class="topnav">
         <header class="nav">
           <nav class="nav-left">
-            <h2 className="nav-title main-heading">Infinity-Art</h2>
-            <Link class="gray-title" to="/">
-              <h4 id="nav-title">Home</h4>
-            </Link>
+            <h2 className="nav-title main-heading" 
+            onClick={() => navigate("/")}>Infinity-Art</h2>
+           
             <Link class="gray-title" to="/products">
               <h4 id="nav-title">Shop Now</h4>
             </Link>

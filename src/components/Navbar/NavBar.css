@@ -18,6 +18,10 @@
     justify-content: spa;
     align-items: center;
 }
+.nav-left h2:hover{
+    cursor: pointer;
+    transition: 0.3s;
+}
 
 #nav-title {
     padding-left: 2rem;

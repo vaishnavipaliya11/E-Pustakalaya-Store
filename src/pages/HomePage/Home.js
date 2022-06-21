@@ -19,12 +19,14 @@ export const Home = () => {
           </h1>
 
           <div className="slider-img" 
-          onClick={()=> navigate("/products")}>
+          >
             <img
               className="banner-img "
               src="https://kadamindia.org/wp-content/uploads/2022/05/Untitled-design-57.png"
               alt="https://images-eu.ssl-images-amazon.com/images/G/31/img20/Books/042021/1500-X-350-Deals-Books-GIF-Banner-Revised.gif"
             />
+            <button className="banner-btn" onClick={()=> navigate("/products")} 
+            >Shop Now <i class="bi bi-cart"></i> </button>
           </div>
 
           <div className="div-centered">
