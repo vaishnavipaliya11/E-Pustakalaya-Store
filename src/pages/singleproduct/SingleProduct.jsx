@@ -26,6 +26,8 @@ export const SingleProduct = () => {
     setSingleProduct(response.data.product);
   };
 
+  const prodHighlights = singleproduct?.hightlights?.split(",");
+
   const wishlistHandler = (cardData) => {
     if (wishList.find((item) => item._id === cardData._id)) {
       removeFromWishlist(cardData, wishListDispatch);
@@ -45,8 +47,8 @@ export const SingleProduct = () => {
         <div className="single-product-details">
           <div className="single-product-descrption">
             <h1>{singleproduct?.title}</h1>
-            <p>{singleproduct?.author}</p>
-            <p>{singleproduct?.rating}⭐</p>
+            
+            <p> ratings: {singleproduct?.rating}⭐</p>
             <p>
               ₹{singleproduct?.price}{" "}
               <small style={{ color: "gray" }}>
@@ -54,6 +56,14 @@ export const SingleProduct = () => {
                 <s>₹500</s>
               </small>
             </p>
+            <h4>Highlights</h4>
+            {prodHighlights?.map((content) => {
+              return (
+                <div>
+                  <li>{content}</li>
+                </div>
+              );
+            })}
           </div>
           <hr />
           <div>
