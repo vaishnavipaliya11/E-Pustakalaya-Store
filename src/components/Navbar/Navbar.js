@@ -16,9 +16,10 @@ const Navbar = () => {
   const { wishList } = wishListState;
   const { state, dispatch } = useFilter();
   const logOutHandler = () => {
-    setAuth(localStorage.removeItem("token"));
-    toast.success("logout successfully!!");
-    navigate("/login");
+    // navigate("/profile")
+    // setAuth(localStorage.removeItem("token"));
+    // toast.success("logout successfully!!");
+    // navigate("/login");
   };
   return (
     <div>
@@ -62,7 +63,7 @@ const Navbar = () => {
             </Link>
 
             {auth ? (
-              <Link class="topnav-link" to="/login">
+              <Link class="topnav-link" to="/profile">
                 <h3 onClick={logOutHandler}>
                   <i class="bi bi-box-arrow-right"></i>
                 </h3>

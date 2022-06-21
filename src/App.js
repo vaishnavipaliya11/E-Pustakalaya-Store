@@ -6,6 +6,7 @@ import { useParams} from 'react-router-dom'
 import Mockman from "mockman-js";
 import { SingleProduct } from "./pages/singleproduct/SingleProduct";
 import { Toaster } from "react-hot-toast";
+import { UserProfile } from "./pages/UserProfile/UserProfile";
 
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
         <Route path="/sign" element={<SignUp />} />
         <Route path="/singleproduct/:product_id" element= {<SingleProduct/>}/>
         <Route path="/mockman" element={<Mockman />} />
-
+        <Route path="/profile" element={<UserProfile/>} />
       </Routes>
     </div>
   );
