@@ -1,6 +1,10 @@
 /* @import "./root.css"; */
 .cart-items{
   overflow-y: scroll;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 4rem;
 }
 
 .product-scroll{
@@ -18,7 +22,7 @@
 .cart-arrival-card {
     display: flex;
     margin: 0.5rem;
-    width: 27rem;
+    width: 25rem;
     position: relative;
     height: 20rem;
     border: 1px solid gray;
