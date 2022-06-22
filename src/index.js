@@ -8,12 +8,14 @@ import { FilterProvider } from "./Context/Filter_context";
 import { AuthProvider } from "./Context/authContext";
 import { CartProvider } from "./Context/cartContext";
 import{WishListProvider} from "./Context/wishlistContext";
+import { AddressProvider } from "./Context/addressContext";
 
 makeServer();
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
+    <AddressProvider>
       <AuthProvider>
         <FilterProvider>
           <WishListProvider>
@@ -23,6 +25,7 @@ ReactDOM.render(
           </WishListProvider>
         </FilterProvider>
       </AuthProvider>
+      </AddressProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

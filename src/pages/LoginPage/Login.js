@@ -38,11 +38,14 @@ const Login = () => {
         email: "vaishnavipaliya@gmail.com",
         password: "vaishnavi",
       });
+      console.log(data);
       toast.success('Login Successfully!');
       localStorage.setItem("token", data.encodedToken);
-     
+      localStorage.setItem("currentUser", JSON.stringify(data.foundUser));
+      // console.log(data.foundUser.firstName);
       setAuth(true);
-      setAuthUser({"email":"vaishnavipaliya@gmail.com","firstName":"Vaishnavi","lastName":"Paliya"})
+      setAuthUser(data.foundUser)
+
       navigate("/products");
     } catch (error) {
       console.log(error);
