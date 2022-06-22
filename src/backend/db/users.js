@@ -24,5 +24,17 @@ export const users = [
     password: "vaishnavi",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    orders: [],
+    address: [
+      {
+        _id: uuid(),
+        name: "Vaishnavi Paliya",
+        mobile: "5421231231",
+        zipCode: "400028",
+        street: "200 / Madhani Senapati Bapat Marg Dadar, Mumbai",
+        state: "Maharashtra",
+        country: "India",
+      },
+    ],
   },
 ];
