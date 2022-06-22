@@ -5,10 +5,11 @@ import { qtyHandler } from "../../Utility/qtyHandler";
 import "./Cart.css";
 import { useWishlist } from "../../Context/wishlistContext";
 import { addToWishlist } from "../../Utility/addToWishlist";
+import { Link, useNavigate } from "react-router-dom";
 const Cart = () => {
   const { cartState, cartDispatch } = useCart();
   const { addToCart } = cartState;
-
+const navigate = useNavigate()
   const { wishListState, wishListDispatch } = useWishlist();
   const { wishList } = wishListState;
   let originalPrice = 0;
@@ -143,7 +144,8 @@ const Cart = () => {
               </div>
               <hr />
             </div>
-            <button class="butoon-place">Place Order</button>
+            <button class="butoon-place"
+            onClick={()=> navigate("/checkout")}>Place Order</button>
           </div>
         </div>
       </article>

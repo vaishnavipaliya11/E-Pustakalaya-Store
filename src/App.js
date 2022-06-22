@@ -7,6 +7,7 @@ import Mockman from "mockman-js";
 import { SingleProduct } from "./pages/singleproduct/SingleProduct";
 import { Toaster } from "react-hot-toast";
 import { UserProfile } from "./pages/UserProfile/UserProfile";
+import { Checkout } from "./pages/Checkout/Checkout";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route path="/singleproduct/:product_id" element= {<SingleProduct/>}/>
         <Route path="/mockman" element={<Mockman />} />
         <Route path="/profile" element={<UserProfile/>} />
+        <Route path="/checkout" element={<Checkout/>} />
       </Routes>
     </div>
   );
