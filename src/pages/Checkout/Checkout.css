@@ -3,3 +3,18 @@
     justify-content: space-around;
     margin-top: 2rem;
 }
+.address-card-text{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.address-container{
+    border: 1px solid gray;
+    margin: 2rem;  
+}
+.address-card{
+    margin: 1rem;
+}
+.address-card h3{
+    text-align: left;
+}

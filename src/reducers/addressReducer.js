@@ -1,11 +1,13 @@
-// export const addressRedu =()=>{
-
-// }
-
 
 const addressReducer = (state, action) => {
+  switch (action.type) {
+    case "GET-ALL-ADDRESS":
+      console.log(action.payload);
+      return { ...state, useraddress: action.payload };
 
-    console.log("called");
-  };
-  
-  export{addressReducer}
+    default:
+      state;
+  }
+};
+
+export { addressReducer };
