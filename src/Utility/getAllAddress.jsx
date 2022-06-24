@@ -12,7 +12,6 @@ export const getAllAddress = async(addressDispatch) =>{
         },
       }
     );
-    console.log(data);
    
     // toast.success("added to cart")
     addressDispatch({ type: "GET-ALL-ADDRESS", payload: data.address })

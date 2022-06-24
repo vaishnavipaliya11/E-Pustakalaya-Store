@@ -1,5 +1,7 @@
 .checkout-container{
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-area: "first second";
     justify-content: space-around;
     margin-top: 2rem;
 }
@@ -17,4 +19,21 @@
 }
 .address-card h3{
     text-align: left;
+}
+.address-radio{
+    display: flex;
+    align-items: baseline;
+}
+.edit-btn{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.checkout-details-container{
+    grid-area: "second";
+    margin-right:4rem ;
+}
+.address-block{
+    grid-area: "first";
 }

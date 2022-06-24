@@ -31,7 +31,7 @@ export const users = [
         name: "Vaishnavi Paliya",
         mobile: "5421231231",
         zipCode: "400028",
-        street: "200 / Madhani Senapati Bapat Marg Dadar, Mumbai",
+        street: "50  nd Floor Manewada Pardi Road , Nagpur",
         state: "Maharashtra",
         country: "India",
       },
