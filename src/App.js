@@ -8,6 +8,7 @@ import { SingleProduct } from "./pages/singleproduct/SingleProduct";
 import { Toaster } from "react-hot-toast";
 import { UserProfile } from "./pages/UserProfile/UserProfile";
 import { Checkout } from "./pages/Checkout/Checkout";
+import { Order } from "./pages/orders/Order";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route path="/mockman" element={<Mockman />} />
         <Route path="/profile" element={<UserProfile/>} />
         <Route path="/checkout" element={<Checkout/>} />
+        <Route path="/orders" element ={<Order/>} />
       </Routes>
     </div>
   );
