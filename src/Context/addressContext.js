@@ -6,7 +6,7 @@ const AddressContext = createContext()
 
 const AddressProvider = ({children})=>{
     const [addressState, addressDispatch] = useReducer(addressReducer,{
-        useraddress:[] ,addressmodal:false
+        useraddress:[] ,addressmodal:false , editaddress:false, addressId:""
     })
     return(
         <AddressContext.Provider value={{addressState, addressDispatch}}>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { AddressModal } from "../../components/address/addressModal";
+import { AddressCard } from "../../components/addressCard";
 import { useAddress } from "../../Context/addressContext";
 import { useCart } from "../../Context/cartContext";
 import { getAllAddress } from "../../Utility/getAllAddress";
@@ -9,9 +10,8 @@ export const Checkout = () => {
   const { addToCart } = cartState;
   const { addressState, addressDispatch } = useAddress();
   const { useraddress, addressmodal } = addressState;
-  const [ selectedAdd, setSelectedAdd ] = useState();
-  console.log(useraddress);
-
+  const [selectedAdd, setSelectedAdd] = useState();
+  const [editModal,setEditModal]= useState(false)
   let originalPrice = 0;
   let delivery_charges = 0;
   addToCart?.forEach((cartData) => {
@@ -22,56 +22,58 @@ export const Checkout = () => {
     getAllAddress(addressDispatch);
   }, []);
 
-  console.log(useraddress);
-  console.log(selectedAdd);
   return (
     <div className="checkout-container">
       <div className="address-block">
         <p>Address</p>
+      
         <div className="address-container">
-          <div className="address-card">
-            <div className="edit-btn">
-              <button
-                onClick={() =>
-                  addressDispatch({ type: "OPEN-MODAL", payload: true })
-                }
-              >
-                edit{" "}
-              </button>
-              {addressmodal ? <AddressModal /> : ""}
-            </div>
-
-            {useraddress?.map((address) => (
-              <label key={address?._id} className="address-radio">
-                <input
-                  type="radio"
-                  name="address"
-                  checked={selectedAdd?._id === address?._id}
-                  onChange={() => setSelectedAdd(address)}
-                />
-                <div>
-                  <h3>{address?.name}</h3>
-                  <address className="address-card-text">
-                    <span>{address?.street},</span>
-                    <span>{address?.state},</span>
-                    <span>{address?.country},</span>
-                    <span>{address?.zipCode},</span>
-                    <span>{address?.mobile},</span>
-                  </address>
-                </div>
-              </label>
-            ))}
-          </div>
+        <div className="address-card">
+          {useraddress?.map((address) => (
+            <label key={address?._id} className="address-radio">
+              <div className="edit-btn">
+                <button
+                  onClick={() => {
+                    setEditModal(true)
+                    addressDispatch({
+                      type: "ADDRESS_ID",
+                      payload: address?._id,
+                    });
+                  }}
+                >
+                  edit
+                </button>
+                {editModal ? <AddressModal address={address} updating={true} editModal={true} setEditModal={setEditModal} /> : ""}
+              </div>
+              <input
+                type="radio"
+                name="address"
+                checked={selectedAdd?._id === address?._id}
+                onChange={() => setSelectedAdd(address)}
+              />
+              <div>
+                <h3>{address?.name}</h3>
+                <address className="address-card-text">
+                  <span>{address?.street},</span>
+                  <span>{address?.state},</span>
+                  <span>{address?.country},</span>
+                  <span>{address?.zipCode},</span>
+                  <span>{address?.mobile},</span>
+                </address>
+              </div>
+            </label>
+          ))}
         </div>
+      </div>
         {!useraddress?.length && <h2>Add address to continue payment</h2>}
 
-        {addressmodal ? <AddressModal /> : ""}
         <button
           className="new-address-btn add-to-cart"
           onClick={() => addressDispatch({ type: "OPEN-MODAL", payload: true })}
         >
           Add new address +
         </button>
+        {addressmodal ? <AddressModal  updating={false} /> : ""}
       </div>
       <div class="checkout-details-container">
         <div class="checkout-details">
@@ -112,8 +114,6 @@ export const Checkout = () => {
               ) : (
                 ""
               )}
-
-            
             </div>
           </div>
           <button class="butoon-place">Proceed to pay </button>
