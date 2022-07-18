@@ -6,10 +6,11 @@ import "./Cart.css";
 import { useWishlist } from "../../Context/wishlistContext";
 import { addToWishlist } from "../../Utility/addToWishlist";
 import { Link, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 const Cart = () => {
   const { cartState, cartDispatch } = useCart();
   const { addToCart } = cartState;
-const navigate = useNavigate()
+  const navigate = useNavigate();
   const { wishListState, wishListDispatch } = useWishlist();
   const { wishList } = wishListState;
   let originalPrice = 0;
@@ -120,34 +121,43 @@ const navigate = useNavigate()
           </div>
         </div>
 
-        <div class="price-details-container">
-          <div class="price-details">
-            <h2 class="align-center">Price Details</h2>
-            <div>
-              <div class="space-between">
-                <h4>Type of Products</h4>
-                <h3>{addToCart.length}</h3>
-              </div>
-              <div class="space-between">
-                <h4>Items total price</h4>
-                <h3>{originalPrice}</h3>
+        {addToCart.length === 0 ? (
+          ""
+        ) : (
+          <div class="price-details-container">
+            <div class="price-details">
+              <h2 class="align-center">Price Details</h2>
+              <div>
+                <div class="space-between">
+                  <h4>Type of Products</h4>
+                  <h3>{addToCart.length}</h3>
+                </div>
+                <div class="space-between">
+                  <h4>Items total price</h4>
+                  <h3>{originalPrice}</h3>
+                </div>
+
+                <div class="space-between">
+                  <h4>Delivery Charges </h4>
+                  <h3>{delivery_charges.toFixed()}</h3>
+                </div>
+                <hr />
+                <div class="space-between">
+                  <h3>Total Pay Amount</h3>
+                  <h3>{(originalPrice + delivery_charges).toFixed()}</h3>
+                </div>
+                <hr />
               </div>
 
-              <div class="space-between">
-                <h4>Delivery Charges </h4>
-                <h3>{delivery_charges.toFixed()}</h3>
-              </div>
-              <hr />
-              <div class="space-between">
-                <h3>Total Pay Amount</h3>
-                <h3>{(originalPrice + delivery_charges).toFixed()}</h3>
-              </div>
-              <hr />
+              <button
+                class="butoon-place"
+                onClick={() => navigate("/checkout")}
+              >
+                Place Order
+              </button>
             </div>
-            <button class="butoon-place"
-            onClick={()=> navigate("/checkout")}>Place Order</button>
           </div>
-        </div>
+        )}
       </article>
     </div>
   );
