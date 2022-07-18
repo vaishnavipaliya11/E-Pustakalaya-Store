@@ -12,7 +12,7 @@ export const removeFromWishlist= async(product,wishListDispatch)=>{
       toast.success("Product removed")
       wishListDispatch({ type: "REMOVE_FROM_WISHLIST", payload:data.wishlist });
     } catch (error) {
-      toast.error("Sometihing went wrong!!")
+      toast.error("Something went wrong!!")
       console.log(error);
     }
 }

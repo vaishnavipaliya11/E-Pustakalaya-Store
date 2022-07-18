@@ -12,7 +12,7 @@ export const removeFromCart = async (product, cartDispatch) => {
     toast.success("Product removed")
     cartDispatch({ type: "REMOVE_FROM_CART", payload: data.cart });
   } catch (error) {
-    toast.error("Sometihing went wrong!!")
+    toast.error("Something went wrong!!")
     console.log(error);
     
   }

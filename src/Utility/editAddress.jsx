@@ -18,7 +18,7 @@ const updateAddress = async (address, addressDispatch) => {
     addressDispatch({type:"UPDATE_ADDRESS", payload:data.address})
     
   } catch (error) {
-    toast.error("Sometihing went wrong!!")
+    toast.error("Something went wrong!!")
     console.error(error)
   }
  
