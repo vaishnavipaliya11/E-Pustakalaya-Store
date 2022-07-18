@@ -13,20 +13,20 @@ export const UserProfile = () => {
   const { useraddress } = addressState;
   const navigate = useNavigate();
   var retrievedPerson = JSON.parse(localStorage.getItem("currentUser"));
-  
-    const logOutHandler = () => {
-      setAuth(localStorage.removeItem("token"));
-      navigate("/login");
-    };
-  
+
+  const logOutHandler = () => {
+    setAuth(localStorage.removeItem("token"));
+    navigate("/login");
+  };
 
   useEffect(() => {
     getAllAddress(addressDispatch);
   }, []);
   return (
     <div className="profile-container">
-    <button
-    onClick={() => logOutHandler()}>logout</button>
+      <button className="add-to-cart" onClick={() => logOutHandler()}>
+        logout
+      </button>
       <div className="user-details">
         <p>
           Name:{retrievedPerson?.firstName} {retrievedPerson?.lastName}
