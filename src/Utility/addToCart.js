@@ -18,7 +18,8 @@ export const add_to_cart = async(product,cartDispatch) =>{
     toast.success("added to cart")
     cartDispatch({ type: "ADD_TO_CART", payload: data.cart })
   } catch (error) {
-    console.log(error);
+    toast.error("Something went wrong!!")
+    console.error(error);
   }
     
 }
