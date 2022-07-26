@@ -102,6 +102,7 @@ body {
 
 .banner-img{
     position: relative;
+    width: 90%;
 }
 .banner-btn{
     position: absolute;
