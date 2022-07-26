@@ -7,8 +7,10 @@ import { getAllAddress } from "../../Utility/getAllAddress";
 import { addOrders } from "../../Utility/addOrders";
 import "./Checkout.css";
 import { useNavigate } from "react-router-dom";
+import { removeFromCart } from "../../Utility/removeFromCart";
+import { clearCart } from "../../Utility/clearCart";
 export const Checkout = () => {
-  const { cartState } = useCart();
+  const { cartState, cartDispatch } = useCart();
   const navigate = useNavigate();
   const { addToCart } = cartState;
   const { addressState, addressDispatch } = useAddress();
@@ -60,10 +62,9 @@ export const Checkout = () => {
       image: "/favicon.ico",
       handler: function (response) {
         const paymentId = response.razorpay_payment_id;
-
+        // removeFromCart(addToCart, cartDispatch)
         addOrders({ products: addToCart, address: selectedAdd }, orderDispatch);
-    
-        // clearCart();
+        clearCart(cartDispatch);
         navigate("/orders");
       },
 
