@@ -62,14 +62,13 @@ export const Checkout = () => {
       image: "/favicon.ico",
       handler: function (response) {
         const paymentId = response.razorpay_payment_id;
-        // removeFromCart(addToCart, cartDispatch)
         addOrders({ products: addToCart, address: selectedAdd }, orderDispatch);
         clearCart(cartDispatch);
         navigate("/orders");
       },
 
       prefill: {
-        name: "Adarsh Balika",
+        name: "Vaishnavi Paliya",
         email: "xyz@example.com",
         contact: "7744552200",
       },
