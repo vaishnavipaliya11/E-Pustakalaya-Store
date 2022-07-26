@@ -1,7 +1,6 @@
 import axios from "axios";
 import toast from "react-hot-toast";
 import { getUserToken } from "./getUserToken";
-import toast from "react-hot-toast";
 
 const updateAddress = async (address, addressDispatch) => {
   try {
