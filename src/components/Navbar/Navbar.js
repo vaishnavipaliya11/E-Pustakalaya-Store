@@ -15,20 +15,15 @@ const Navbar = () => {
   const { wishListState } = useWishlist();
   const { wishList } = wishListState;
   const { state, dispatch } = useFilter();
-  const logOutHandler = () => {
-    setAuth(localStorage.removeItem("token"));
-    toast.success("logout successfully!!");
-    navigate("/login");
-  };
+
   return (
     <div>
       <nav class="topnav">
         <header class="nav">
           <nav class="nav-left">
-            <h2 className="nav-title main-heading">Infinity-Art</h2>
-            <Link class="gray-title" to="/">
-              <h4 id="nav-title">Home</h4>
-            </Link>
+            <h2 className="nav-title main-heading" 
+            onClick={() => navigate("/")}>Infinity-Art</h2>
+           
             <Link class="gray-title" to="/products">
               <h4 id="nav-title">Shop Now</h4>
             </Link>
@@ -62,14 +57,14 @@ const Navbar = () => {
             </Link>
 
             {auth ? (
-              <Link class="topnav-link" to="/login">
-                <h3 onClick={logOutHandler}>
-                  <i class="bi bi-box-arrow-right"></i>
+              <Link class="topnav-link" to="/profile">
+                <h3>
+                <i class="bi bi-person-fill"></i>
                 </h3>
               </Link>
             ) : (
               <h3 onClick={() => navigate("/login")}>
-                <i class="bi bi-person-fill"></i>
+                
                 <span></span>
               </h3>
             )}

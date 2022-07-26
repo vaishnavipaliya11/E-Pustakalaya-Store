@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 
 const Login = () => {
   const [userDetails, setUserDetails] = useState({ email: "", password: "" });
-  const { setAuth } = useAuth();
+  const {setAuthUser, setAuth } = useAuth();
   const navigate = useNavigate();
 
   const onChangehandler = (e) => {
@@ -38,10 +38,14 @@ const Login = () => {
         email: "vaishnavipaliya@gmail.com",
         password: "vaishnavi",
       });
+      console.log(data);
       toast.success('Login Successfully!');
       localStorage.setItem("token", data.encodedToken);
-     
+      localStorage.setItem("currentUser", JSON.stringify(data.foundUser));
+      // console.log(data.foundUser.firstName);
       setAuth(true);
+      setAuthUser(data.foundUser)
+
       navigate("/products");
     } catch (error) {
       console.log(error);

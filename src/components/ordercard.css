@@ -1,0 +1,29 @@
+.order-container{
+    display: flex;
+    overflow: scroll;
+    flex-direction: column;
+    height: calc(100vh - 5rem);
+    margin: 1rem;
+    padding: 1rem;
+    justify-content: center;
+}
+
+.order-card-container{
+  display: flex;
+  justify-content: center;
+}
+.order-card-container .product-tumb{
+    height: 10rem;
+    padding: 0.5rem;
+}
+
+.card-text{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.order-address-container{
+    justify-content: center;
+    display: flex;
+}

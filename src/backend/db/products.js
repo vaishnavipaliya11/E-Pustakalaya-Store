@@ -16,7 +16,7 @@ export const products = [
       rating:3,
       discount:30,
       categoryName: "wall",
-     
+      hightlights:"High Definition modern printing artwork printed on high quality, Imported Textured Sheets,Framed on 7mm Heavy MDF Board art "
     },
     {
       _id: uuid(),
@@ -27,6 +27,7 @@ export const products = [
       rating:5,
       discount:20,
       categoryName: "wall",
+      hightlights:"Handmade, Materials: Medium: Fabric, Wood Height: 12 inches Width: 12 inches"
     },
     {
       _id: uuid(),
@@ -37,6 +38,7 @@ export const products = [
       rating:4,
       discount:50,
       categoryName: "wall",
+      hightlights:"Handmade, Materials: Medium: Fabric, Wood Height: 12 inches Width: 12 inches"
     },
     {
       _id: uuid(),
@@ -47,6 +49,7 @@ export const products = [
       rating:5,
       discount:20,
       categoryName: "serve",
+      hightlights:"Handmade, Materials: Epoxy Resin, Pigments, Gold Foil Flakes"
     },
     {
       _id: uuid(),
@@ -57,6 +60,7 @@ export const products = [
       rating:2,
       discount:40,
       categoryName: "serve",
+      hightlights:"Handmade,Materials: epoxy epoxy resin mica powder Gold leafgeode, branch handles, twig handles"
     },
     {
       _id: uuid(),
@@ -67,6 +71,7 @@ export const products = [
       rating:3,
       discount:30,
       categoryName: "weaving",
+      hightlights:" First few Wash Separate, Normal Hand Wash, Keep Seperate From Dark Colors, Dry In Shade,Material: Cotton, Thread Count: 6, GSM: 1500"
     },
     {
       _id: uuid(),
@@ -77,6 +82,7 @@ export const products = [
       rating:3,
       discount:60,
       categoryName: "weaving",
+      hightlights:" First few Wash Separate, Normal Hand Wash, Keep Seperate From Dark Colors, Dry In Shade,Material: Cotton, Thread Count: 6, GSM: 1500"
     },
     {
       _id: uuid(),
@@ -87,6 +93,7 @@ export const products = [
       rating:5,
       discount:20,
       categoryName: "wall",
+      hightlights:"High Quality Digital Painting, For a mesmerizing visual experience,Total Size of Canvas: 85cm x 55cm x 2cm"
     },
     {
       _id: uuid(),
@@ -97,6 +104,7 @@ export const products = [
       rating:4,
       discount:50,
       categoryName: "weaving",
+      hightlights:" First few Wash Separate, Normal Hand Wash, Keep Seperate From Dark Colors, Dry In Shade,Material: Cotton, Thread Count: 6, GSM: 1500"
     },
     {
       _id: uuid(),
@@ -107,7 +115,7 @@ export const products = [
       rating:4,
       discount:50,
       categoryName: "decor",
-      description:"An art piece not only adds aesthetic value to your home but also helps evoke positive emotions. Add a touch of colour, sparkle, inspiration, joy— all at once."
+      hightlights:"Materials: Resin, Marble Dust,Hand Made Article, Copper finish, Height: 37 centimetres Width: 12 centimetres ,Depth: 8 centimetres"
     },
     {
       _id: uuid(),
@@ -118,6 +126,7 @@ export const products = [
       rating:5,
       discount:40,
       categoryName: "decor",
+      hightlights:"Materials: Resin, Marble Dust, Reform Marble, Cold Cast resin, Hand Made Article, Copper finish, Height: 37 centimetres,Width: 12 centimetres ,Depth: 8 centimetres"
     },
     {
       _id: uuid(),
@@ -128,6 +137,7 @@ export const products = [
       rating:5,
       discount:40,
       categoryName: "wall",
+      hightlights:"High Definition modern printing artwork, Printed on high quality Imported Textured Sheets,Framed on 7mm Heavy MDF Board art "
     },
     {
       _id: uuid(),
@@ -138,6 +148,8 @@ export const products = [
       rating:5,
       discount:40,
       categoryName: "wall",
+      hightlights:"High Definition modern printing artwork, Printed on high quality Imported Textured Sheets,Framed on 7mm Heavy MDF Board art "
+
     },
     {
       _id: uuid(),
@@ -148,6 +160,7 @@ export const products = [
       rating:5,
       discount:40,
       categoryName: "decor",
+      hightlights:"Materials: Resin, Cold Cast, Hand Finished, copper finish, Handmade Statue, Professional Box Packing Height: 30 centimetres,Width: 9 centimetres ,Depth: 7 centimetres"
     },
     {
       _id: uuid(),
@@ -158,6 +171,7 @@ export const products = [
       rating:5,
       discount:40,
       categoryName: "decor",
+      hightlights:"Materials: Resin, Cold Cast, Hand Finished, copper finish, Handmade Statue, Professional Box Packing Height: 20 centimetres,Width: 2 centimetres ,Depth: 5 centimetres"
     },
     {
       _id: uuid(),
@@ -168,6 +182,7 @@ export const products = [
       rating:5,
       discount:40,
       categoryName: "decor",
+      hightlights:"Materials: Resin, Cold Cast, Hand Finished, copper finish, Handmade Statue, Professional Box Packing Height: 40 centimetres,Width: 15 centimetres ,Depth: 10 centimetres"
     },
   
   ];

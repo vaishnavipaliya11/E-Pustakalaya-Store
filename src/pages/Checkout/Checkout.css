@@ -1,0 +1,44 @@
+.checkout-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-area: "first second";
+    justify-content: space-around;
+    margin-top: 2rem;
+    height: calc(100vh - 5rem);
+    overflow: scroll;
+}
+.address-card-text{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.address-container{
+ 
+    margin: 2rem;  
+}
+.address-card{
+    margin: 1rem;
+
+}
+.address-card h3{
+    text-align: left;
+}
+.address-radio{
+    display: flex;
+    align-items: baseline;
+    border: 1px solid gray;
+    margin: 0.5rem;
+}
+.edit-btn{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.checkout-details-container{
+    grid-area: "second";
+    margin-right:4rem ;
+}
+.address-block{
+    grid-area: "first";
+}

@@ -7,6 +7,8 @@ const cartReducer = (state, action) => {
       return{...state, addToCart:action.payload};
       case "INCREMENT_DECREMENT":
       return{...state,addToCart:action.payload}
+      case "CLEAR_DISPATCH":
+        return{...state, addToCart:action.payload}
     default:
       return state;
   }

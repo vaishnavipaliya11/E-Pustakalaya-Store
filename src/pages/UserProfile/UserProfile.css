@@ -1,0 +1,21 @@
+.profile-container{
+display: flex;
+align-items: flex-start;
+justify-content: center;
+align-items: baseline;
+margin: 2rem;
+}
+.user-details{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.side-bar-container{
+    display: flex;
+    flex-direction: column;
+}
+.address-display div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
