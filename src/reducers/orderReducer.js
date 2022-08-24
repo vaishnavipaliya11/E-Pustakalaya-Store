@@ -1,9 +1,8 @@
-export const orderReducer = (state,action)=>{
-switch (action.type) {
+export const orderReducer = (state, action) => {
+  switch (action.type) {
     case "ADD_NEW_ORDER":
-       
-        return{...state, orders:action.payload}
+      return { ...state, orders: action.payload };
     default:
-        state;
-}
-}
+      state;
+  }
+};
