@@ -6,7 +6,7 @@ import "./Cart.css";
 import { useWishlist } from "../../Context/wishlistContext";
 import { addToWishlist } from "../../Utility/addToWishlist";
 import { Link, useNavigate } from "react-router-dom";
-import toast from "react-hot-toast";
+
 const Cart = () => {
   const { cartState, cartDispatch } = useCart();
   const { addToCart } = cartState;
